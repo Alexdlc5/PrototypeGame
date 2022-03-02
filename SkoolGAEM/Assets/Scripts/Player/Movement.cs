@@ -274,24 +274,27 @@ public class Movement : MonoBehaviour
         {
             if (rot > 359f)
             {
-                transform.RotateAround(transform.position, playerrotation.right, 0);
+                rotationbalanceVector[2] = 0;
             }
             else
             {
-                transform.RotateAround(transform.position, playerrotation.right, -resetmultiplier / 2 * Time.fixedDeltaTime);
+                rotationbalanceVector[2] += resetmultiplier * Time.fixedDeltaTime;
             }
         }
         if (rot > 0 && rot < 100)
         {
             if (rot < 1.0f)
             {
-                transform.RotateAround(transform.position, playerrotation.right, 0);
+                rotationbalanceVector[2] = 0;
             }
             else
             {
-                transform.RotateAround(transform.position, playerrotation.right, resetmultiplier / 2 * Time.fixedDeltaTime);
+                rotationbalanceVector[2] -= resetmultiplier * Time.fixedDeltaTime;
             }
         }
+        
+        //updates position
+        transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
 
     //brings x rotation back to 0
@@ -305,23 +308,25 @@ public class Movement : MonoBehaviour
         {
             if (rot > 359.0f)
             {
-                transform.RotateAround(transform.position, playerrotation.forward, 0);
+                rotationbalanceVector[0] = 0;
             }
             else
             {
-                transform.RotateAround(transform.position, playerrotation.forward, resetmultiplier / 2 * Time.fixedDeltaTime);
+                rotationbalanceVector[0] += resetmultiplier * Time.fixedDeltaTime;
             }
         }
         if (rot > 0 && rot < 100)
         {
             if (rot < 1.0f)
             {
-                transform.RotateAround(transform.position, playerrotation.forward, 0);
+                rotationbalanceVector[0] = 0;
             }
             else
             {
-                transform.RotateAround(transform.position, playerrotation.forward, -resetmultiplier / 2 * Time.fixedDeltaTime);
+                rotationbalanceVector[0] -= resetmultiplier * Time.fixedDeltaTime;
             }
         }
+        //updates position
+        transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
 }
