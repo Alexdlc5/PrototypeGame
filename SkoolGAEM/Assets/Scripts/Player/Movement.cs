@@ -6,12 +6,6 @@ using UnityEngine;
 using System;
 
 //***************************************************************Make Reciol**********************************************************************************************
-//Errors
-//All caused by balance methods(need to be made local)
-//w stuttering -z
-//a stuttering -z
-//s stuttering -x
-//d stuttering  x
 public class Movement : MonoBehaviour
 {
     public Transform playerrotation;
@@ -64,23 +58,16 @@ public class Movement : MonoBehaviour
                 rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
 
                 //rotates player
-                if (Xrot < 90 && Xrot > 0)
-                {
-                    transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 50 * Time.fixedDeltaTime);
-                }
-                else
-                {
-                    transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
-                }
+                transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
                 
                 //Checks if any surrounding keys are pressed and balances accordingly
-                if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
-                {
-                    if (Xrot > 0 && Xrot < 320)
-                    {
-                        balanceX(Xrot);
-                    }
-                }
+                //if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
+                //{
+                //    if (Xrot > 0 && Xrot < 320)
+                //    {
+                //        balanceX(Xrot);
+                //    }
+                //}
             }
             
             //S key input
@@ -91,23 +78,16 @@ public class Movement : MonoBehaviour
                 rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
 
                 //rotates player
-                if (Xrot < 360 && Xrot > 270)
-                {
-                    transform.RotateAround(transform.position, playerrotation.right, tipspeed / 50 * Time.fixedDeltaTime);
-                }
-                else
-                {
-                    transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
-                }
+                transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
                 
                 //Checks if any surrounding keys are pressed and balances accordingly
-                if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
-                {
-                    if (Zrot > 0 && Zrot < 320)
-                    {
-                        balanceZ(Zrot);
-                    }
-                }
+                //if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
+                //{
+                //    if (Zrot > 0 && Zrot < 320)
+                //    {
+                //        balanceZ(Zrot);
+                //    }
+                //}
             }
             
             //D key input
@@ -118,23 +98,16 @@ public class Movement : MonoBehaviour
                 rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
                 
                 //rotates player
-                if (Xrot < 360 && Xrot > 270)
-                {
-                    transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 50 * Time.fixedDeltaTime);
-                }
-                else
-                {
-                    transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
-                }
+                transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
                
                 //Checks if any surrounding keys are pressed and balances accordingly
-                if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
-                {
-                    if (Xrot > 0 && Xrot < 320)
-                    {
-                        balanceX(Xrot);
-                    }
-                }
+                //if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
+                //{
+                //    if (Xrot > 0 && Xrot < 320)
+                //    {
+                //        balanceX(Xrot);
+                //    }
+                //}
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
@@ -144,30 +117,22 @@ public class Movement : MonoBehaviour
                 rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
 
                 //rotates player
-                if (Xrot < 90 && Xrot > 0)
-                {
-                    transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 50 * Time.fixedDeltaTime);
-                }
-                else
-                {
-                    transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
-                }
+                transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
                
                 //Checks if any surrounding keys are pressed and balances accordingly
-                if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
-                {
-                    if (Zrot > 0 && Zrot < 320)
-                    {
-                        balanceZ(Zrot);
-                    }
-                }
+                //if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
+                //{
+                //    if (Zrot > 0 && Zrot < 320)
+                //    {
+                //        balanceZ(Zrot);
+                //    }
+                //}
             }
         }
         else
         {
             balanceX(Xrot);
             balanceZ(Zrot);
-
         }
 
         //times when you can jump

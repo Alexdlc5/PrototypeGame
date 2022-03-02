@@ -23,6 +23,7 @@ public class CoinObject : MonoBehaviour
     {
         if (time > 500)
         {
+            addCoin();
             Destroy(gameObject);
         }
         else
