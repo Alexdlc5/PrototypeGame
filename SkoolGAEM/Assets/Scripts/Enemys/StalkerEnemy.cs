@@ -60,17 +60,17 @@ public class StalkerEnemy : MonoBehaviour
         {
             if (distanceMoreThan(playerLocation, transform.position, 30))
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 100);
+                rb.AddRelativeForce(Vector3.forward * speed * 2500);
                 time = 0;
             }
             else if (distanceMoreThan(playerLocation, transform.position, 20) && distanceLessThan(playerLocation, transform.position, 30))
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 300);
+                rb.AddRelativeForce(Vector3.forward * speed * 5000);
                 time = 0;
             }
             else
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 1500);
+                rb.AddRelativeForce(Vector3.forward * speed * 15000);
                 time = 0;
             }
 

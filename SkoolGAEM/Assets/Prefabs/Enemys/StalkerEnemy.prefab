@@ -235,9 +235,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6801178248042545568}
   serializedVersion: 2
-  m_Mass: 30
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 35
+  m_Drag: 10
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -260,11 +260,11 @@ MonoBehaviour:
   score: {fileID: 0}
   coin: {fileID: 0}
   coincounter: {fileID: 0}
-  coinreward: 20
+  coinreward: 50
   speed: 5
   time: 0
   health: 2
-  scoreforkill: 70
+  scoreforkill: 100
 --- !u!1 &7897430977903502654
 GameObject:
   m_ObjectHideFlags: 0

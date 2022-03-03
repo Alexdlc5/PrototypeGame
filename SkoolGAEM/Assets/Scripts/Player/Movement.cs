@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
-//***************************************************************Make Reciol**********************************************************************************************
+//***************************************Make Reciol**********************************************
 public class Movement : MonoBehaviour
 {
     public Transform playerrotation;
@@ -43,9 +43,6 @@ public class Movement : MonoBehaviour
         Vector3 rotationbalanceVector = new Vector3(0, 0, 0);
         float Xrot = transform.rotation.eulerAngles.x;
         float Zrot = transform.rotation.eulerAngles.z;
-
-        //Local Forward Axis https://answers.unity.com/questions/316918/local-forward.html
-        // Vector3 localForward = playerrotation.transform.worldToLocalMatrix.MultiplyVector(playerrotation.transform.forward);
 
         //checks for keyboard input
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))

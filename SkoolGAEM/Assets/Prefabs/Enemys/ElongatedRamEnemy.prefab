@@ -229,7 +229,7 @@ MonoBehaviour:
   coin: {fileID: 0}
   coincounter: {fileID: 0}
   speed: 400
-  coinreward: 20
+  coinreward: 50
   time: 0
   health: 3
   scoreforkill: 200

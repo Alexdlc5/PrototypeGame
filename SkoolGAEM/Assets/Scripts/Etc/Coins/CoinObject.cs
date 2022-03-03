@@ -21,7 +21,7 @@ public class CoinObject : MonoBehaviour
     private float time = 0;
     void Update()
     {
-        if (time > 500)
+        if (time > 120)
         {
             addCoin();
             Destroy(gameObject);
