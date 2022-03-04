@@ -260,11 +260,12 @@ MonoBehaviour:
   score: {fileID: 0}
   coin: {fileID: 0}
   coincounter: {fileID: 0}
-  coinreward: 50
+  deathbit: {fileID: 0}
+  coinreward: 10
   speed: 5
   time: 0
   health: 2
-  scoreforkill: 100
+  scoreforkill: 300
 --- !u!1 &7897430977903502654
 GameObject:
   m_ObjectHideFlags: 0

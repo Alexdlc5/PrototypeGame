@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     public Transform playerrotation;
     public float playerspeed = 0;
     public float accelerationspeed = 0;
-    public float maxspeed = 0;
     public float tipspeed = 0;
     public float jumppower = 0;
     public float resetmultiplier = 0;
@@ -25,6 +24,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        Boolean boosting = false;
         //checks if players health is 0 or less
         if (health <= 0)
         {
@@ -50,21 +50,21 @@ public class Movement : MonoBehaviour
             //W key input
             if (Input.GetKey(KeyCode.W))
             {
-                //Adds velocity to player
+                //creates vector3 with forward direction aligning with the players camera/weapon rotation
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
-                rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
-
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
-                
-                //Checks if any surrounding keys are pressed and balances accordingly
-                //if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
-                //{
-                //    if (Xrot > 0 && Xrot < 320)
-                //    {
-                //        balanceX(Xrot);
-                //    }
-                //}
+
+                //adds velocity to player
+                if (transform.localRotation.x  >= 30 && transform.localRotation.x <= 330)
+                {
+                    rb.AddForce(-flipped * speed * 200 * Time.fixedDeltaTime);
+                    boosting = true;
+                } 
+                else
+                {
+                    rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
+                }
             }
             
             //S key input
@@ -72,19 +72,18 @@ public class Movement : MonoBehaviour
             {
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
-                rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
+                {
+                    rb.AddForce(flipped * speed * 200 * Time.fixedDeltaTime);
+                    boosting = true;
+                }
+                else
+                {
+                    rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+                }
 
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
-                
-                //Checks if any surrounding keys are pressed and balances accordingly
-                //if (!(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
-                //{
-                //    if (Zrot > 0 && Zrot < 320)
-                //    {
-                //        balanceZ(Zrot);
-                //    }
-                //}
             }
             
             //D key input
@@ -92,38 +91,37 @@ public class Movement : MonoBehaviour
             {
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
-                rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
-                
+                //adds velocity to player
+                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
+                {
+                    rb.AddForce(-flipped * speed * 200 * Time.fixedDeltaTime);
+                    boosting = true;
+                }
+                else
+                {
+                    rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
+                }
+
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
-               
-                //Checks if any surrounding keys are pressed and balances accordingly
-                //if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
-                //{
-                //    if (Xrot > 0 && Xrot < 320)
-                //    {
-                //        balanceX(Xrot);
-                //    }
-                //}
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
             {
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
-                rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
+                {
+                    rb.AddForce(flipped * speed * 200 * Time.fixedDeltaTime);
+                    boosting = true;
+                }
+                else
+                {
+                    rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+                }
 
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
-               
-                //Checks if any surrounding keys are pressed and balances accordingly
-                //if (!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
-                //{
-                //    if (Zrot > 0 && Zrot < 320)
-                //    {
-                //        balanceZ(Zrot);
-                //    }
-                //}
             }
         }
         else
@@ -146,20 +144,24 @@ public class Movement : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * jumppower * 10);
                 staminabar.SendMessage("SetSlider", jumptimer);
-                Vector3 resetvect3 = new Vector3(0.0f, 0.0f, 0.0f);
-                Quaternion reset = Quaternion.Euler(resetvect3);
-                transform.localRotation = reset;
+                balanceX(Xrot);
+                balanceZ(Zrot);
                 jumptimer = 0;
             }
             else if (jumptimer >= 2f)
             {
                 rb.AddForce(Vector3.up * jumppower / 4 * 10);
                 staminabar.SendMessage("SetSlider", jumptimer);
-                Vector3 resetvect3 = new Vector3(0.0f, 0.0f, 0.0f);
-                Quaternion reset = Quaternion.Euler(resetvect3);
-                transform.localRotation = reset;
+                balanceX(Xrot);
+                balanceZ(Zrot);
                 jumptimer = 0;
             }
+        }
+
+        float maxspeed = playerspeed;
+        if (boosting == true)
+        {
+            maxspeed = playerspeed * 3;
         }
 
         //caps maxspeed
@@ -186,16 +188,6 @@ public class Movement : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity[0], rb.velocity[1], -maxspeed);
             }
-        }
-        
-        //stops player from rotating so they dont go upside down
-        if (Xrot >= 30 && Xrot < 330)
-        {
-            //stop x rot
-        }
-        else if (Zrot >= 30 && Zrot < 330)
-        {
-            //stop z rot
         }
 
         //creates vector3 that is turned into quaternion to reset the y values of the player to 0

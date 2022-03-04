@@ -9,6 +9,7 @@ public class StalkerEnemy : MonoBehaviour
     public GameObject score;
     public GameObject coin;
     public GameObject coincounter;
+    public GameObject deathbit;
     public int coinreward = 3;
     public float speed = 0;
     public float time = 0;
@@ -32,6 +33,10 @@ public class StalkerEnemy : MonoBehaviour
     {
         this.coincounter = coincounter;
     }
+    public void setDeathBit(GameObject deathbit)
+    {
+        this.deathbit = deathbit;
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,7 +48,10 @@ public class StalkerEnemy : MonoBehaviour
             score.SendMessage("LogEnemyKill", scoreforkill);
             for (int i = 0; i < coinreward; i++)
             {
-                Instantiate(coin, transform.position, transform.rotation).SendMessage("setCounter", coincounter);
+                Instantiate(deathbit, transform.position, transform.rotation);
+                GameObject newcoin = Instantiate(coin, transform.position, transform.rotation);
+                newcoin.SendMessage("setCounter", coincounter);
+                newcoin.SendMessage("setPlayer", player);
             }
             Destroy(gameObject);
         }

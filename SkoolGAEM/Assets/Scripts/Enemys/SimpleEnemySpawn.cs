@@ -11,6 +11,7 @@ public class SimpleEnemySpawn : MonoBehaviour
     public GameObject score;
     public GameObject coin;
     public GameObject coincounter;
+    public GameObject deathbit;
     
     void Update()
     {
@@ -21,6 +22,7 @@ public class SimpleEnemySpawn : MonoBehaviour
             newEnemy.SendMessage("setScoreTracker", score);
             newEnemy.SendMessage("setCoinType", coin);
             newEnemy.SendMessage("setCoinCounter", coincounter);
+            newEnemy.SendMessage("setDeathBit", deathbit);
             time = settime;
         } 
         else
