@@ -50,11 +50,11 @@ public class Movement : MonoBehaviour
             //W key input
             if (Input.GetKey(KeyCode.W))
             {
-                //creates vector3 with forward direction aligning with the players camera/weapon rotation
-                Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
 
+                //creates vector3 with forward direction aligning with the players camera/weapon rotation
+                Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                 //adds velocity to player
                 if (transform.localRotation.x  >= 30 && transform.localRotation.x <= 330)
                 {
@@ -70,6 +70,9 @@ public class Movement : MonoBehaviour
             //S key input
             if (Input.GetKey(KeyCode.S))
             {
+                //rotates player
+                transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
+
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                 if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
@@ -81,17 +84,16 @@ public class Movement : MonoBehaviour
                 {
                     rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
                 }
-
-                //rotates player
-                transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
             }
             
             //D key input
             if (Input.GetKey(KeyCode.D))
             {
+                //rotates player
+                transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
+
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
-                //adds velocity to player
                 if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
                 {
                     rb.AddForce(-flipped * speed * 200 * Time.fixedDeltaTime);
@@ -101,13 +103,13 @@ public class Movement : MonoBehaviour
                 {
                     rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
                 }
-
-                //rotates player
-                transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
             {
+                //rotates player
+                transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
+
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
                 if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
@@ -119,9 +121,6 @@ public class Movement : MonoBehaviour
                 {
                     rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
                 }
-
-                //rotates player
-                transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
             }
         }
         else
