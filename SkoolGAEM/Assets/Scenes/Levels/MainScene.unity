@@ -2711,8 +2711,8 @@ MonoBehaviour:
   stretchx: 1
   stretchy: 1
   scale: 3
-  xSize: 2000
-  zSize: 2000
+  xSize: 200
+  zSize: 200
   amp: 15
 --- !u!23 &1399819454
 MeshRenderer:
