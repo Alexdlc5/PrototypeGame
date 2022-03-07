@@ -11,10 +11,12 @@ public class CameraFollow : MonoBehaviour
         //gets the players position and rotation
         Transform playertran = player.transform;
         Quaternion playerrot = playertran.rotation;
+       
         //creates floats with averages the angles on with z flipped and one with x flipped
         float avgrot = (playerrot.eulerAngles.z + playerrot.eulerAngles.x) / 2;
         float avgrotz = ((360 - playerrot.eulerAngles.z) + playerrot.eulerAngles.x) / 2;
         float avgrotx = (playerrot.eulerAngles.z + (360 - playerrot.eulerAngles.x)) / 2;
+
         if (!(playerrot.eulerAngles.z > 30 && playerrot.eulerAngles.z < 330 || playerrot.eulerAngles.x > 30 && playerrot.eulerAngles.x < 330))
         {
             //if both angles positive

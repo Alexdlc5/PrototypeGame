@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeshGen : MonoBehaviour
 {
-    //Map is 900x900 units with current settings
     Mesh mesh;
 
     Vector3[] vertices;
@@ -15,7 +14,6 @@ public class MeshGen : MonoBehaviour
     public int height = 256;
     public int offsetx = 100;
     public int offsetz = 100;
-    public float colordamp = 1;
     public float scale = 20;
     public float scaleMultiplier = 1;
     public int xSize = 20;
@@ -32,15 +30,17 @@ public class MeshGen : MonoBehaviour
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-
+       
+        amp = Random.Range(15, 35);
         //generates mesh
         CreateShape();
         //updates it
         UpdateMesh();
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
-        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .5f), Random.Range(0.0f, .5f), Random.Range(0.0f, .5f), 1.0f);
+        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .6f), Random.Range(0.0f, .8f), Random.Range(0.0f, .19f), 1.0f);
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
+     
     }
 
     void CreateShape()
