@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Windows.Input;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
@@ -25,6 +22,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         Boolean boosting = false;
+
         //checks if players health is 0 or less
         if (health <= 0)
         {
@@ -36,11 +34,7 @@ public class Movement : MonoBehaviour
         //modifyable version of playerspeed
         float speed = playerspeed;
 
-        //creates vectors3 that will be modified then added to rotation
-        Vector3 rotationVector = new Vector3(0, 0, 0);
-
-        //new vector3 made for balance
-        Vector3 rotationbalanceVector = new Vector3(0, 0, 0);
+        //rotations
         float Xrot = transform.rotation.eulerAngles.x;
         float Zrot = transform.rotation.eulerAngles.z;
 
@@ -56,17 +50,9 @@ public class Movement : MonoBehaviour
                 //creates vector3 with forward direction aligning with the players camera/weapon rotation
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                 //adds velocity to player
-                if (transform.localRotation.x  >= 30 && transform.localRotation.x <= 330)
-                {
-                    rb.AddForce(-flipped * speed * 200 * Time.fixedDeltaTime);
-                    boosting = true;
-                } 
-                else
-                {
-                    rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
-                }
+                rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
             }
-            
+
             //S key input
             if (Input.GetKey(KeyCode.S))
             {
@@ -75,17 +61,10 @@ public class Movement : MonoBehaviour
 
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
-                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
-                {
-                    rb.AddForce(flipped * speed * 200 * Time.fixedDeltaTime);
-                    boosting = true;
-                }
-                else
-                {
-                    rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
-                }
+                rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+
             }
-            
+
             //D key input
             if (Input.GetKey(KeyCode.D))
             {
@@ -94,15 +73,7 @@ public class Movement : MonoBehaviour
 
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
-                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
-                {
-                    rb.AddForce(-flipped * speed * 200 * Time.fixedDeltaTime);
-                    boosting = true;
-                }
-                else
-                {
-                    rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
-                }
+                rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
@@ -112,15 +83,7 @@ public class Movement : MonoBehaviour
 
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
-                if (transform.localRotation.z >= 30 && transform.localRotation.z <= 330)
-                {
-                    rb.AddForce(flipped * speed * 200 * Time.fixedDeltaTime);
-                    boosting = true;
-                }
-                else
-                {
-                    rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
-                }
+                rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
             }
         }
         else
@@ -246,7 +209,7 @@ public class Movement : MonoBehaviour
             }
         }
         
-        //updates position
+        //updates rotation
         transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
 
@@ -279,7 +242,7 @@ public class Movement : MonoBehaviour
                 rotationbalanceVector[0] -= resetmultiplier * Time.fixedDeltaTime;
             }
         }
-        //updates position
+        //updates rotation
         transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
 }

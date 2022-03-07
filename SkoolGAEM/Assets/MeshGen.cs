@@ -27,12 +27,17 @@ public class MeshGen : MonoBehaviour
 
     void Start()
     {
+        //random offset in noise
         offsetx = Random.Range(0, 999);
         offsetz = Random.Range(0, 999);
+        
+        //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
+        //generates mesh
         CreateShape();
+        //updates it
         UpdateMesh();
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
@@ -48,6 +53,7 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
+                //pixel to world coord
                 float xCoord = (float)x / width * scale + offsetx;
                 float zCoord = (float)z / height * scale + offsetz;
                 float y = Mathf.PerlinNoise(xCoord, zCoord);

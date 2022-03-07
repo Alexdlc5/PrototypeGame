@@ -1013,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &426074984
 Transform:
   m_ObjectHideFlags: 0
@@ -1317,16 +1317,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerrotation: {fileID: 1060441542}
-  playerspeed: 18
+  playerspeed: 25
   accelerationspeed: 40
-  tipspeed: 1000
-  jumppower: 45
-  resetmultiplier: 35
+  tipspeed: 2250
+  jumppower: 55
+  resetmultiplier: 23
   jumptimer: 0
   healthbar: {fileID: 164442395}
   staminabar: {fileID: 1329178393}
   score: {fileID: 985421264}
-  health: 15
+  health: 10
   GameObject: {fileID: 612551531}
   rb: {fileID: 612551533}
 --- !u!54 &612551533
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c75fc8550b2c3a4599ba6471f2e41d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1651136685}
+  player: {fileID: 612551530}
 --- !u!1001 &976039299
 PrefabInstance:
   m_ObjectHideFlags: 0
