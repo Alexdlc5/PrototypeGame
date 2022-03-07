@@ -16,14 +16,12 @@ public class MeshGen : MonoBehaviour
     public int offsetx = 100;
     public int offsetz = 100;
     public float colordamp = 1;
-    public float stretchx = 1;
-    public float stretchy = 1;
     public float scale = 20;
     public float scaleMultiplier = 1;
     public int xSize = 20;
     public int zSize = 20;
-    public GameObject vertmark;
     public float amp = 1;
+    public Texture texture;
 
     void Start()
     {
@@ -41,6 +39,8 @@ public class MeshGen : MonoBehaviour
         UpdateMesh();
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
+        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .5f), Random.Range(0.0f, .5f), Random.Range(0.0f, .5f), 1.0f);
+        GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
     }
 
     void CreateShape()
