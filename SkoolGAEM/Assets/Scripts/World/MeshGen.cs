@@ -20,6 +20,8 @@ public class MeshGen : MonoBehaviour
     public int zSize = 20;
     public float amp = 1;
     public Texture texture;
+    public GameObject itemPlacer;
+    public GameObject building;
 
     void Start()
     {
@@ -40,7 +42,10 @@ public class MeshGen : MonoBehaviour
         GetComponent<MeshCollider>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .6f), Random.Range(0.0f, .8f), Random.Range(0.0f, .19f), 1.0f);
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
-     
+
+        GameObject ip = Instantiate(itemPlacer);
+        ip.SendMessage("setObject", building);
+        ip.SendMessage("PlaceObjects");
     }
 
     void CreateShape()
