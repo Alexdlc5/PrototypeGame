@@ -20,7 +20,7 @@ public class ItemPlacer : MonoBehaviour
             transform.position = randomlocation;
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
-            Instantiate(Object, hit.point, transform.rotation).SendMessage("freeze");
+            Instantiate(Object, hit.point + Vector3.up, transform.rotation).SendMessage("freeze");
         }
     }
 }

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 867690739372413594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.78, y: 3.02, z: 0}
-  m_LocalScale: {x: 1.825484, y: 3.194597, z: 1.825484}
+  m_LocalScale: {x: 2.732361, y: 5.8488917, z: 2.732361}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   score: {fileID: 0}
   coin: {fileID: 0}
   coincounter: {fileID: 0}
+  deathbit: {fileID: 0}
   speed: 738.6
   coinreward: 1
   time: 0

@@ -40,7 +40,7 @@ public class MeshGen : MonoBehaviour
         UpdateMesh();
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
-        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .6f), Random.Range(0.0f, .8f), Random.Range(0.0f, .19f), 1.0f);
+        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, .6f), Random.Range(0.0f, 1f), Random.Range(0.0f, 0.0f), 1.0f);
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
 
         GameObject ip = Instantiate(itemPlacer);

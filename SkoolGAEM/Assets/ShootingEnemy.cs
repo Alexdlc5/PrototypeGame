@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StalkerEnemy : MonoBehaviour
+public class ShootingEnemy : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject player;
     public GameObject score;
     public GameObject coin;
     public GameObject coincounter;
-    public GameObject deathbit;
+    public GameObject projectile;
     public int coinreward = 3;
     public float speed = 0;
     public float time = 0;
     public float health = 1;
     public float scoreforkill = 0;
-
-    //set targetplayer
+    public GameObject deathbit;
     public void setPlayer(GameObject player)
     {
         this.player = player;
@@ -36,6 +35,10 @@ public class StalkerEnemy : MonoBehaviour
     public void setDeathBit(GameObject deathbit)
     {
         this.deathbit = deathbit;
+    }
+    public void setProjectile(GameObject projectile)
+    {
+        this.projectile = projectile;
     }
 
     // Update is called once per frame
@@ -59,29 +62,27 @@ public class StalkerEnemy : MonoBehaviour
         //draws debug line from player to enemy
         Debug.DrawLine(transform.position, player.transform.position, Color.black);
         Vector3 playerLocation = player.transform.position;
-        
+
         //look at player
         transform.LookAt(new Vector3(playerLocation[0], transform.position.y, playerLocation[2]));
-        
+
         //move toward player at various speeds when at diffrent distances
         if (time >= .1)
         {
             if (distanceMoreThan(playerLocation, transform.position, 30))
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 50);
                 time = 0;
             }
             else if (distanceMoreThan(playerLocation, transform.position, 20) && distanceLessThan(playerLocation, transform.position, 30))
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 100);
+                rb.AddRelativeForce(Vector3.forward * -speed);
                 time = 0;
             }
             else
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 500);
+                rb.AddRelativeForce(Vector3.forward * -speed * 2);
                 time = 0;
             }
-
         }
         else
         {
@@ -89,7 +90,7 @@ public class StalkerEnemy : MonoBehaviour
         }
 
     }
-   
+
     //returns true if enemy is close to player (close defined by the float)
     public bool distanceMoreThan(Vector3 playerLocation, Vector3 enemyPosition, float distance)
     {
@@ -106,7 +107,7 @@ public class StalkerEnemy : MonoBehaviour
             return false;
         }
     }
-   
+
     //returns true if enemy is close to player (close defined by the float)
     public bool distanceLessThan(Vector3 playerLocation, Vector3 enemyPosition, float distance)
     {
@@ -123,10 +124,11 @@ public class StalkerEnemy : MonoBehaviour
             return false;
         }
     }
-    
+
     //changed by projectile after collison
     public void DealDamage(float damagedealt)
     {
         health -= damagedealt;
     }
 }
+
