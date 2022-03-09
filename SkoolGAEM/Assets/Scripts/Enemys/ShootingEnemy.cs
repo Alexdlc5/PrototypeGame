@@ -73,6 +73,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             if (distanceMoreThan(playerLocation, transform.position, 30))
             {
+                rb.AddRelativeForce(Vector3.forward * speed);
                 time = 0;
             }
             else if (distanceMoreThan(playerLocation, transform.position, 20) && distanceLessThan(playerLocation, transform.position, 30))

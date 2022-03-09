@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &226439004
+--- !u!1 &194250802
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,23 +131,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 226439005}
-  - component: {fileID: 226439007}
-  - component: {fileID: 226439006}
+  - component: {fileID: 194250803}
+  - component: {fileID: 194250805}
+  - component: {fileID: 194250804}
   m_Layer: 5
-  m_Name: Backround
+  m_Name: 'Backround '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &226439005
+--- !u!224 &194250803
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226439004}
+  m_GameObject: {fileID: 194250802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -160,13 +160,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &226439006
+--- !u!114 &194250804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226439004}
+  m_GameObject: {fileID: 194250802}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
@@ -180,20 +180,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 0e3c4496f52b09c43b9dbb8c5feed89f, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
+    x: 2
+    y: 2
+    width: 3
     height: 1
---- !u!222 &226439007
+--- !u!222 &194250805
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226439004}
+  m_GameObject: {fileID: 194250802}
   m_CullTransparentMesh: 1
 --- !u!1 &672532739
 GameObject:
@@ -286,7 +286,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 226439005}
+  - {fileID: 194250803}
   - {fileID: 1048481099}
   - {fileID: 1243425034}
   - {fileID: 1396403915}
