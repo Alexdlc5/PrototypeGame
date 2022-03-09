@@ -245,4 +245,11 @@ public class Movement : MonoBehaviour
         //updates rotation
         transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
+    
+    //changed by projectile after collison
+    public void DealDamage(float damagedealt)
+    {
+        health -= damagedealt;
+        healthbar.SendMessage("SetSlider", health);
+    }
 }

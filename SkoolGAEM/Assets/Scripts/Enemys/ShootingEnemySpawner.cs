@@ -24,7 +24,7 @@ public class ShootingEnemySpawner : MonoBehaviour
             newEnemy.SendMessage("setCoinType", coin);
             newEnemy.SendMessage("setCoinCounter", coincounter);
             newEnemy.SendMessage("setDeathBit", deathbit);
-            newEnemy.SendMessage("projectile", projectile);
+            newEnemy.SendMessage("setProjectile", projectile);
             time = settime;
         }
         else

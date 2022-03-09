@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour
         float avgrotz = ((360 - playerrot.eulerAngles.z) + playerrot.eulerAngles.x) / 2;
         float avgrotx = (playerrot.eulerAngles.z + (360 - playerrot.eulerAngles.x)) / 2;
 
-        if (!(playerrot.eulerAngles.z > 30 && playerrot.eulerAngles.z < 330 || playerrot.eulerAngles.x > 30 && playerrot.eulerAngles.x < 330))
+        if (!(playerrot.eulerAngles.z > 20 && playerrot.eulerAngles.z < 340 || playerrot.eulerAngles.x > 20 && playerrot.eulerAngles.x < 340))
         {
             //if both angles positive
             if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0 && playerrot.eulerAngles.x <= 180 && playerrot.eulerAngles.x >= 0)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public bool isEnemyProjectile = false;
     public float time = 2.5f;
     public float BulletSpeed = 0;
     // Update is called once per frame
@@ -25,12 +26,22 @@ public class Projectile : MonoBehaviour
     }
     //when projectile collides with something
     void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag.Equals("Enemy"))
+    {   if (isEnemyProjectile == false)
         {
-            GameObject enemy = collision.gameObject;
-            enemy.SendMessage("DealDamage", 1.0f);
+            if (collision.collider.tag.Equals("Enemy"))
+            {
+                GameObject enemy = collision.gameObject;
+                enemy.SendMessage("DealDamage", 1.0f);
+            }
+        } else
+        {
+            if (collision.collider.tag.Equals("Player"))
+            {
+                GameObject enemy = collision.gameObject;
+                enemy.SendMessage("DealDamage", 1.0f);
+            }
         }
+
     }
 
 }

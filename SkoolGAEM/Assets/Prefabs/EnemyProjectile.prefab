@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &705481227177138340
+--- !u!1 &3501212943989511819
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 705481227177138360}
-  - component: {fileID: 705481227177138343}
-  - component: {fileID: 705481227177138342}
-  - component: {fileID: 705481227177138341}
-  - component: {fileID: 705481227177138361}
-  - component: {fileID: 6981066862557058986}
+  - component: {fileID: 3501212943989511831}
+  - component: {fileID: 3501212943989511816}
+  - component: {fileID: 3501212943989511817}
+  - component: {fileID: 3501212943989511818}
+  - component: {fileID: 3501212943989511830}
+  - component: {fileID: 6466371633812724101}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Projectile
+  m_Name: EnemyProjectile
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
---- !u!4 &705481227177138360
+--- !u!4 &3501212943989511831
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.8, z: 0}
   m_LocalScale: {x: 1.3980399, y: 1.39006, z: 1.38264}
@@ -35,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &705481227177138343
+--- !u!33 &3501212943989511816
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &705481227177138342
+--- !u!23 &3501212943989511817
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b30bde0ba9b64e14eb7c10975788571a, type: 2}
+  - {fileID: 2100000, guid: 40d7141b298f8c54a88f8b2cd50d5dec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,40 +84,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &705481227177138341
+--- !u!135 &3501212943989511818
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &705481227177138361
+--- !u!114 &3501212943989511830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dc0259ecae2e7f44bad3387b48386c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemyProjectile: 1
   time: 2.5
-  BulletSpeed: 60
---- !u!54 &6981066862557058986
+  BulletSpeed: 50
+--- !u!54 &6466371633812724101
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705481227177138340}
+  m_GameObject: {fileID: 3501212943989511819}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0

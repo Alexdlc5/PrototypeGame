@@ -10,9 +10,11 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject coin;
     public GameObject coincounter;
     public GameObject projectile;
+    public GameObject projectilespawn;
     public int coinreward = 3;
     public float speed = 0;
-    public float time = 0;
+    private float time = 0;
+    private float shootingtime = 0;
     public float health = 1;
     public float scoreforkill = 0;
     public GameObject deathbit;
@@ -60,7 +62,7 @@ public class ShootingEnemy : MonoBehaviour
         }
 
         //draws debug line from player to enemy
-        Debug.DrawLine(transform.position, player.transform.position, Color.black);
+        Debug.DrawLine(transform.position, player.transform.position, Color.red);
         Vector3 playerLocation = player.transform.position;
 
         //look at player
@@ -86,7 +88,19 @@ public class ShootingEnemy : MonoBehaviour
         }
         else
         {
-            time += 1 * Time.deltaTime;
+            time += Time.fixedDeltaTime;
+        }
+        
+        if (shootingtime > 1)
+        {
+            GameObject newprojectile = Instantiate(projectile, projectilespawn.transform.position, projectilespawn.transform.rotation);
+            //projectile ignores collisions with the itself
+            Physics.IgnoreCollision(newprojectile.GetComponent<Collider>(), GetComponent<Collider>());
+            shootingtime = 0;
+        }
+        else
+        {
+            shootingtime += Time.fixedDeltaTime;
         }
 
     }
