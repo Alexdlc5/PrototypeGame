@@ -18,4 +18,14 @@ public class CoinInv : MonoBehaviour
     {
         coins += value;
     }
+
+    public int getCoinCount()
+    {
+        return coins;
+    }
+
+    public void spendCoins(int coinsamount)
+    {
+        coins -= coinsamount;
+    }
 }
