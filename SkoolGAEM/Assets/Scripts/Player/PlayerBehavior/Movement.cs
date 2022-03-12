@@ -2,9 +2,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
-//***************************************Make Reciol**********************************************
 public class Movement : MonoBehaviour
 {
+    //add regen?
     public Transform playerrotation;
     public float playerspeed = 0;
     public float accelerationspeed = 0;
@@ -18,10 +18,10 @@ public class Movement : MonoBehaviour
     public float health = 1;
     public Transform GameObject;
     public Rigidbody rb;
+    public StoreScript UpgradedValues;
 
     void FixedUpdate()
     {
-        Boolean boosting = false;
 
         //checks if players health is 0 or less
         if (health <= 0)
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
             score.SendMessage("saveScore");
             SceneManager.LoadScene("DeathScreen");
         }
-
+        
         //modifyable version of playerspeed
         float speed = playerspeed;
 
@@ -120,11 +120,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        float maxspeed = playerspeed;
-        if (boosting == true)
-        {
-            maxspeed = playerspeed * 3;
-        }
+        float maxspeed = speed;
 
         //caps maxspeed
         if (rb.velocity[0] >= maxspeed || rb.velocity[0] <= -maxspeed)
@@ -249,7 +245,8 @@ public class Movement : MonoBehaviour
     //changed by projectile after collison
     public void DealDamage(float damagedealt)
     {
-        health -= damagedealt;
+        //IDK if this works
+        health -= damagedealt / (UpgradedValues.sheildvalue + 1);
         healthbar.SendMessage("SetSlider", health);
     }
 }

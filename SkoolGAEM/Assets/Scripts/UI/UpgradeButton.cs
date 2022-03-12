@@ -31,4 +31,9 @@ public class UpgradeButton : MonoBehaviour
         }
 
     }
+
+    public float getValue()
+    {
+        return value;
+    }
 }
