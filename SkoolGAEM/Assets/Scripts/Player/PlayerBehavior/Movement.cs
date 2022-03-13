@@ -4,6 +4,7 @@ using System;
 
 public class Movement : MonoBehaviour
 {
+    //Sheild and Speed upgrades working
     //add regen?
     public Transform playerrotation;
     public float playerspeed = 0;
@@ -18,11 +19,15 @@ public class Movement : MonoBehaviour
     public float health = 1;
     public Transform GameObject;
     public Rigidbody rb;
-    public StoreScript UpgradedValues;
+
+    public int sheildlvl = 0;
+    public int boostlvl = 0;
+    public int firinglvl = 0;
+    public int damagelvl = 0;
+    public int speedlvl = 0;
 
     void FixedUpdate()
     {
-
         //checks if players health is 0 or less
         if (health <= 0)
         {
@@ -33,6 +38,7 @@ public class Movement : MonoBehaviour
         
         //modifyable version of playerspeed
         float speed = playerspeed;
+        speed = speed * (1 + (speedlvl / 5));
 
         //rotations
         float Xrot = transform.rotation.eulerAngles.x;
@@ -157,11 +163,12 @@ public class Movement : MonoBehaviour
     //waits for collision 
     void OnCollisionEnter(Collision collision)
     {
+        //different enemy weapon power lvl tags in future?
         //if player contacts enemy weapon lower health
         if (collision.collider.tag.Equals("EnemyWeapon"))
         {
-            health--;
-           
+            DealDamage(1);
+
             //sets slider to current health
             healthbar.SendMessage("SetSlider", health);
         }
@@ -241,12 +248,34 @@ public class Movement : MonoBehaviour
         //updates rotation
         transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
-    
+
+    public void setSheildLvl(int lvl)
+    {
+        sheildlvl = lvl;
+        Debug.Log("Sheild Level: " + lvl);
+    }
+    public void setBoostLvl(int lvl)
+    {
+        boostlvl = lvl;
+    }
+    public void setFiringLvl(int lvl)
+    {
+        firinglvl = lvl;
+    }
+    public void setDamageLvl(int lvl)
+    {
+        damagelvl = lvl;
+    }
+    public void setSpeedLvl(int lvl)
+    {
+        speedlvl = lvl;
+    }
+
     //changed by projectile after collison
     public void DealDamage(float damagedealt)
     {
-        //IDK if this works
-        health -= damagedealt / (UpgradedValues.sheildvalue + 1);
+        health -= damagedealt / (sheildlvl + 1);
         healthbar.SendMessage("SetSlider", health);
     }
+    
 }

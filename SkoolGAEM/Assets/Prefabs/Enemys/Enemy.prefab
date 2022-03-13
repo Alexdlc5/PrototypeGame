@@ -132,7 +132,7 @@ MonoBehaviour:
   coincounter: {fileID: 0}
   deathbit: {fileID: 0}
   speed: 738.6
-  coinreward: 1
+  coinreward: 30
   time: 0
   health: 1
   scoreforkill: 0

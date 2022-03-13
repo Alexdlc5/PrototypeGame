@@ -11,6 +11,8 @@ public class UpgradeButton : MonoBehaviour
     public float value;
     public GameObject coininv;
     public int currrentcoincount;
+    public string stat;
+    public GameObject player;
     private void Start()
     {
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
@@ -28,6 +30,7 @@ public class UpgradeButton : MonoBehaviour
             value++;
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(1000);
+            player.SendMessage("set" + stat + "Lvl", value);
         }
 
     }

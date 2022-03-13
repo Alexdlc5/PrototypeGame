@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeshGen : MonoBehaviour
 {
+    //add health kits
+    //random extra loot (weapons armor new weapon types)
     Mesh mesh;
 
     Vector3[] vertices;
@@ -22,6 +24,7 @@ public class MeshGen : MonoBehaviour
     public Texture texture;
     public GameObject itemPlacer;
     public GameObject building;
+    public GameObject grass;
 
     void Start()
     {
@@ -45,7 +48,9 @@ public class MeshGen : MonoBehaviour
 
         GameObject ip = Instantiate(itemPlacer);
         ip.SendMessage("setObject", building);
-        ip.SendMessage("PlaceObjects");
+        ip.SendMessage("PlaceObjects", 12);
+        ip.SendMessage("setObject", grass);
+        ip.SendMessage("PlaceObjects", 2000);
     }
 
     void CreateShape()

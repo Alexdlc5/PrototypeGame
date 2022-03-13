@@ -584,6 +584,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 538366929}
   currrentcoincount: 0
+  stat: Damage
+  player: {fileID: 612551530}
 --- !u!114 &82503108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,16 +725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StorePopUp: {fileID: 1591690923}
-  sheild: {fileID: 1093450970}
-  boost: {fileID: 1413129895}
-  firing: {fileID: 330279807}
-  damage: {fileID: 82503105}
-  speed: {fileID: 498395859}
-  sheildvalue: 0
-  boostvalue: 0
-  firingvalue: 0
-  damagevalue: 0
-  speedvalue: 0
 --- !u!1 &101980533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1562,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 0}
   currrentcoincount: 0
+  stat: 
+  player: {fileID: 0}
 --- !u!1 &252939690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1671,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 0}
   currrentcoincount: 0
+  stat: 
+  player: {fileID: 0}
 --- !u!1 &256098156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,6 +1797,10 @@ PrefabInstance:
     - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_Name
       value: ShootingEnemySpawn (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215835, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_RootOrder
@@ -2247,6 +2247,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 538366929}
   currrentcoincount: 0
+  stat: Firing
+  player: {fileID: 612551530}
 --- !u!114 &330279810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,6 +2773,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 0}
   currrentcoincount: 0
+  stat: 
+  player: {fileID: 0}
 --- !u!1 &426074983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3025,6 +3029,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 538366929}
   currrentcoincount: 0
+  stat: Speed
+  player: {fileID: 612551530}
 --- !u!114 &498395862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3179,6 +3185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6192c408808cec246a69aff128fea1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinstoaddinconsole: 500
 --- !u!114 &538366932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3383,6 +3390,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 0}
   currrentcoincount: 0
+  stat: 
+  player: {fileID: 0}
 --- !u!1 &560352661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,7 +3642,11 @@ MonoBehaviour:
   health: 10
   GameObject: {fileID: 612551531}
   rb: {fileID: 612551533}
-  UpgradedValues: {fileID: 95578135}
+  sheildlvl: 0
+  boostlvl: 0
+  firinglvl: 0
+  damagelvl: 0
+  speedlvl: 0
 --- !u!54 &612551533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4209,7 +4222,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 0, z: 0, w: NaN}
+  m_BoundingSphereOverride: {x: 0, y: 0.03125, z: -0.03515625, w: -1}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5976,6 +5989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingEnemySpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215835, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6242,6 +6259,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 538366929}
   currrentcoincount: 0
+  stat: Sheild
+  player: {fileID: 612551530}
 --- !u!114 &1093450973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6897,6 +6916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalker Spawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
 --- !u!1 &1255091567
@@ -7377,6 +7400,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 0}
   currrentcoincount: 0
+  stat: 
+  player: {fileID: 612551530}
 --- !u!1 &1389650570
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,7 +7649,8 @@ MonoBehaviour:
   amp: 35
   texture: {fileID: 2800000, guid: 0e3c4496f52b09c43b9dbb8c5feed89f, type: 3}
   itemPlacer: {fileID: 3042558327528848742, guid: e276d1690934d3c4bafacc25ebe270d9, type: 3}
-  building: {fileID: 1931147283140846667, guid: 8da58097e1eb06a4297006464a1c156c, type: 3}
+  building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
+  grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
 --- !u!23 &1399819454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7940,6 +7966,8 @@ MonoBehaviour:
   value: 0
   coininv: {fileID: 538366929}
   currrentcoincount: 0
+  stat: Boost
+  player: {fileID: 612551530}
 --- !u!114 &1413129898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9363,9 +9391,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
     - target: {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
+      propertyPath: time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: Enemy
       value: 
-      objectReference: {fileID: 6801178248042545568, guid: 836bc6815b8a0f448bdfcce3815d8c90, type: 3}
+      objectReference: {fileID: 1952653588693199924, guid: 1483444b421e3984d94e049e609eb034, type: 3}
     - target: {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: score
       value: 
@@ -9376,7 +9408,7 @@ PrefabInstance:
       objectReference: {fileID: 612551530}
     - target: {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: settime
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: coincounter
@@ -9429,6 +9461,10 @@ PrefabInstance:
     - target: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: m_Name
       value: Stalker Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
@@ -9533,6 +9569,10 @@ PrefabInstance:
     - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_Name
       value: ShootingEnemySpawn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215835, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_RootOrder
@@ -10463,6 +10503,10 @@ PrefabInstance:
     - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_Name
       value: ShootingEnemySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215835, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_RootOrder
