@@ -4,7 +4,6 @@ using System;
 
 public class Movement : MonoBehaviour
 {
-    //Sheild and Speed upgrades working
     //add regen?
     public Transform playerrotation;
     public float playerspeed = 0;
@@ -13,6 +12,8 @@ public class Movement : MonoBehaviour
     public float jumppower = 0;
     public float resetmultiplier = 0;
     public float jumptimer = 0;
+    public float boosttimer = 0;
+    public float inboosttimer = 0;
     public GameObject healthbar;
     public GameObject staminabar;
     public GameObject score;
@@ -28,6 +29,26 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        //modifyable version of playerspeed
+        float speed = playerspeed;
+        speed = speed * (1 + (speedlvl / 5));
+        
+        //sets initial max speed
+        float maxspeed = speed;
+
+        if (inboosttimer > 0)
+        {
+            maxspeed = speed * (boostlvl + 1) * 500;
+        }
+
+        //increments timer
+        boosttimer += Time.fixedDeltaTime;
+
+        if (inboosttimer >= 0)
+        {
+            inboosttimer -= Time.fixedDeltaTime;
+        }
+
         //checks if players health is 0 or less
         if (health <= 0)
         {
@@ -35,10 +56,6 @@ public class Movement : MonoBehaviour
             score.SendMessage("saveScore");
             SceneManager.LoadScene("DeathScreen");
         }
-        
-        //modifyable version of playerspeed
-        float speed = playerspeed;
-        speed = speed * (1 + (speedlvl / 5));
 
         //rotations
         float Xrot = transform.rotation.eulerAngles.x;
@@ -52,11 +69,21 @@ public class Movement : MonoBehaviour
             {
                 //rotates player
                 transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
-
+                 
                 //creates vector3 with forward direction aligning with the players camera/weapon rotation
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
+                
                 //adds velocity to player
                 rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
+                
+                //boost
+                if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
+                {
+                    rb.AddForce(-flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
+                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    boosttimer = 0;
+                    inboosttimer = .2f;
+                }
             }
 
             //S key input
@@ -68,7 +95,15 @@ public class Movement : MonoBehaviour
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                 rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
-
+               
+                //boost
+                if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
+                {
+                    rb.AddForce(flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
+                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    boosttimer = 0;
+                    inboosttimer = .2f;
+                }
             }
 
             //D key input
@@ -80,6 +115,15 @@ public class Movement : MonoBehaviour
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
                 rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
+               
+                //boost
+                if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
+                {
+                    rb.AddForce(-flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
+                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    boosttimer = 0;
+                    inboosttimer = .2f;
+                }
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
@@ -90,6 +134,15 @@ public class Movement : MonoBehaviour
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
                 rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
+               
+                //boost
+                if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
+                {
+                    rb.AddForce(flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
+                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    boosttimer = 0;
+                    inboosttimer = .2f;
+                }
             }
         }
         else
@@ -125,8 +178,6 @@ public class Movement : MonoBehaviour
                 jumptimer = 0;
             }
         }
-
-        float maxspeed = speed;
 
         //caps maxspeed
         if (rb.velocity[0] >= maxspeed || rb.velocity[0] <= -maxspeed)
@@ -252,7 +303,6 @@ public class Movement : MonoBehaviour
     public void setSheildLvl(int lvl)
     {
         sheildlvl = lvl;
-        Debug.Log("Sheild Level: " + lvl);
     }
     public void setBoostLvl(int lvl)
     {

@@ -50,7 +50,7 @@ public class MeshGen : MonoBehaviour
         ip.SendMessage("setObject", building);
         ip.SendMessage("PlaceObjects", 12);
         ip.SendMessage("setObject", grass);
-        ip.SendMessage("PlaceObjects", 2000);
+        ip.SendMessage("PlaceObjects", 5000);
     }
 
     void CreateShape()

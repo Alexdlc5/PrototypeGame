@@ -7,9 +7,12 @@ public class Projectile : MonoBehaviour
     public bool isEnemyProjectile = false;
     public float time = 2.5f;
     public float BulletSpeed = 0;
+    public GameObject player;
+    public float damagelvl = 0;
     // Update is called once per frame
     void Update()
     {
+        damagelvl = player.GetComponent<Movement>().damagelvl;
         //projectile only exists for 2.5 secs
         if (time <= 0f)
         {
@@ -31,7 +34,7 @@ public class Projectile : MonoBehaviour
             if (collision.collider.tag.Equals("Enemy"))
             {
                 GameObject enemy = collision.gameObject;
-                enemy.SendMessage("DealDamage", 1.0f);
+                enemy.SendMessage("DealDamage", 1.0f * damagelvl + 1);
             }
         } else
         {
@@ -42,6 +45,10 @@ public class Projectile : MonoBehaviour
             }
         }
 
+    }
+    public void setPlayer(GameObject player)
+    {
+        this.player = player;
     }
 
 }
