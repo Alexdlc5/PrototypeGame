@@ -95,6 +95,7 @@ public class ShootingEnemy : MonoBehaviour
         if (shootingtime > 1)
         {
             GameObject newprojectile = Instantiate(projectile, projectilespawn.transform.position, projectilespawn.transform.rotation);
+            newprojectile.SendMessage("setPlayer", player);
             //projectile ignores collisions with the itself
             Physics.IgnoreCollision(newprojectile.GetComponent<Collider>(), GetComponent<Collider>());
             shootingtime = 0;

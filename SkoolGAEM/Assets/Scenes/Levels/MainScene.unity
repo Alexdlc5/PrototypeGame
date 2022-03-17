@@ -7760,6 +7760,7 @@ MonoBehaviour:
   itemPlacer: {fileID: 3042558327528848742, guid: e276d1690934d3c4bafacc25ebe270d9, type: 3}
   building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
+  currentcolor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!23 &1399819454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9443,7 +9444,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.02
+  weight: 0.042
   sharedProfile: {fileID: 11400000, guid: 04fdc9133ff6b5a4892e5755b17c6bee, type: 2}
 --- !u!4 &1806744582
 Transform:
@@ -10607,6 +10608,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 612551530}
     - target: {fileID: 1406223845, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
+      propertyPath: settime
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406223845, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: coincounter
       value: 
       objectReference: {fileID: 538366929}
@@ -10616,7 +10621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215828, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5249583698336215835, guid: 5499475f9ea02a24caf8dcf6aaf0f18c, type: 3}
       propertyPath: m_RootOrder

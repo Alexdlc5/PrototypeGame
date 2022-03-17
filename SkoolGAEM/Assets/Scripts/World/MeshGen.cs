@@ -25,27 +25,29 @@ public class MeshGen : MonoBehaviour
     public GameObject itemPlacer;
     public GameObject building;
     public GameObject grass;
+    public Color currentcolor;
 
     void Start()
     {
         //random offset in noise
         offsetx = Random.Range(0, 999);
         offsetz = Random.Range(0, 999);
-        
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-       
+        //random amplitude
         amp = Random.Range(15, 35);
         //generates mesh
         CreateShape();
         //updates it
         UpdateMesh();
-
+        //changes the current mesh color
+        currentcolor = new Color(Random.Range(0.1f, .2f), Random.Range(0.1f, 1f), Random.Range(0.0f, 0.01f), 1.0f);
+        //sets mesh, mesh color, and texture 
         GetComponent<MeshCollider>().sharedMesh = mesh;
-        GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.1f, .2f), Random.Range(0.1f, 1f), Random.Range(0.0f, 0.01f), 1.0f);
+        GetComponent<MeshRenderer>().material.color = currentcolor;
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
-
+        //places assets on map
         GameObject ip = Instantiate(itemPlacer);
         ip.SendMessage("setObject", building);
         ip.SendMessage("PlaceObjects", 12);

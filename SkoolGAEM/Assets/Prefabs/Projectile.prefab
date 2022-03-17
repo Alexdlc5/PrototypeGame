@@ -109,8 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc0259ecae2e7f44bad3387b48386c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemyProjectile: 0
   time: 2.5
-  BulletSpeed: 60
+  BulletSpeed: 70
+  player: {fileID: 0}
+  damagelvl: 0
 --- !u!54 &6981066862557058986
 Rigidbody:
   m_ObjectHideFlags: 0
