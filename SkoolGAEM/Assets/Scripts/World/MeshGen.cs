@@ -26,9 +26,11 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject grass;
     public Color currentcolor;
+    public GameObject hitboxes;
 
     void Start()
     {
+        Instantiate(hitboxes);
         //random offset in noise
         offsetx = Random.Range(0, 999);
         offsetz = Random.Range(0, 999);

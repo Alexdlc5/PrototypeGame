@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - EnemyWeapon
   - Coin
+  - TileLoader
   layers:
   - Default
   - TransparentFX
