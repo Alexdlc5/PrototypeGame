@@ -14,8 +14,8 @@ public class MeshGen : MonoBehaviour
     
     public int width = 256;
     public int height = 256;
-    public int offsetx = 100;
-    public int offsetz = 100;
+    public float offsetx = 100;
+    public float offsetz = 100;
     public float scale = 20;
     public float scaleMultiplier = 1;
     public int xSize = 20;
@@ -26,17 +26,18 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject grass;
     public Color currentcolor;
+    public GameObject hitboxes;
 
-    void Start()
+    public void GenerateTile(float xnoiseoffset, float znoiseoffset)
     {
-        //random offset in noise
-        offsetx = Random.Range(0, 999);
-        offsetz = Random.Range(0, 999);
+        offsetx = xnoiseoffset;
+        offsetz = znoiseoffset;
+        //instantiates the hitbox with the new coords
+        GameObject hitbox = Instantiate(hitboxes);
+
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        //random amplitude
-        amp = Random.Range(15, 35);
         //generates mesh
         CreateShape();
         //updates it
@@ -54,7 +55,6 @@ public class MeshGen : MonoBehaviour
         ip.SendMessage("setObject", grass);
         ip.SendMessage("PlaceObjects", 5000);
     }
-
     void CreateShape()
     {
         //creates grid of vertices
@@ -111,12 +111,16 @@ public class MeshGen : MonoBehaviour
     void UpdateMesh()
     {
         mesh.Clear();
-
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.uv = UVs;
 
         mesh.RecalculateNormals();
         transform.localScale = new Vector3(transform.localScale.x * scaleMultiplier, 1, transform.localScale.z * scaleMultiplier);
+    }
+
+    public void setAmp(int amp)
+    {
+        this.amp = amp;
     }
 }
