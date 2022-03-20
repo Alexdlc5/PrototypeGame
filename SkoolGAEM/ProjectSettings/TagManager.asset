@@ -9,6 +9,10 @@ TagManager:
   - EnemyWeapon
   - Coin
   - TileLoader
+  - South
+  - North
+  - East
+  - West
   layers:
   - Default
   - TransparentFX
