@@ -39,7 +39,7 @@ public class TileLoader : MonoBehaviour
             {
                 //generate new tile
                 GameObject newtile = Instantiate(tile);
-                newtile.GetComponent<Tile>().setTilePos();
+                newtile.GetComponent<Tile>().setTilePos(0,900);
             }
         }
         else if (other.gameObject.tag == "South")

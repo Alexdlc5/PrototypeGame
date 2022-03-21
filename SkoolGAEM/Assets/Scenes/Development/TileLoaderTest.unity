@@ -1914,7 +1914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548374308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 190, y: -377.2, z: 53}
+  m_LocalPosition: {x: 283, y: -377.2, z: -157}
   m_LocalScale: {x: 83.76689, y: 38.261105, z: 82.30804}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4237,7 +4237,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14086
+  m_Name: pb_Mesh21370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6632,6 +6632,7 @@ GameObject:
   - component: {fileID: 3971605527183871676}
   - component: {fileID: 513354906976333203}
   - component: {fileID: 8229893206842285756}
+  - component: {fileID: 8083998904916879308}
   m_Layer: 0
   m_Name: North
   m_TagString: North
@@ -6639,6 +6640,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &8083998904916879308
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083998904916879307}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &8229893206842285756
 MeshCollider:
   m_ObjectHideFlags: 0
