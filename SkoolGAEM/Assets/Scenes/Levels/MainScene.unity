@@ -7731,7 +7731,7 @@ MonoBehaviour:
   building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
-  hitboxes: {fileID: 0}
+  hitboxes: {fileID: 1399819451}
 --- !u!23 &1399819454
 MeshRenderer:
   m_ObjectHideFlags: 0

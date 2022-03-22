@@ -39,7 +39,16 @@ public class TileLoader : MonoBehaviour
             {
                 //generate new tile
                 GameObject newtile = Instantiate(tile);
-                newtile.GetComponent<Tile>().setTilePos(0,900);
+                Vector3 tilepos = other.GetComponentInParent<Transform>().position;
+                float xcoord = tilepos.x;
+                float zcoord = tilepos.z + tileoffset;
+                newtile.GetComponent<Tile>().setTilePos(xcoord - 40, zcoord - 40);
+                tilelocations.Add(new Vector2 (xcoord, zcoord));
+            }
+            //!PROBLEM WITH VECTOR2s LIST!
+            else
+            {
+                Destroy(other);
             }
         }
         else if (other.gameObject.tag == "South")
