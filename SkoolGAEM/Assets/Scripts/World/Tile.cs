@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour
     {
         this.x = x;
         this.z = z;
-        transform.position = new Vector3(x, transform.position.y, z);
+        transform.localPosition = new Vector3(x, transform.position.y, z);
     }
     private void Update()
     {
@@ -22,5 +22,14 @@ public class Tile : MonoBehaviour
     {
         inloadingdistance = value;
     }
+
+    //public float getX()
+    //{
+    //    return x;
+    //}
+    //public float getZ()
+    //{
+    //    return z;
+    //}
 
 }
