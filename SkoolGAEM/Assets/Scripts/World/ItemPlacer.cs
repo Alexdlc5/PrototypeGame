@@ -5,7 +5,17 @@ using UnityEngine;
 public class ItemPlacer : MonoBehaviour
 {
     public GameObject Object;
-
+    public float offsetx = 0;
+    public float offsetz = 0;
+    //sets offsets
+    public void setXoff(float x)
+    {
+        offsetx = x;
+    }
+    public void setZoff(float z)
+    {
+        offsetz = z;
+    }
     public void setObject(GameObject Object)
     {
         this.Object = Object;
@@ -15,7 +25,7 @@ public class ItemPlacer : MonoBehaviour
         int layermask = 1 << 6;
         for (int i = 0; i < objectcount; i++)
         {
-            Vector3 randomlocation = new Vector3(Random.Range(20, 880), 15, Random.Range(20, 880));
+            Vector3 randomlocation = new Vector3(Random.Range(offsetx - 200, offsetx + 200), 15, Random.Range(offsetz - 200, offsetz + 200));
             transform.position = randomlocation;
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);

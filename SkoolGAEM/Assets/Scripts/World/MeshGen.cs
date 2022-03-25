@@ -26,11 +26,12 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject grass;
     public Color currentcolor;
-    public GameObject hitboxes;
+
+    public float currentcoordsx = 0;
+    public float currentcoordsz = 0;
 
     void Start()
     {
-        Instantiate(hitboxes);
         //random offset in noise
         offsetx = Random.Range(0, 999);
         offsetz = Random.Range(0, 999);
@@ -50,11 +51,13 @@ public class MeshGen : MonoBehaviour
         GetComponent<MeshRenderer>().material.color = currentcolor;
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
         //places assets on map
-        GameObject ip = Instantiate(itemPlacer);
-        ip.SendMessage("setObject", building);
-        ip.SendMessage("PlaceObjects", 12);
-        ip.SendMessage("setObject", grass);
-        ip.SendMessage("PlaceObjects", 5000);
+        //GameObject ip = Instantiate(itemPlacer);
+        //ip.SendMessage("setXoff", currentcoordsx);
+        //ip.SendMessage("setXoff", currentcoordsz);
+        //ip.SendMessage("setObject", building);
+        //ip.SendMessage("PlaceObjects", 12);
+        //ip.SendMessage("setObject", grass);
+        //ip.SendMessage("PlaceObjects", 5000);
     }
 
     void CreateShape()

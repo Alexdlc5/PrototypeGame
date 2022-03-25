@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour
     {
         this.x = x;
         this.z = z;
+        gameObject.GetComponent<MeshGen>().currentcoordsx = x;
+        gameObject.GetComponent<MeshGen>().currentcoordsz = z;
         transform.localPosition = new Vector3(x, transform.position.y, z);
     }
     private void Update()

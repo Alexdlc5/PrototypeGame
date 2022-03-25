@@ -15,7 +15,7 @@ public class TileLoader : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //value to offset generated tiles
-        float tileoffset = 90;
+        float tileoffset = 200;
 
         if (other.gameObject.GetComponent<Tile>() == true)
         {
@@ -103,6 +103,7 @@ public class TileLoader : MonoBehaviour
             }
         }
     }
+    //need hitbox to cover tile to load and unload tile 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<Tile>())
