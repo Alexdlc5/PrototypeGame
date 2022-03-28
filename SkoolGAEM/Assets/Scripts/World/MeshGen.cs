@@ -26,15 +26,16 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject grass;
     public Color currentcolor;
+    public GameObject origin;
 
     public float currentcoordsx = 0;
     public float currentcoordsz = 0;
 
     void Start()
     {
-        //random offset in noise
-        offsetx = Random.Range(0, 999);
-        offsetz = Random.Range(0, 999);
+        //off set the noise for the origins noise
+        offsetx = origin.GetComponent<WorldOrigin>().offsetx;
+        offsetz = origin.GetComponent<WorldOrigin>().offsetz;
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
@@ -51,11 +52,11 @@ public class MeshGen : MonoBehaviour
         GetComponent<MeshRenderer>().material.color = currentcolor;
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
         //places assets on map
-        //GameObject ip = Instantiate(itemPlacer);
-        //ip.SendMessage("setXoff", currentcoordsx);
-        //ip.SendMessage("setXoff", currentcoordsz);
-        //ip.SendMessage("setObject", building);
-        //ip.SendMessage("PlaceObjects", 12);
+        GameObject ip = Instantiate(itemPlacer);
+        ip.SendMessage("setXoff", currentcoordsx);
+        ip.SendMessage("setXoff", currentcoordsz);
+        ip.SendMessage("setObject", building);
+        ip.SendMessage("PlaceObjects", 12);
         //ip.SendMessage("setObject", grass);
         //ip.SendMessage("PlaceObjects", 5000);
     }
@@ -123,5 +124,10 @@ public class MeshGen : MonoBehaviour
 
         mesh.RecalculateNormals();
         transform.localScale = new Vector3(transform.localScale.x * scaleMultiplier, 1, transform.localScale.z * scaleMultiplier);
+    }
+
+    public void setOrigin(GameObject origin)
+    {
+        this.origin = origin;
     }
 }

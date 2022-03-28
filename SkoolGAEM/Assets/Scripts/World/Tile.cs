@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour
     }
     private void Update()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = inloadingdistance;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
     public void setInLoadingDistance(bool value)

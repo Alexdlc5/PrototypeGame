@@ -25,7 +25,7 @@ public class ItemPlacer : MonoBehaviour
         int layermask = 1 << 6;
         for (int i = 0; i < objectcount; i++)
         {
-            Vector3 randomlocation = new Vector3(Random.Range(offsetx - 200, offsetx + 200), 15, Random.Range(offsetz - 200, offsetz + 200));
+            Vector3 randomlocation = new Vector3(Random.Range(offsetz - 90, offsetz + 90), 15, Random.Range(offsetx - 90, offsetx + 90));
             transform.position = randomlocation;
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);

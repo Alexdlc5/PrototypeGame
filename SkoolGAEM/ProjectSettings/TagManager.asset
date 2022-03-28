@@ -13,6 +13,7 @@ TagManager:
   - North
   - East
   - West
+  - WorldOrigin
   layers:
   - Default
   - TransparentFX
