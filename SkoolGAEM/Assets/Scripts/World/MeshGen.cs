@@ -39,8 +39,8 @@ public class MeshGen : MonoBehaviour
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        //random amplitude
-        amp = Random.Range(15, 35);
+        //random amplitude given by origin
+        amp = origin.GetComponent<WorldOrigin>().amp;
         //generates mesh
         CreateShape();
         //updates it
@@ -74,7 +74,7 @@ public class MeshGen : MonoBehaviour
                 //pixel to world coord
                 float xCoord = (float)x / width * scale + offsetx;
                 float zCoord = (float)z / height * scale + offsetz;
-                float y = Mathf.PerlinNoise(xCoord, zCoord);
+                float y = Mathf.PerlinNoise(xCoord + currentcoordsx / 20, zCoord + currentcoordsz / 20);
                 vertices[index] = new Vector3(x, y * amp, z);
                 index++;
             }
