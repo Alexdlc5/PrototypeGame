@@ -11,11 +11,6 @@ public class PerlinTest : MonoBehaviour
     public float offsety = 100f;
     public float testx = 1;
     public float testy = 1;
-    void Start()
-    {
-        offsetx = Random.Range(0, 9999f);
-        offsety = Random.Range(0, 9999f);
-    }
     void Update()
     {
         Renderer renderer = GetComponent<Renderer>();

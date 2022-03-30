@@ -6,6 +6,7 @@ public class MeshGen : MonoBehaviour
 {
     //add health kits
     //random extra loot (weapons armor new weapon types)
+    //line up terrain and not hitboxes
     Mesh mesh;
 
     Vector3[] vertices;
@@ -14,10 +15,9 @@ public class MeshGen : MonoBehaviour
     
     public int width = 256;
     public int height = 256;
-    public int offsetx = 100;
-    public int offsetz = 100;
+    public float offsetx = 100;
+    public float offsetz = 100;
     public float scale = 20;
-    public float scaleMultiplier = 1;
     public int xSize = 20;
     public int zSize = 20;
     public float amp = 1;
@@ -34,8 +34,8 @@ public class MeshGen : MonoBehaviour
     void Start()
     {
         //off set the noise for the origins noise
-        offsetx = origin.GetComponent<WorldOrigin>().offsetx;
-        offsetz = origin.GetComponent<WorldOrigin>().offsetz;
+        offsetx = origin.GetComponent<WorldOrigin>().offsetx + currentcoordsx / 200;
+        offsetz = origin.GetComponent<WorldOrigin>().offsetz + currentcoordsz / 200;
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
@@ -49,16 +49,25 @@ public class MeshGen : MonoBehaviour
         currentcolor = new Color(Random.Range(0.1f, .2f), Random.Range(0.1f, 1f), Random.Range(0.0f, 0.01f), 1.0f);
         //sets mesh, mesh color, and texture 
         GetComponent<MeshCollider>().sharedMesh = mesh;
+
         GetComponent<MeshRenderer>().material.color = currentcolor;
         GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
+
+
         //places assets on map
-        GameObject ip = Instantiate(itemPlacer);
-        ip.SendMessage("setXoff", currentcoordsx);
-        ip.SendMessage("setXoff", currentcoordsz);
-        ip.SendMessage("setObject", building);
-        ip.SendMessage("PlaceObjects", 12);
+        //GameObject ip = Instantiate(itemPlacer);
+        //ip.SendMessage("setXoff", currentcoordsx);
+        //ip.SendMessage("setXoff", currentcoordsz);
+        //ip.SendMessage("setObject", building);
+        //ip.SendMessage("PlaceObjects", 12);
         //ip.SendMessage("setObject", grass);
         //ip.SendMessage("PlaceObjects", 5000);
+    }
+    private void Update()
+    {
+        //visual perlin
+        //Renderer renderer = GetComponent<Renderer>();
+        //renderer.material.mainTexture = GenTexture();
     }
 
     void CreateShape()
@@ -74,7 +83,7 @@ public class MeshGen : MonoBehaviour
                 //pixel to world coord
                 float xCoord = (float)x / width * scale + offsetx;
                 float zCoord = (float)z / height * scale + offsetz;
-                float y = Mathf.PerlinNoise(xCoord + currentcoordsx / 20, zCoord + currentcoordsz / 20);
+                float y = Mathf.PerlinNoise(xCoord, zCoord);
                 vertices[index] = new Vector3(x, y * amp, z);
                 index++;
             }
@@ -123,8 +132,34 @@ public class MeshGen : MonoBehaviour
         mesh.uv = UVs;
 
         mesh.RecalculateNormals();
-        transform.localScale = new Vector3(transform.localScale.x * scaleMultiplier, 1, transform.localScale.z * scaleMultiplier);
+        //if size increase wanted add multipier here
+        transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
     }
+
+    //Texture2D GenTexture()
+    //{
+    //    Texture2D texture = new Texture2D(width, height);
+
+    //    for (int x = 0; x < width; x++)
+    //    {
+    //        for (int y = 0; y < height; y++)
+    //        {
+    //            Color color = CalcColor(x, y);
+    //            texture.SetPixel(x, y, color);
+    //        }
+    //    }
+
+    //    texture.Apply();
+    //    return (texture);
+    //}
+
+    //Color CalcColor(float x, float y)
+    //{
+    //    float xCoord = (float)x / width * scale + offsetx;
+    //    float yCoord = (float)y / height * scale + offsetz;
+    //    float sample = Mathf.PerlinNoise(xCoord, yCoord);
+    //    return new Color(sample, sample, sample);
+    //}
 
     public void setOrigin(GameObject origin)
     {
