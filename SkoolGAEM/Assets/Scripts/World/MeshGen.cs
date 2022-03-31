@@ -55,21 +55,18 @@ public class MeshGen : MonoBehaviour
 
 
         //places assets on map
-        //GameObject ip = Instantiate(itemPlacer);
-        //ip.SendMessage("setXoff", currentcoordsx);
-        //ip.SendMessage("setXoff", currentcoordsz);
+        GameObject ip = Instantiate(itemPlacer, transform);
+        ip.SendMessage("setXoff", currentcoordsx);
+        ip.SendMessage("setZoff", currentcoordsz);
         //ip.SendMessage("setObject", building);
         //ip.SendMessage("PlaceObjects", 12);
-        //ip.SendMessage("setObject", grass);
-        //ip.SendMessage("PlaceObjects", 5000);
-    }
-    private void Update()
-    {
+        ip.SendMessage("setObject", grass);
+        ip.SendMessage("PlaceObjects", 2500);
+
         //visual perlin
         //Renderer renderer = GetComponent<Renderer>();
         //renderer.material.mainTexture = GenTexture();
     }
-
     void CreateShape()
     {
         //creates grid of vertices
@@ -80,12 +77,60 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                //pixel to world coord
-                float xCoord = (float)x / width * scale + offsetx;
-                float zCoord = (float)z / height * scale + offsetz;
-                float y = Mathf.PerlinNoise(xCoord, zCoord);
-                vertices[index] = new Vector3(x, y * amp, z);
-                index++;
+                if (z <= 3 || zSize - 3 <= z || x <= 3 || xSize - 3 <= x)
+                {
+                    if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
+                    {
+                        if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
+                        {
+                            if (z <= 0 || zSize <= z || x <= 0 || xSize <= x)
+                            {
+                                //pixel to world coord
+                                float xCoord = (float)x / width * scale + offsetx;
+                                float zCoord = (float)z / height * scale + offsetz;
+                                float y = Mathf.PerlinNoise(xCoord, zCoord) / 2f;
+                                vertices[index] = new Vector3(x, y * amp, z);
+                                index++;
+                            }
+                            else
+                            {
+                                //pixel to world coord
+                                float xCoord = (float)x / width * scale + offsetx;
+                                float zCoord = (float)z / height * scale + offsetz;
+                                float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.3f;
+                                vertices[index] = new Vector3(x, y * amp, z);
+                                index++;
+                            }
+                        }
+                        else
+                        {
+                            //pixel to world coord
+                            float xCoord = (float)x / width * scale + offsetx;
+                            float zCoord = (float)z / height * scale + offsetz;
+                            float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.2f;
+                            vertices[index] = new Vector3(x, y * amp, z);
+                            index++;
+                        }
+                    }
+                    else
+                    {
+                        //pixel to world coord
+                        float xCoord = (float)x / width * scale + offsetx;
+                        float zCoord = (float)z / height * scale + offsetz;
+                        float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.1f;
+                        vertices[index] = new Vector3(x, y * amp, z);
+                        index++;
+                    }
+                } 
+                else
+                {
+                    //pixel to world coord
+                    float xCoord = (float)x / width * scale + offsetx;
+                    float zCoord = (float)z / height * scale + offsetz;
+                    float y = Mathf.PerlinNoise(xCoord, zCoord);
+                    vertices[index] = new Vector3(x, y * amp, z);
+                    index++;
+                }
             }
         }
         
@@ -136,30 +181,30 @@ public class MeshGen : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
     }
 
-    //Texture2D GenTexture()
-    //{
-    //    Texture2D texture = new Texture2D(width, height);
+    Texture2D GenTexture()
+    {
+        Texture2D texture = new Texture2D(width, height);
 
-    //    for (int x = 0; x < width; x++)
-    //    {
-    //        for (int y = 0; y < height; y++)
-    //        {
-    //            Color color = CalcColor(x, y);
-    //            texture.SetPixel(x, y, color);
-    //        }
-    //    }
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Color color = CalcColor(x, y);
+                texture.SetPixel(x, y, color);
+            }
+        }
 
-    //    texture.Apply();
-    //    return (texture);
-    //}
+        texture.Apply();
+        return (texture);
+    }
 
-    //Color CalcColor(float x, float y)
-    //{
-    //    float xCoord = (float)x / width * scale + offsetx;
-    //    float yCoord = (float)y / height * scale + offsetz;
-    //    float sample = Mathf.PerlinNoise(xCoord, yCoord);
-    //    return new Color(sample, sample, sample);
-    //}
+    Color CalcColor(float x, float y)
+    {
+        float xCoord = (float)x / width * scale + offsetx;
+        float yCoord = (float)y / height * scale + offsetz;
+        float sample = Mathf.PerlinNoise(xCoord, yCoord);
+        return new Color(sample, sample, sample);
+    }
 
     public void setOrigin(GameObject origin)
     {

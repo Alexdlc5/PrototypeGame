@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 427015492758466719}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -1.1873093, y: 0.8510418, z: 2.2131958}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.2485676, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4918435982813403133}
   m_RootOrder: 0
@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 6278624558099120340}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -1.1873093, y: 0.8510418, z: 2.2131958}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3.7765136, z: 1}
   m_Children: []
   m_Father: {fileID: 4918435982813403133}
   m_RootOrder: 1
@@ -171,9 +171,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4918435982813403133}
+  - component: {fileID: -95537189951220836}
+  - component: {fileID: 6890222380421071035}
   m_Layer: 0
   m_Name: Grass
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,11 +188,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7045954329643516829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105.96823, y: 28.853777, z: 148.81947}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 105.96823, y: 28.853777, z: 147.43}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.878975}
   m_Children:
   - {fileID: 5558736569341724499}
   - {fileID: 582241575020219508}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-95537189951220836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045954329643516829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6890222380421071035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045954329643516829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.683075, y: 4.6858673, z: 5.9434204}
+  m_Center: {x: -2.3415375, y: 0.19830322, z: 2.4717102}

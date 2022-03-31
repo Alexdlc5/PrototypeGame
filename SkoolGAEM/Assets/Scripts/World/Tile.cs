@@ -17,21 +17,11 @@ public class Tile : MonoBehaviour
     }
     private void Update()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = inloadingdistance;
     }
 
     public void setInLoadingDistance(bool value)
     {
         inloadingdistance = value;
     }
-
-    //public float getX()
-    //{
-    //    return x;
-    //}
-    //public float getZ()
-    //{
-    //    return z;
-    //}
-
 }

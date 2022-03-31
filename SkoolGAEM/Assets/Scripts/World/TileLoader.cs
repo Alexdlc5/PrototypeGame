@@ -18,10 +18,17 @@ public class TileLoader : MonoBehaviour
         //value to offset generated tiles
         float tileoffset = 200;
 
-        if (other.gameObject.GetComponent<Tile>() == true)
+        if (other.gameObject.tag == "Tile")
         {
-            other.gameObject.GetComponent<Tile>().setInLoadingDistance(true);
-        } 
+            other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(true);
+        }
+        if (other.gameObject.tag == "Prop")
+        {
+            for (int i = 0; i < other.gameObject.GetComponentsInChildren<MeshRenderer>().Length; i++)
+            {
+                other.gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = true;
+            }
+        }
         //checks for world gen hitboxes
         else if (other.gameObject.tag == "North")
         {
@@ -119,9 +126,16 @@ public class TileLoader : MonoBehaviour
     //need hitbox to cover tile to load and unload tile 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Tile>())
+        if (other.gameObject.tag == "Tile")
         {
-            other.gameObject.GetComponent<Tile>().setInLoadingDistance(false);
+            other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(false);
+        }
+        if (other.gameObject.tag == "Prop")
+        {
+            for (int i = 0; i < other.gameObject.GetComponentsInChildren<MeshRenderer>().Length; i++)
+            {
+                other.gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
+            }
         }
     }
 }
