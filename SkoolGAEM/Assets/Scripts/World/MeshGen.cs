@@ -26,6 +26,7 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject grass;
     public Color currentcolor;
+    public Transform folder;
     public GameObject origin;
 
     public float currentcoordsx = 0;
@@ -36,23 +37,31 @@ public class MeshGen : MonoBehaviour
         //off set the noise for the origins noise
         offsetx = origin.GetComponent<WorldOrigin>().offsetx + currentcoordsx / 200;
         offsetz = origin.GetComponent<WorldOrigin>().offsetz + currentcoordsz / 200;
+        
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         //random amplitude given by origin
         amp = origin.GetComponent<WorldOrigin>().amp;
+       
         //generates mesh
         CreateShape();
         //updates it
         UpdateMesh();
-        //changes the current mesh color
-        currentcolor = new Color(Random.Range(0.1f, .2f), Random.Range(0.1f, 1f), Random.Range(0.0f, 0.01f), 1.0f);
-        //sets mesh, mesh color, and texture 
+        
+        //changes the current mesh color to random value
+        currentcolor = new Color(Random.Range(1f, 1f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
+        //sets mesh and mesh color
         GetComponent<MeshCollider>().sharedMesh = mesh;
-
+        //values that will hold hue, saturation and brightness value of current color
+        float H, S, V;
+        Color.RGBToHSV(currentcolor, out H, out S, out V);
+        //decreases saturation and brightness
+        S -= .2f;
+        V -= .2f;
+        //set current color with new lower saturation
+        currentcolor = Color.HSVToRGB(H,S,V);
         GetComponent<MeshRenderer>().material.color = currentcolor;
-        GetComponent<MeshRenderer>().material.SetTexture("GridPattern", texture);
-
 
         //places assets on map
         GameObject ip = Instantiate(itemPlacer, transform);
@@ -61,7 +70,8 @@ public class MeshGen : MonoBehaviour
         //ip.SendMessage("setObject", building);
         //ip.SendMessage("PlaceObjects", 12);
         ip.SendMessage("setObject", grass);
-        ip.SendMessage("PlaceObjects", 2500);
+        ip.SendMessage("setFolder", folder);
+        ip.SendMessage("PlaceObjects", 1000);
 
         //visual perlin
         //Renderer renderer = GetComponent<Renderer>();
@@ -77,58 +87,16 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                if (z <= 3 || zSize - 3 <= z || x <= 3 || xSize - 3 <= x)
+                if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
                 {
-                    if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
-                    {
-                        if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
-                        {
-                            if (z <= 0 || zSize <= z || x <= 0 || xSize <= x)
-                            {
-                                //pixel to world coord
-                                float xCoord = (float)x / width * scale + offsetx;
-                                float zCoord = (float)z / height * scale + offsetz;
-                                float y = Mathf.PerlinNoise(xCoord, zCoord) / 2f;
-                                vertices[index] = new Vector3(x, y * amp, z);
-                                index++;
-                            }
-                            else
-                            {
-                                //pixel to world coord
-                                float xCoord = (float)x / width * scale + offsetx;
-                                float zCoord = (float)z / height * scale + offsetz;
-                                float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.3f;
-                                vertices[index] = new Vector3(x, y * amp, z);
-                                index++;
-                            }
-                        }
-                        else
-                        {
-                            //pixel to world coord
-                            float xCoord = (float)x / width * scale + offsetx;
-                            float zCoord = (float)z / height * scale + offsetz;
-                            float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.2f;
-                            vertices[index] = new Vector3(x, y * amp, z);
-                            index++;
-                        }
-                    }
-                    else
-                    {
-                        //pixel to world coord
-                        float xCoord = (float)x / width * scale + offsetx;
-                        float zCoord = (float)z / height * scale + offsetz;
-                        float y = Mathf.PerlinNoise(xCoord, zCoord) / 1.1f;
-                        vertices[index] = new Vector3(x, y * amp, z);
-                        index++;
-                    }
-                } 
+                    //pixel to world coord and set vertices
+                    setVerts(index, x, z, 2);
+                    index++;
+                }
                 else
                 {
-                    //pixel to world coord
-                    float xCoord = (float)x / width * scale + offsetx;
-                    float zCoord = (float)z / height * scale + offsetz;
-                    float y = Mathf.PerlinNoise(xCoord, zCoord);
-                    vertices[index] = new Vector3(x, y * amp, z);
+                    //pixel to world coord and set vertices
+                    setVerts(index, x, z, 1);
                     index++;
                 }
             }
@@ -209,5 +177,14 @@ public class MeshGen : MonoBehaviour
     public void setOrigin(GameObject origin)
     {
         this.origin = origin;
+    }
+
+    void setVerts(int index, float x, float z, float offset)
+    {
+        //pixel to world coord
+        float xCoord = (float)x / width * scale + offsetx;
+        float zCoord = (float)z / height * scale + offsetz;
+        float y = Mathf.PerlinNoise(xCoord, zCoord) / offset;
+        vertices[index] = new Vector3(x, y * amp, z);
     }
 }

@@ -45,10 +45,7 @@ public class TileLoader : MonoBehaviour
             if (!tilelocations.Contains(newtileposvector))
             {
                 //generate new tile
-                GameObject newtile = Instantiate(tile);
-                newtile.SendMessage("setOrigin", origin);
-                newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
-                tilelocations.Add(new Vector2(xcoord, zcoord));
+                generateTile(xcoord, zcoord);
             }
         }
         else if (other.gameObject.tag == "South")
@@ -66,10 +63,7 @@ public class TileLoader : MonoBehaviour
             if (!tilelocations.Contains(newtileposvector))
             {
                 //generate new tile
-                GameObject newtile = Instantiate(tile);
-                newtile.SendMessage("setOrigin", origin);
-                newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
-                tilelocations.Add(new Vector2(xcoord, zcoord));
+                generateTile(xcoord, zcoord);
             }
         }
         else if (other.gameObject.tag == "East")
@@ -87,10 +81,7 @@ public class TileLoader : MonoBehaviour
             if (!tilelocations.Contains(newtileposvector))
             {
                 //generate new tile
-                GameObject newtile = Instantiate(tile);
-                newtile.SendMessage("setOrigin", origin);
-                newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
-                tilelocations.Add(new Vector2(xcoord, zcoord));
+                generateTile(xcoord, zcoord);
             }
         }
         else if (other.gameObject.tag == "West")
@@ -108,10 +99,7 @@ public class TileLoader : MonoBehaviour
             if (!tilelocations.Contains(newtileposvector))
             {
                 //generate new tile
-                GameObject newtile = Instantiate(tile);
-                newtile.SendMessage("setOrigin", origin);
-                newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
-                tilelocations.Add(new Vector2(xcoord, zcoord));
+                generateTile(xcoord, zcoord);
             }
         }
         else if (other.gameObject.tag == "WorldOrigin")
@@ -137,5 +125,12 @@ public class TileLoader : MonoBehaviour
                 other.gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
             }
         }
+    }
+    void generateTile(float xcoord, float zcoord)
+    {
+        GameObject newtile = Instantiate(tile);
+        newtile.SendMessage("setOrigin", origin);
+        newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
+        tilelocations.Add(new Vector2(xcoord, zcoord));
     }
 }

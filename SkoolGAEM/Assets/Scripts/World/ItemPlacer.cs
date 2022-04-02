@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemPlacer : MonoBehaviour
 {
+    public Transform folder;
     public GameObject Object;
     public float offsetx = 0;
     public float offsetz = 0;
@@ -15,6 +16,10 @@ public class ItemPlacer : MonoBehaviour
     public void setZoff(float z)
     {
         offsetz = z;
+    }
+    public void setFolder(Transform folder)
+    {
+        this.folder = folder;
     }
     public void setObject(GameObject Object)
     {
@@ -30,7 +35,7 @@ public class ItemPlacer : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
             GameObject newobject = Instantiate(Object, hit.point + Vector3.up - new Vector3(0, 0, 0), transform.rotation);
-            newobject.SendMessage("setParent", transform.parent.transform);
+            newobject.SendMessage("setParent", folder);
             newobject.SendMessage("setVis", false);
         }
     }
