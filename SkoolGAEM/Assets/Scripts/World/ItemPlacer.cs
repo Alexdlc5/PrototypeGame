@@ -8,6 +8,8 @@ public class ItemPlacer : MonoBehaviour
     public GameObject Object;
     public float offsetx = 0;
     public float offsetz = 0;
+    public bool isspawner = false;
+    public float offsety = 0;
     //sets offsets
     public void setXoff(float x)
     {
@@ -16,6 +18,14 @@ public class ItemPlacer : MonoBehaviour
     public void setZoff(float z)
     {
         offsetz = z;
+    }
+    public void setYoff(float y)
+    {
+        offsety = y;
+    }
+    public void isSpawner(bool isspawner)
+    {
+        this.isspawner = isspawner;
     }
     public void setFolder(Transform folder)
     {
@@ -30,13 +40,20 @@ public class ItemPlacer : MonoBehaviour
         int layermask = 1 << 6;
         for (int i = 0; i < objectcount; i++)
         {
-            Vector3 randomlocation = new Vector3(Random.Range(offsetz - 200, offsetz + 200), 15, Random.Range(offsetx - 200, offsetx + 200));
+            Vector3 randomlocation = new Vector3(Random.Range(offsetz - 200, offsetz + 200), offsety, Random.Range(offsetx - 200, offsetx + 200));
             transform.position = randomlocation;
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
             GameObject newobject = Instantiate(Object, hit.point + Vector3.up - new Vector3(0, 0, 0), transform.rotation);
             newobject.SendMessage("setParent", folder);
-            newobject.SendMessage("setVis", false);
+            if (!isspawner)
+            {
+                newobject.SendMessage("setVis", false);
+            }
+            else
+            {
+                newobject.SendMessage("setPlayer");
+            }
         }
     }
 }

@@ -23,7 +23,6 @@ public class Shoot : MonoBehaviour
             {
                 GameObject newprojectile = Instantiate(projectile, projectilespawn.position, projectilespawn.rotation);
                 newprojectile.SendMessage("setPlayer", player);
-                Debug.Log(firingdecimal);
                 //projectile ignores collisions with the player
                 Physics.IgnoreCollision(newprojectile.GetComponent<Collider>(), GetComponent<Collider>());
                 time = delay;

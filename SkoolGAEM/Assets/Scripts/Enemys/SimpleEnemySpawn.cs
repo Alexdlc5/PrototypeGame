@@ -12,7 +12,11 @@ public class SimpleEnemySpawn : MonoBehaviour
     public GameObject coin;
     public GameObject coincounter;
     public GameObject deathbit;
-    
+
+    private void Start()
+    {
+        score = GameObject.FindGameObjectWithTag("Score");
+    }
     void Update()
     {
         if (time <= 0.0f)
@@ -29,5 +33,16 @@ public class SimpleEnemySpawn : MonoBehaviour
         {
             time -= 1 * Time.deltaTime;
         }
+    }
+
+    public void setPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
+    }
+
+    public void setParent(Transform newparent)
+    {
+        transform.parent = newparent;
     }
 }

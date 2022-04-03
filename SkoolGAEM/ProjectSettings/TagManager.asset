@@ -16,6 +16,8 @@ TagManager:
   - WorldOrigin
   - Tile
   - Prop
+  - Score
+  - CoinCounter
   layers:
   - Default
   - TransparentFX

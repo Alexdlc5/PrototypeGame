@@ -28,6 +28,8 @@ public class MeshGen : MonoBehaviour
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
+    public GameObject spawner;
+    public Transform spawnerfolder;
 
     public float currentcoordsx = 0;
     public float currentcoordsz = 0;
@@ -69,9 +71,15 @@ public class MeshGen : MonoBehaviour
         ip.SendMessage("setZoff", currentcoordsz);
         //ip.SendMessage("setObject", building);
         //ip.SendMessage("PlaceObjects", 12);
-        ip.SendMessage("setObject", grass);
-        ip.SendMessage("setFolder", folder);
-        ip.SendMessage("PlaceObjects", 1000);
+        //ip.SendMessage("setObject", grass);
+        //ip.SendMessage("setYoff", 15);
+        //ip.SendMessage("setFolder", folder);
+        //ip.SendMessage("PlaceObjects", 1000);
+        ip.SendMessage("isSpawner" , true);
+        ip.SendMessage("setYoff", 40);
+        ip.SendMessage("setObject", spawner);
+        ip.SendMessage("setFolder", spawnerfolder);
+        ip.SendMessage("PlaceObjects", 3);
 
         //visual perlin
         //Renderer renderer = GetComponent<Renderer>();
@@ -87,7 +95,7 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
+                if (z <= 5 || zSize - 5 <= z || x <= 5 || xSize - 5 <= x)
                 {
                     //pixel to world coord and set vertices
                     setVerts(index, x, z, 2);
