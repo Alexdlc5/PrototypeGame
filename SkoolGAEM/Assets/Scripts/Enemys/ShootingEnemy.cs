@@ -47,6 +47,10 @@ public class ShootingEnemy : MonoBehaviour
     void FixedUpdate()
 
     {
+        if (transform.position.y < -50)
+        {
+            Destroy(gameObject);
+        }
         //checks if health is at or below 0
         if (health <= 0)
         {
@@ -83,7 +87,7 @@ public class ShootingEnemy : MonoBehaviour
             }
             else
             {
-                rb.AddRelativeForce(Vector3.forward * -speed * 2);
+                rb.AddRelativeForce(Vector3.forward * -speed * 3);
                 time = 0;
             }
         }

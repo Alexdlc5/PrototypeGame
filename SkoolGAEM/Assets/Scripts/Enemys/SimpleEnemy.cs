@@ -40,6 +40,10 @@ public class SimpleEnemy : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.y < -50)
+        {
+            Destroy(gameObject);
+        }
         Debug.DrawLine(transform.position, player.transform.position, Color.yellow);
         Vector3 playerLocation = player.transform.position;
         transform.LookAt(new Vector3(playerLocation[0], transform.position.y, playerLocation[2]));

@@ -161,7 +161,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             //checks jump timer to see if player should boostjump, hop or not jump at all
-            if (jumptimer >= 5f)
+            if (jumptimer >= 2f)
             {
                 rb.AddForce(Vector3.up * jumppower * 10);
                 staminabar.SendMessage("SetSlider", jumptimer);
@@ -169,7 +169,7 @@ public class Movement : MonoBehaviour
                 balanceZ(Zrot);
                 jumptimer = 0;
             }
-            else if (jumptimer >= 2f)
+            else if (jumptimer >= 1f)
             {
                 rb.AddForce(Vector3.up * jumppower / 4 * 10);
                 staminabar.SendMessage("SetSlider", jumptimer);

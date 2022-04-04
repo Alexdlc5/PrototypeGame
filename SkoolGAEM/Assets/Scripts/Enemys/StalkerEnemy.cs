@@ -42,6 +42,10 @@ public class StalkerEnemy : MonoBehaviour
     void FixedUpdate()
 
     {
+        if (transform.position.y < -50)
+        {
+            Destroy(gameObject);
+        }
         //checks if health is at or below 0
         if (health <= 0)
         {
