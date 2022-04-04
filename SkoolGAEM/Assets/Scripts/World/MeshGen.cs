@@ -59,8 +59,8 @@ public class MeshGen : MonoBehaviour
         float H, S, V;
         Color.RGBToHSV(currentcolor, out H, out S, out V);
         //decreases saturation and brightness
-        S -= .2f;
-        V -= .2f;
+        S -= .05f;
+        V -= .05f;
         //set current color with new lower saturation
         currentcolor = Color.HSVToRGB(H,S,V);
         GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -98,7 +98,7 @@ public class MeshGen : MonoBehaviour
                 if (z <= 5 || zSize - 5 <= z || x <= 5 || xSize - 5 <= x)
                 {
                     //pixel to world coord and set vertices
-                    setVerts(index, x, z, 2);
+                    setVerts(index, x, z, 3);
                     index++;
                 }
                 else
