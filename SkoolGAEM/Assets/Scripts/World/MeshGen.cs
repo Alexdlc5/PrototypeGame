@@ -76,7 +76,7 @@ public class MeshGen : MonoBehaviour
         //ip.SendMessage("setFolder", folder);
         //ip.SendMessage("PlaceObjects", 1000);
         ip.SendMessage("isSpawner" , true);
-        ip.SendMessage("setYoff", 40);
+        ip.SendMessage("setYoff", 10);
         ip.SendMessage("setObject", spawner);
         ip.SendMessage("setFolder", spawnerfolder);
         ip.SendMessage("PlaceObjects", 3);
