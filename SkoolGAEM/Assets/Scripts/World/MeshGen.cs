@@ -24,7 +24,8 @@ public class MeshGen : MonoBehaviour
     public Texture texture;
     public GameObject itemPlacer;
     public GameObject building;
-    public GameObject grass;
+    public GameObject rock;
+    public GameObject rocka;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
@@ -69,12 +70,18 @@ public class MeshGen : MonoBehaviour
         GameObject ip = Instantiate(itemPlacer, transform);
         ip.SendMessage("setXoff", currentcoordsx);
         ip.SendMessage("setZoff", currentcoordsz);
-        //ip.SendMessage("setObject", building);
-        //ip.SendMessage("PlaceObjects", 12);
-        //ip.SendMessage("setObject", grass);
-        //ip.SendMessage("setYoff", 15);
-        //ip.SendMessage("setFolder", folder);
-        //ip.SendMessage("PlaceObjects", 1000);
+        ip.SendMessage("setObject", rock);
+        ip.SendMessage("setObjectColor", currentcolor);
+        ip.SendMessage("setYoff", .6);
+        ip.SendMessage("setFolder", folder);
+        ip.SendMessage("PlaceObjects", 20);
+
+        ip.SendMessage("setObject", rocka);
+        ip.SendMessage("setObjectColor", currentcolor);
+        ip.SendMessage("setYoff", .6);
+        ip.SendMessage("setFolder", folder);
+        ip.SendMessage("PlaceObjects", 20);
+
         ip.SendMessage("isSpawner" , true);
         ip.SendMessage("setYoff", 10);
         ip.SendMessage("setObject", spawner);

@@ -6,6 +6,7 @@ public class ItemPlacer : MonoBehaviour
 {
     public Transform folder;
     public GameObject Object;
+    public Color currentcolor;
     public float offsetx;
     public float offsetz;
     public bool isspawner = false;
@@ -35,6 +36,11 @@ public class ItemPlacer : MonoBehaviour
     {
         this.Object = Object;
     }
+    public void setObjectColor(Color color)
+    {
+        Renderer[] blades = Object.GetComponentsInChildren<Renderer>();
+        currentcolor = color;
+    }
     public void PlaceObjects(int objectcount)
     {
         int layermask = 1 << 6;
@@ -57,6 +63,26 @@ public class ItemPlacer : MonoBehaviour
             else
             {
                 newobject.SendMessage("setPlayer");
+            
+            }
+            if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)
+            {
+                //changes the current mesh color to random value
+                currentcolor = new Color(Random.Range(1f, 1f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
+                //values that will hold hue, saturation and brightness value of current color
+                float H, S, V;
+                Color.RGBToHSV(currentcolor, out H, out S, out V);
+                //decreases saturation and brightness
+                S -= .4f;
+                V -= .5f;
+                //set current color with new lower saturation
+                currentcolor = Color.HSVToRGB(H, S, V);
+                //sets mesh to new color
+                GetComponent<MeshRenderer>().material.color = currentcolor;
+                newobject.GetComponentInChildren<MeshRenderer>().material.color = currentcolor;
+                //makes rocks random size
+                float scale = Random.Range(1, 5);
+                newobject.transform.localScale = new Vector3(newobject.transform.localScale.x * scale, newobject.transform.localScale.y * scale, newobject.transform.localScale.z * scale);
             }
         }
     }

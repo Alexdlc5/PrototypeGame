@@ -467,7 +467,8 @@ MonoBehaviour:
   texture: {fileID: 2800000, guid: 0e3c4496f52b09c43b9dbb8c5feed89f, type: 3}
   itemPlacer: {fileID: 3042558327528848742, guid: e276d1690934d3c4bafacc25ebe270d9, type: 3}
   building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
-  grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
+  rock: {fileID: 6119262575084970382, guid: b791b64de3dc54041a86dffc9155c84c, type: 3}
+  rocka: {fileID: 6341480622748894292, guid: 9e9924c7aad59bb448068a38dc7f5e6e, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}

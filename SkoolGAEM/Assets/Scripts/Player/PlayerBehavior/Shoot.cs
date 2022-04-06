@@ -15,7 +15,7 @@ public class Shoot : MonoBehaviour
     void FixedUpdate()
     {
         firinglvl = player.GetComponent<Movement>().firinglvl;
-        float firingdecimal = firinglvl / 10;
+        float firingdecimal = (firinglvl + 3) / 10;
         time -= 1 * Time.fixedDeltaTime;
         if (Input.GetMouseButton(0))
         {

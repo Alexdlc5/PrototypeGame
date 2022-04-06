@@ -60,8 +60,6 @@ public class StalkerEnemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //draws debug line from player to enemy
-        Debug.DrawLine(transform.position, player.transform.position, Color.black);
         Vector3 playerLocation = player.transform.position;
         
         //look at player
