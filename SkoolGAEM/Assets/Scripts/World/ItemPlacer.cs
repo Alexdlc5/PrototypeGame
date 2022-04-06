@@ -40,15 +40,16 @@ public class ItemPlacer : MonoBehaviour
         int layermask = 1 << 6;
         for (int i = 0; i < objectcount; i++)
         {
-            Vector3 randomlocation = new Vector3(Random.Range(offsetz - 200, offsetz + 200), 99, Random.Range(offsetx - 200, offsetx + 200));
+            //get random location within current tile and moves spanwer to that location
+            Vector3 randomlocation = new Vector3(Random.Range(offsetx, offsetx + 200), 99, Random.Range(offsetz, offsetz + 200));
             transform.position = randomlocation;
+            //raycasts for random location down onto mesh and places item ontop of mesh
             RaycastHit hit;
-            // hit returning 0,0,0 somtimes, maybe because its missing mesh or maybe direction of cast is wrong, maybe get rid of transform.transformdirection
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
-            Debug.DrawLine(randomlocation, hit.point, Color.green);
-            Debug.Log(hit.point + " ----- " + i);
             GameObject newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
+            //makes a child of another gameobject that will act as a folder
             newobject.SendMessage("setParent", folder);
+            //if spawner no need to setVis
             if (!isspawner)
             {
                 newobject.SendMessage("setVis", false);

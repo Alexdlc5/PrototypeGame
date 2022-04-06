@@ -95,11 +95,20 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                if (z <= 5 || zSize - 5 <= z || x <= 5 || xSize - 5 <= x)
+                if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
                 {
-                    //pixel to world coord and set vertices
-                    setVerts(index, x, z, 3);
-                    index++;
+                    if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
+                    {
+                        //pixel to world coord and set vertices
+                        setVerts(index, x, z, 1.75f);
+                        index++;
+                    }
+                    else
+                    {
+                        //pixel to world coord and set vertices
+                        setVerts(index, x, z, 1.1f);
+                        index++;
+                    }
                 }
                 else
                 {

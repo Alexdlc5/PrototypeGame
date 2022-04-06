@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085f77dd80f1cb4c930daa523214536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 1
-  settime: 4
+  time: 20
+  settime: 20
   Enemy: {fileID: 1952653588693199924, guid: 1483444b421e3984d94e049e609eb034, type: 3}
   player: {fileID: 0}
   score: {fileID: 0}

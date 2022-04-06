@@ -461,8 +461,8 @@ MonoBehaviour:
   offsetx: 100
   offsetz: 100
   scale: 1
-  xSize: 203
-  zSize: 203
+  xSize: 205
+  zSize: 205
   amp: 35
   texture: {fileID: 2800000, guid: 0e3c4496f52b09c43b9dbb8c5feed89f, type: 3}
   itemPlacer: {fileID: 3042558327528848742, guid: e276d1690934d3c4bafacc25ebe270d9, type: 3}
