@@ -15,6 +15,6 @@ public class WorldOrigin : MonoBehaviour
         offsetz = Random.Range(0, 999);
 
         //random amplitude
-        amp = Random.Range(15, 35);
+        amp = Random.Range(15, 45);
     }
 }

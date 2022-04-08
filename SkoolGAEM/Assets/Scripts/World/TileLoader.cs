@@ -7,11 +7,9 @@ public class TileLoader : MonoBehaviour
     public GameObject tile;
     public GameObject origin;
     HashSet<Vector2> tilelocations = new HashSet<Vector2>();
-    int tilecount = 0;
     private void Start()
     {
         tilelocations.Add(new Vector2(0, 0));
-        tilecount ++;
     }
     private void OnTriggerEnter(Collider other)
     {

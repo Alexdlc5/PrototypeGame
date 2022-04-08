@@ -469,6 +469,7 @@ MonoBehaviour:
   building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
   rock: {fileID: 6119262575084970382, guid: b791b64de3dc54041a86dffc9155c84c, type: 3}
   rocka: {fileID: 6341480622748894292, guid: 9e9924c7aad59bb448068a38dc7f5e6e, type: 3}
+  tree: {fileID: 5674616838142544253, guid: 0a672890894b27243aa436a2426857a7, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}

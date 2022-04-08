@@ -26,6 +26,7 @@ public class MeshGen : MonoBehaviour
     public GameObject building;
     public GameObject rock;
     public GameObject rocka;
+    public GameObject tree;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
@@ -53,7 +54,7 @@ public class MeshGen : MonoBehaviour
         UpdateMesh();
         
         //changes the current mesh color to random value
-        currentcolor = new Color(Random.Range(1f, 1f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
+        currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
         //sets mesh and mesh color
         GetComponent<MeshCollider>().sharedMesh = mesh;
         //values that will hold hue, saturation and brightness value of current color
@@ -81,6 +82,11 @@ public class MeshGen : MonoBehaviour
         ip.SendMessage("setYoff", .6);
         ip.SendMessage("setFolder", folder);
         ip.SendMessage("PlaceObjects", 20);
+
+        ip.SendMessage("setObject", tree);
+        ip.SendMessage("setYoff", 1);
+        ip.SendMessage("setFolder", folder);
+        ip.SendMessage("PlaceObjects", 10);
 
         ip.SendMessage("isSpawner" , true);
         ip.SendMessage("setYoff", 10);
