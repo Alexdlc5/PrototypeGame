@@ -86,7 +86,7 @@ public class MeshGen : MonoBehaviour
         ip.SendMessage("setObject", tree);
         ip.SendMessage("setYoff", 1);
         ip.SendMessage("setFolder", folder);
-        ip.SendMessage("PlaceObjects", 20);
+        ip.SendMessage("PlaceObjects", 15);
 
         ip.SendMessage("isSpawner" , true);
         ip.SendMessage("setYoff", 10);

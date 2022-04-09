@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 824342947955777707}
   - component: {fileID: 824342947955777706}
   - component: {fileID: 5121365007976408527}
+  - component: {fileID: 7786622707374705753}
   m_Layer: 0
   m_Name: ShootingEnemy
   m_TagString: Enemy
@@ -138,6 +139,21 @@ MonoBehaviour:
   health: 1
   scoreforkill: 100
   deathbit: {fileID: 0}
+--- !u!114 &7786622707374705753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824342947955777709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needscolor: 0
+  setVisOnStart: 0
+  isenemy: 1
 --- !u!1 &3439661374615330506
 GameObject:
   m_ObjectHideFlags: 0

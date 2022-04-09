@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3914091781971193527}
   - component: {fileID: 4725041537315015579}
   - component: {fileID: 2731542488122928825}
+  - component: {fileID: 7467801766737655151}
   m_Layer: 0
   m_Name: ElongatedRamEnemy
   m_TagString: Enemy
@@ -234,6 +235,21 @@ MonoBehaviour:
   time: 0
   health: 3
   scoreforkill: 200
+--- !u!114 &7467801766737655151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3403533476478245636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needscolor: 0
+  setVisOnStart: 0
+  isenemy: 1
 --- !u!1 &5486526350808177298
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,8 +20,8 @@ public class tree_behavior : MonoBehaviour
         //once tree is on ground for [despawntimer] seconds despawn
         if (despawntimer <= 0)
         {
-            transform.position = transform.position - new Vector3(0,30,0) * Time.deltaTime;
-            Destroy(gameObject, 2);
+            transform.position = transform.position - new Vector3(0,2,0) * Time.deltaTime;
+            Destroy(gameObject, 120);
         }
         //if health is zero fall over
         if (health <= 0)
