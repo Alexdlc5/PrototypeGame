@@ -6493,7 +6493,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 141342045}
-  sensitivity: 300
 --- !u!1 &1591690923
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,10 +6717,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.6434207
-  m_Height: 3.2576568
+  m_Radius: 2.0958738
+  m_Height: 4.154528
   m_Direction: 1
-  m_Center: {x: -0.06404948, y: 0.00000014491475, z: -0.002390875}
+  m_Center: {x: -0.18035622, y: 0.00000014491475, z: 0.33375514}
 --- !u!23 &1754849316
 MeshRenderer:
   m_ObjectHideFlags: 0

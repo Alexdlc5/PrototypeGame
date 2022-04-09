@@ -8,6 +8,7 @@ public class StoreScript : MonoBehaviour
     private bool storeactive = false;
     void Update()
     {
+        //store menu
         if (Input.GetKeyDown(KeyCode.L) && storeactive == false)
         {
             StorePopUp.SetActive(true);
@@ -18,6 +19,5 @@ public class StoreScript : MonoBehaviour
             StorePopUp.SetActive(false);
             storeactive = false;
         }
-
     }
 }

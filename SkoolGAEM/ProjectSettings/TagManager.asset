@@ -18,6 +18,7 @@ TagManager:
   - Prop
   - Score
   - CoinCounter
+  - Sensitivity
   layers:
   - Default
   - TransparentFX

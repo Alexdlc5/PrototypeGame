@@ -5,12 +5,11 @@ using UnityEngine;
 public class MouseAim : MonoBehaviour
 {
     public Transform player;
-    public float sensitivity = 1f;
+    private float sensitivity = SliderValueDisplay.sensitivityvalue;
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X");
         transform.Rotate(Vector3.up * mouseX * sensitivity * Time.deltaTime, Space.Self);
-        
     }
     //void FixedUpdate()
     //{
