@@ -29,7 +29,13 @@ public class Projectile : MonoBehaviour
     }
     //when projectile collides with something
     void OnCollisionEnter(Collision collision)
-    {   if (isEnemyProjectile == false)
+    {   
+        if (collision.gameObject.GetComponent<tree_behavior>())
+        {
+            GameObject tree = collision.gameObject;
+            tree.SendMessage("DealDamage", 1.0f);
+        }
+        if (isEnemyProjectile == false)
         {
             if (collision.collider.tag.Equals("Enemy"))
             {

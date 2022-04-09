@@ -19,6 +19,7 @@ TagManager:
   - Score
   - CoinCounter
   - Sensitivity
+  - Tree
   layers:
   - Default
   - TransparentFX
