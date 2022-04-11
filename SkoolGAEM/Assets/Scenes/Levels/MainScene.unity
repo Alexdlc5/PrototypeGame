@@ -2078,6 +2078,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetx: 0
   offsetz: 0
+  currentbiomecount: 0
+  currentbiome: 
+  startingbiome: Pine
   amp: 1
 --- !u!4 &518239326
 Transform:
@@ -3261,7 +3264,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21016
+  m_Name: pb_Mesh21026
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

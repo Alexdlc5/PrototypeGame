@@ -12,7 +12,7 @@ public class MeshGen : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
     Vector2[] UVs;
-    
+
     public int width = 256;
     public int height = 256;
     public float offsetx = 100;
@@ -27,77 +27,150 @@ public class MeshGen : MonoBehaviour
     public GameObject rock;
     public GameObject rocka;
     public GameObject tree;
+    public GameObject grass;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
     public GameObject spawner;
     public Transform spawnerfolder;
+    private string biome = "";
 
     public float currentcoordsx = 0;
     public float currentcoordsz = 0;
 
     void Start()
     {
+        //sets biome to start 
+        biome = origin.GetComponent<WorldOrigin>().currentbiome;
+
         //off set the noise for the origins noise
         offsetx = origin.GetComponent<WorldOrigin>().offsetx + currentcoordsx / 200;
         offsetz = origin.GetComponent<WorldOrigin>().offsetz + currentcoordsz / 200;
-        
+
         //sets up mesh and mesh filter
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         //random amplitude given by origin
         amp = origin.GetComponent<WorldOrigin>().amp;
-       
+
         //generates mesh
         CreateShape();
         //updates it
         UpdateMesh();
-        
-        //changes the current mesh color to random value
-        currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
-        //sets mesh and mesh color
-        GetComponent<MeshCollider>().sharedMesh = mesh;
-        //values that will hold hue, saturation and brightness value of current color
-        float H, S, V;
-        Color.RGBToHSV(currentcolor, out H, out S, out V);
-        //decreases saturation and brightness
-        S -= .05f;
-        V -= .05f;
-        //set current color with new lower saturation
-        currentcolor = Color.HSVToRGB(H,S,V);
-        GetComponent<MeshRenderer>().material.color = currentcolor;
 
         //places assets on map
         GameObject ip = Instantiate(itemPlacer, transform);
         ip.SendMessage("setXoff", currentcoordsx);
         ip.SendMessage("setZoff", currentcoordsz);
-        ip.SendMessage("setObject", rock);
-        ip.SendMessage("setObjectColor", currentcolor);
-        ip.SendMessage("setYoff", .6);
-        ip.SendMessage("setFolder", folder);
-        ip.SendMessage("PlaceObjects", 40);
+        //checks biome, spawns accordingly
+        if (biome.Equals("Pine"))
+        {
+            //changes the current mesh color to random value
+            currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
+            //sets mesh and mesh color
+            GetComponent<MeshCollider>().sharedMesh = mesh;
+            //values that will hold hue, saturation and brightness value of current color
+            float H, S, V;
+            Color.RGBToHSV(currentcolor, out H, out S, out V);
+            //decreases saturation and brightness
+            S -= .05f;
+            V -= .05f;
+            //set current color with new lower saturation
+            currentcolor = Color.HSVToRGB(H, S, V);
+            GetComponent<MeshRenderer>().material.color = currentcolor;
 
-        //ip.SendMessage("setObject", rocka);
-        //ip.SendMessage("setObjectColor", currentcolor);
-        //ip.SendMessage("setYoff", .6);
-        //ip.SendMessage("setFolder", folder);
-        //ip.SendMessage("PlaceObjects", 20);
+            origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
-        ip.SendMessage("setObject", tree);
-        ip.SendMessage("setYoff", 1);
-        ip.SendMessage("setFolder", folder);
-        ip.SendMessage("PlaceObjects", 15);
+            ip.SendMessage("setObject", rock);
+            ip.SendMessage("isGrass", false);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", .6);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 20);
 
-        ip.SendMessage("isSpawner" , true);
-        ip.SendMessage("setYoff", 10);
-        ip.SendMessage("setObject", spawner);
-        ip.SendMessage("setFolder", spawnerfolder);
-        ip.SendMessage("PlaceObjects", 3);
+            ip.SendMessage("setObject", rocka);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", .6);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 20);
+
+            ip.SendMessage("setObject", tree);
+            ip.SendMessage("setYoff", 1);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 15);
+
+            ip.SendMessage("isSpawner", true);
+            ip.SendMessage("setYoff", 10);
+            ip.SendMessage("setObject", spawner);
+            ip.SendMessage("setFolder", spawnerfolder);
+            ip.SendMessage("PlaceObjects", 3);
+        }
+        else if (biome.Equals("Grass_Planes"))
+        {
+            //changes the current mesh color to random value
+            currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
+            //sets mesh and mesh color
+            GetComponent<MeshCollider>().sharedMesh = mesh;
+            //values that will hold hue, saturation and brightness value of current color
+            float H, S, V;
+            Color.RGBToHSV(currentcolor, out H, out S, out V);
+            //decreases saturation and brightness
+            S -= .05f;
+            V -= .05f;
+            //set current color with new lower saturation
+            currentcolor = Color.HSVToRGB(H, S, V);
+            GetComponent<MeshRenderer>().material.color = currentcolor;
+
+            origin.GetComponent<WorldOrigin>().currentbiomecount++;
+
+            ip.SendMessage("setObject", rock);
+            ip.SendMessage("isGrass", false);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", .2);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 20);
+
+            ip.SendMessage("setObject", rocka);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", .2);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 20);
+
+            ip.SendMessage("isSpawner", true);
+            ip.SendMessage("setYoff", 10);
+            ip.SendMessage("setObject", spawner);
+            ip.SendMessage("setFolder", spawnerfolder);
+            ip.SendMessage("PlaceObjects", 3);
+        }
+        else if (biome.Equals("Desert"))
+        {
+            //changes the current mesh color to random value
+            currentcolor = new Color(1, Random.Range(0.6f, .8f), 0, 1.0f);
+            //sets mesh and mesh color
+            GetComponent<MeshCollider>().sharedMesh = mesh;
+            //values that will hold hue, saturation and brightness value of current color
+            float H, S, V;
+            Color.RGBToHSV(currentcolor, out H, out S, out V);
+            //decreases saturation and brightness
+            S -= .05f;
+            V -= .05f;
+            //set current color with new lower saturation
+            currentcolor = Color.HSVToRGB(H, S, V);
+            GetComponent<MeshRenderer>().material.color = currentcolor;
+
+            origin.GetComponent<WorldOrigin>().currentbiomecount++;
+
+            ip.SendMessage("setObject", rocka);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", .05);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 20);
+        }
 
         //visual perlin
         //Renderer renderer = GetComponent<Renderer>();
         //renderer.material.mainTexture = GenTexture();
-    }
+    } 
     void CreateShape()
     {
         //creates grid of vertices
