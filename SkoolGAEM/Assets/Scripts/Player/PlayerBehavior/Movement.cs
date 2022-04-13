@@ -79,8 +79,8 @@ public class Movement : MonoBehaviour
                 //boost
                 if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                 {
-                    rb.AddForce(-flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
-                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    rb.AddForce(-flipped * speed * ((boostlvl / 2 + 1) * 5000) * Time.fixedDeltaTime);
+                    maxspeed = speed * (boostlvl / 2 + 1) * 5000;
                     boosttimer = 0;
                     inboosttimer = .2f;
                 }

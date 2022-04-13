@@ -469,8 +469,10 @@ MonoBehaviour:
   building: {fileID: 521590905013146522, guid: bd9bfde991d81f64cb7ed0716db55e08, type: 3}
   rock: {fileID: 6119262575084970382, guid: b791b64de3dc54041a86dffc9155c84c, type: 3}
   rocka: {fileID: 5534731907631708010, guid: 41284483604374e4d8a64be3cab2188f, type: 3}
-  tree: {fileID: 5674616838142544253, guid: 0a672890894b27243aa436a2426857a7, type: 3}
+  tree: {fileID: 4450627009382728263, guid: 0a672890894b27243aa436a2426857a7, type: 3}
+  oak_tree: {fileID: 2098624070113787716, guid: 6aa7cddb7d6251148a841afc5907c76f, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
+  deadbush: {fileID: 4553434261702310954, guid: ff25d51d1a7f99648aa6be8e156d3856, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}

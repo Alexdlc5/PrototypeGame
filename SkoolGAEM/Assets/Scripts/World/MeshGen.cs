@@ -27,7 +27,9 @@ public class MeshGen : MonoBehaviour
     public GameObject rock;
     public GameObject rocka;
     public GameObject tree;
+    public GameObject oak_tree;
     public GameObject grass;
+    public GameObject deadbush;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
@@ -81,6 +83,11 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
+            ip.SendMessage("setObject", tree);
+            ip.SendMessage("setYoff", -7);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 15); 
+
             ip.SendMessage("setObject", rock);
             ip.SendMessage("isGrass", false);
             ip.SendMessage("setObjectColor", currentcolor);
@@ -93,11 +100,6 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 20);
-
-            ip.SendMessage("setObject", tree);
-            ip.SendMessage("setYoff", 1);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 15);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
@@ -124,7 +126,6 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("setObject", rock);
-            ip.SendMessage("isGrass", false);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
@@ -134,7 +135,13 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 20);
+            ip.SendMessage("PlaceObjects", 12);
+
+            ip.SendMessage("setObject", oak_tree);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", -5);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 5);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
@@ -162,9 +169,21 @@ public class MeshGen : MonoBehaviour
 
             ip.SendMessage("setObject", rocka);
             ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", .05);
+            ip.SendMessage("setYoff", -.2);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 20);
+            ip.SendMessage("PlaceObjects", 10);
+            
+            ip.SendMessage("setObject", deadbush);
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", -.5);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 15);
+
+            ip.SendMessage("isSpawner", true);
+            ip.SendMessage("setYoff", 10);
+            ip.SendMessage("setObject", spawner);
+            ip.SendMessage("setFolder", spawnerfolder);
+            ip.SendMessage("PlaceObjects", 3);
         }
 
         //visual perlin
@@ -186,7 +205,7 @@ public class MeshGen : MonoBehaviour
                     if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
                     {
                         //pixel to world coord and set vertices
-                        setVerts(index, x, z, 1.75f);
+                        setVerts(index, x, z, 20f);
                         index++;
                     }
                     else

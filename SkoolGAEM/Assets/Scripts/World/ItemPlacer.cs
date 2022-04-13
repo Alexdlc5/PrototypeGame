@@ -12,7 +12,6 @@ public class ItemPlacer : MonoBehaviour
     public float offsetz;
     public bool isspawner = false;
     public float offsety = 0;
-    //sets offsets
     public void setXoff(float x)
     {
         offsetx = x;
@@ -70,10 +69,14 @@ public class ItemPlacer : MonoBehaviour
             //raycasts for random location down onto mesh and places item ontop of mesh
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
+            //gives object random rotation
+            Vector3 newrotation = new Vector3(gameObject.transform.eulerAngles.x, Random.Range(0,360), gameObject.transform.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(newrotation);
+            //instantiates new object
             GameObject newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
             //makes a child of another gameobject that will act as a folder
             newobject.SendMessage("setParent", folder);
-            //if spawner no need to setVis
+            //if spawner no need to set visability
             if (!isspawner)
             {
                 newobject.SendMessage("setVis", false);

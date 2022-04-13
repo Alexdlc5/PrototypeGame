@@ -24,8 +24,7 @@ public class WorldOrigin : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(currentbiomecount);
-        if (currentbiomecount >= 4)
+        if (currentbiomecount >= 20)
         {
             currentbiomecount = 0;
             float random = Random.Range(0,3);
