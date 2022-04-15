@@ -77,7 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
       propertyPath: m_Name
-      value: ShootingEnemySpawn
+      value: ShootingEnemySpawn Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
+      propertyPath: m_TagString
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 36797369610671282, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
@@ -87,6 +91,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 36797369610671292, guid: 240832698dbea34499b04b0cf87850f7, type: 3}
   m_PrefabInstance: {fileID: 5213197546084820904}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &-4742679860292752719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249583698336215828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3352323651048144691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249583698336215828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needscolor: 0
+  setVisOnStart: 0
+  visstate: 0
+  isenemy: 0
 --- !u!114 &1406223845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 5
   settime: 2
+  inloadingdistance: 0
   Enemy: {fileID: 824342947955777709, guid: d78674473789b4a43b3cdbcfb4f6248d, type: 3}
   player: {fileID: 0}
   score: {fileID: 0}

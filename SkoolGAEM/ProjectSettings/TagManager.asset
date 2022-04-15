@@ -20,6 +20,7 @@ TagManager:
   - CoinCounter
   - Sensitivity
   - Tree
+  - Spawner
   layers:
   - Default
   - TransparentFX

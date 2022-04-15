@@ -8,7 +8,6 @@ public class MeshGen : MonoBehaviour
     //random extra loot (weapons armor new weapon types)
     //line up terrain and not hitboxes
     Mesh mesh;
-
     Vector3[] vertices;
     int[] triangles;
     Vector2[] UVs;
@@ -29,7 +28,6 @@ public class MeshGen : MonoBehaviour
     public GameObject tree;
     public GameObject oak_tree;
     public GameObject grass;
-    public GameObject deadbush;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
@@ -84,12 +82,13 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("setObject", tree);
-            ip.SendMessage("setYoff", -7);
+            ip.SendMessage("setScaleRange", new Vector2(1,5));
+            ip.SendMessage("setRandomRotation", true);
+            ip.SendMessage("setYoff", -8);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 15); 
 
             ip.SendMessage("setObject", rock);
-            ip.SendMessage("isGrass", false);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
@@ -126,6 +125,8 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("setObject", rock);
+            ip.SendMessage("setScaleRange", new Vector2(2, 3));
+            ip.SendMessage("setRandomRotation", true);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
@@ -168,16 +169,12 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("setObject", rocka);
+            ip.SendMessage("setScaleRange", new Vector2(1, 5));
+            ip.SendMessage("setRandomRotation", true);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", -.2);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 10);
-            
-            ip.SendMessage("setObject", deadbush);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", -.5);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 15);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
@@ -192,6 +189,7 @@ public class MeshGen : MonoBehaviour
     } 
     void CreateShape()
     {
+
         //creates grid of vertices
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
         

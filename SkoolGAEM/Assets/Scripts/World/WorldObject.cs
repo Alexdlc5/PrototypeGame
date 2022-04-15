@@ -6,7 +6,7 @@ public class WorldObject : MonoBehaviour
 {
     public bool needscolor;
     public bool setVisOnStart = false;
-    private bool visstate = false;
+    public bool visstate = false;
     public bool isenemy = false;
     private float despawntimer = 20;
 
@@ -39,7 +39,7 @@ public class WorldObject : MonoBehaviour
     {
         transform.parent = newparent;
     }
-    public void  setVis(bool boolean)
+    public void setVis(bool boolean)
     {
         visstate = boolean;
         if (gameObject.GetComponent<MeshRenderer>())

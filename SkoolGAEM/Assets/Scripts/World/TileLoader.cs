@@ -20,7 +20,7 @@ public class TileLoader : MonoBehaviour
         {
             other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(true);
         }
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Spawner")
         {
             other.gameObject.GetComponentInParent<WorldObject>().setVis(true);
         }

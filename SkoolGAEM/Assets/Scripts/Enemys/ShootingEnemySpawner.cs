@@ -6,6 +6,7 @@ public class ShootingEnemySpawner : MonoBehaviour
 {
     public float time = 5.0f;
     public float settime = 5.0f;
+    public bool inloadingdistance;
     public GameObject Enemy;
     public GameObject player;
     public GameObject score;
@@ -16,7 +17,11 @@ public class ShootingEnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (time <= 0.0f)
+        if (gameObject.GetComponent<WorldObject>())
+        {
+            inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;
+        }
+        if (time <= 0.0f && inloadingdistance)
         {
             GameObject newEnemy = Instantiate(Enemy, transform.position, transform.rotation);
             newEnemy.SendMessage("setPlayer", player);

@@ -7,11 +7,31 @@ public class ItemPlacer : MonoBehaviour
     public Transform folder;
     public GameObject Object;
     public Color currentcolor;
-    public bool isgrass;
     public float offsetx;
+    public bool randomrotation = false;
+    public bool randomscale = false;
+    public float minscale = 1;
+    public float maxscale = 5;
     public float offsetz;
     public bool isspawner = false;
     public float offsety = 0;
+    public void setRandomRotation(bool boolean)
+    {
+        randomrotation = boolean;
+    }
+    public void setScaleRange(Vector2 minmax)
+    {
+        if (minmax == null)
+        {
+            randomscale = false;
+        } 
+        else
+        {
+            minscale = minmax.x;
+            maxscale = minmax.y;
+            randomscale = true;
+        }
+    }
     public void setXoff(float x)
     {
         offsetx = x;
@@ -35,10 +55,6 @@ public class ItemPlacer : MonoBehaviour
     public void setObject(GameObject Object)
     {
         this.Object = Object;
-    }
-    public void isGrass(bool isgrass)
-    {
-        this.isgrass = isgrass;
     }
     public void setObjectColor(Color color)
     {
@@ -70,8 +86,11 @@ public class ItemPlacer : MonoBehaviour
             RaycastHit hit;
             Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layermask);
             //gives object random rotation
-            Vector3 newrotation = new Vector3(gameObject.transform.eulerAngles.x, Random.Range(0,360), gameObject.transform.eulerAngles.z);
-            transform.rotation = Quaternion.Euler(newrotation);
+            if (randomrotation)
+            {
+                Vector3 newrotation = new Vector3(gameObject.transform.eulerAngles.x, Random.Range(0, 360), gameObject.transform.eulerAngles.z);
+                transform.rotation = Quaternion.Euler(newrotation);
+            }
             //instantiates new object
             GameObject newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
             //makes a child of another gameobject that will act as a folder
@@ -88,24 +107,15 @@ public class ItemPlacer : MonoBehaviour
 
             if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)
             {
-                if (isgrass)
+                //sets mesh to new color
+                GetComponent<MeshRenderer>().material.color = currentcolor;
+                newobject.GetComponentInChildren<MeshRenderer>().material.color = currentcolor;
+                //makes rocks random size
+                if (randomscale)
                 {
-                    //sets mesh to new color
-                    MeshRenderer[] meshren = newobject.GetComponentsInChildren<MeshRenderer>();
-                    for (i = 0; i < meshren.Length; i++)
-                    {
-                        meshren[i].material.color = currentcolor;
-                    }
-                }
-                else
-                {
-                    //sets mesh to new color
-                    GetComponent<MeshRenderer>().material.color = currentcolor;
-                    newobject.GetComponentInChildren<MeshRenderer>().material.color = currentcolor;
-                    //makes rocks random size
-                    float scale = Random.Range(1, 5);
+                    float scale = Random.Range(minscale, maxscale);
                     newobject.transform.localScale = new Vector3(newobject.transform.localScale.x * scale, newobject.transform.localScale.y * scale, newobject.transform.localScale.z * scale);
-                }
+                }    
             }
         }
     }
