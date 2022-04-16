@@ -5,11 +5,12 @@ using UnityEngine;
 public class SlowTime : MonoBehaviour
 {
     public bool windowopen = false;
+    public bool pausewindowopen = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L) && windowopen == false)
+        if (Input.GetKeyDown(KeyCode.L) && windowopen == false && pausewindowopen == false)
         {
             //slowtime
             Time.timeScale = .5f;
@@ -20,6 +21,18 @@ public class SlowTime : MonoBehaviour
             //speed up time
             Time.timeScale = 1f;
             windowopen = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && pausewindowopen == false)
+        {
+            //slowtime
+            Time.timeScale = 0;
+            pausewindowopen = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pausewindowopen == true)
+        {
+            //speed up time
+            Time.timeScale = 1f;
+            pausewindowopen = false;
         }
     }
 }

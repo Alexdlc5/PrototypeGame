@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6890556120075107124}
   - component: {fileID: 8143990672778183371}
   - component: {fileID: 4245829505574112437}
+  - component: {fileID: 1674963203712927650}
   m_Layer: 0
   m_Name: Rock_1
   m_TagString: Prop
@@ -127,6 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needscolor: 1
+  setVisOnStart: 0
+  visstate: 0
+  isenemy: 0
 --- !u!65 &4245829505574112437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -135,8 +139,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6119262575084970382}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.8183234, y: 1, z: 1.6709541}
   m_Center: {x: -0.04996252, y: 0, z: -0.07056993}
+--- !u!114 &1674963203712927650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119262575084970382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6498948cd0dc54a8041d0e52fec773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

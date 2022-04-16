@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     //add regen?
     public Transform playerrotation;
     public float playerspeed = 0;
+    public float smallobjectscollision = 1;
     public float accelerationspeed = 0;
     public float tipspeed = 0;
     public float jumppower = 0;
@@ -327,5 +328,35 @@ public class Movement : MonoBehaviour
         health -= damagedealt / (sheildlvl + 1);
         healthbar.SendMessage("SetSlider", health);
     }
-    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<rock_behavior>())
+        {
+            //when player hits rock, player will be launched up and in the opposite direction their moving by [smallobjectscollision]
+            smallobjectscollision = 10f;
+            Vector3 changevelocityvector = new Vector3();
+            //depending on the direction the player is moving push player out of rock in opposite direction
+            if (rb.velocity.x > 0)
+            {
+                changevelocityvector.x = rb.velocity.x - smallobjectscollision;
+            }
+            else
+            {
+                changevelocityvector.x = rb.velocity.x + smallobjectscollision;
+            }
+            //launch player up
+            changevelocityvector.y = rb.velocity.y + smallobjectscollision;
+            //depending on the direction the player is moving push player out of rock in opposite direction
+            if (rb.velocity.z > 0)
+            {
+                changevelocityvector.z = rb.velocity.z - smallobjectscollision;
+            }
+            else
+            {
+                changevelocityvector.z = rb.velocity.z + smallobjectscollision;
+            }
+            //apply changes to player velocity
+            rb.velocity = changevelocityvector;
+        }
+    }
 }
