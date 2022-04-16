@@ -125,18 +125,18 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("setObject", rock);
-            ip.SendMessage("setScaleRange", new Vector2(2, 3));
+            ip.SendMessage("setScaleRange", new Vector2(2, 3f));
             ip.SendMessage("setRandomRotation", true);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 20);
+            ip.SendMessage("PlaceObjects", 10);
 
             ip.SendMessage("setObject", rocka);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 12);
+            ip.SendMessage("PlaceObjects", 10);
 
             ip.SendMessage("setObject", oak_tree);
             ip.SendMessage("setObjectColor", currentcolor);

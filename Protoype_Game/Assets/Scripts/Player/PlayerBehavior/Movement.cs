@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     //add regen?
     public Transform playerrotation;
+    public Transform weprot;
     public float playerspeed = 0;
     public float smallobjectscollision = 1;
     public float accelerationspeed = 0;
@@ -62,6 +63,7 @@ public class Movement : MonoBehaviour
         float Xrot = transform.rotation.eulerAngles.x;
         float Zrot = transform.rotation.eulerAngles.z;
 
+
         //checks for keyboard input
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
@@ -69,11 +71,12 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 //rotates player
+                //rotateX(1);
                 transform.RotateAround(transform.position, playerrotation.right, -tipspeed / 200 * Time.fixedDeltaTime);
-                 
+
                 //creates vector3 with forward direction aligning with the players camera/weapon rotation
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
-                
+
                 //adds velocity to player
                 rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
                 
@@ -91,7 +94,9 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.S))
             {
                 //rotates player
+                //rotateX(0);
                 transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
+
 
                 //Adds velocity to player
                 Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
@@ -111,6 +116,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 //rotates player
+                //rotateZ(0);
                 transform.RotateAround(transform.position, playerrotation.forward, tipspeed / 200 * Time.fixedDeltaTime);
 
                 //Adds velocity to player
@@ -130,6 +136,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 //rotates player
+                //rotateZ(1);
                 transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
 
                 //Adds velocity to player
@@ -206,10 +213,34 @@ public class Movement : MonoBehaviour
             }
         }
 
+        //caps rotation
+        if (rb.rotation.eulerAngles.x > 45 && rb.rotation.eulerAngles.x < 315)
+        {
+            if (360 - rb.rotation.eulerAngles.x > 180)
+            {
+                GameObject.transform.rotation = Quaternion.Euler(new Vector3(44.999f, rb.rotation.eulerAngles.y, rb.rotation.eulerAngles.z));
+            } 
+            else
+            {
+                GameObject.transform.rotation = Quaternion.Euler(new Vector3(315.001f, rb.rotation.eulerAngles.y, rb.rotation.eulerAngles.z));
+            }
+        }
+        if (rb.rotation.eulerAngles.z > 45 && rb.rotation.eulerAngles.z < 315)
+        {
+            if (360 - rb.rotation.eulerAngles.z > 180)
+            {
+                GameObject.transform.rotation = Quaternion.Euler(new Vector3(rb.rotation.eulerAngles.x, rb.rotation.eulerAngles.y, 44.999f));
+            }
+            else
+            {
+                GameObject.transform.rotation = Quaternion.Euler(new Vector3(rb.rotation.eulerAngles.x, rb.rotation.eulerAngles.y, 315.001f));
+            }
+        }
+
         //creates vector3 that is turned into quaternion to reset the y values of the player to 0
-        Vector3 resetYvector3 = new Vector3(GameObject.eulerAngles.x, 0.0f, GameObject.eulerAngles.z);
-        Quaternion resetYquaternion = Quaternion.Euler(resetYvector3);
-        transform.localRotation = resetYquaternion;
+        //Vector3 resetYvector3 = new Vector3(transform.localRotation.eulerAngles.x, 0.0f, transform.localRotation.eulerAngles.z);
+        //Quaternion resetYquaternion = Quaternion.Euler(resetYvector3);
+        //transform.localRotation = resetYquaternion;
     }
 
     //waits for collision 
@@ -301,6 +332,114 @@ public class Movement : MonoBehaviour
         transform.localRotation = transform.localRotation * Quaternion.Euler(rotationbalanceVector);
     }
 
+    public void rotateX(int mode)
+    {
+        float currenttipspeed = 0;
+        if (mode == 0)
+        {
+            currenttipspeed = tipspeed;
+        }
+        else
+        {
+            currenttipspeed = -tipspeed;
+        }
+
+        if (transform.localRotation.eulerAngles.x > 180)
+        {
+            //rotates player
+            if (weprot.rotation.eulerAngles.y <= 90)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y <= 180)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y > 180 && weprot.rotation.eulerAngles.y <= 270)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+        }
+        else
+        {
+            //rotates player
+            if (weprot.rotation.eulerAngles.y <= 90)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            if (weprot.rotation.eulerAngles.y <= 180)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y > 180 && weprot.rotation.eulerAngles.y <= 270)
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.RotateAround(transform.position, playerrotation.right, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+        }
+    }
+
+    public void rotateZ(int mode)
+    {
+        float currenttipspeed = 0;
+        if (mode == 0)
+        {
+            currenttipspeed = tipspeed;
+        } 
+        else
+        {
+            currenttipspeed = -tipspeed;
+        }
+
+        if (transform.localRotation.eulerAngles.z > 180)
+        {
+            //rotates player
+            if (weprot.rotation.eulerAngles.y <= 90)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y <= 180)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y > 180 && weprot.rotation.eulerAngles.y <= 270)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+        }
+        else
+        {
+            //rotates player
+            if (weprot.rotation.eulerAngles.y <= 90)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+            if (weprot.rotation.eulerAngles.y <= 180)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else if (weprot.rotation.eulerAngles.y > 180 && weprot.rotation.eulerAngles.y <= 270)
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed / 200 * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.RotateAround(transform.position, playerrotation.forward, currenttipspeed * 1.5f / 200 * Time.fixedDeltaTime);
+            }
+        }
+    }
+
     public void setSheildLvl(int lvl)
     {
         sheildlvl = lvl;
@@ -354,6 +493,33 @@ public class Movement : MonoBehaviour
             else
             {
                 changevelocityvector.z = rb.velocity.z + smallobjectscollision;
+            }
+            //apply changes to player velocity
+            rb.velocity = changevelocityvector;
+        }
+        if (other.gameObject.GetComponent<tree_behavior>())
+        {
+            //when player hits rock, player will be launched up and in the opposite direction their moving by [smallobjectscollision]
+            smallobjectscollision = 2f;
+            Vector3 changevelocityvector = new Vector3();
+            //depending on the direction the player is moving push player out of rock in opposite direction
+            if (rb.velocity.x > 0)
+            {
+                changevelocityvector.x = rb.velocity.x - (rb.velocity.x + smallobjectscollision);
+            }
+            else
+            {
+                changevelocityvector.x = rb.velocity.x + (rb.velocity.x + smallobjectscollision);
+            }
+            changevelocityvector.y = rb.velocity.y;
+            //depending on the direction the player is moving push player out of rock in opposite direction
+            if (rb.velocity.z > 0)
+            {
+                changevelocityvector.z = rb.velocity.z - (rb.velocity.x + smallobjectscollision);
+            }
+            else
+            {
+                changevelocityvector.z = rb.velocity.z + (rb.velocity.x + smallobjectscollision);
             }
             //apply changes to player velocity
             rb.velocity = changevelocityvector;
