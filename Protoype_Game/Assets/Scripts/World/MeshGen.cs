@@ -28,6 +28,7 @@ public class MeshGen : MonoBehaviour
     public GameObject tree;
     public GameObject oak_tree;
     public GameObject grass;
+    public GameObject healthpickup;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
@@ -94,6 +95,10 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 20);
 
+            ip.SendMessage("setObject", healthpickup);
+            ip.SendMessage("setYoff", 3);
+            ip.SendMessage("PlaceObjects", 1);
+
             ip.SendMessage("setObject", rocka);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
@@ -131,6 +136,10 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setYoff", .2);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 10);
+
+            ip.SendMessage("setObject", healthpickup);
+            ip.SendMessage("setYoff", .6);
+            ip.SendMessage("PlaceObjects", 1);
 
             ip.SendMessage("setObject", rocka);
             ip.SendMessage("setObjectColor", currentcolor);
@@ -175,6 +184,10 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setYoff", -.2);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 10);
+
+            ip.SendMessage("setObject", healthpickup);
+            ip.SendMessage("setYoff", .6);
+            ip.SendMessage("PlaceObjects", 1);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);

@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damagelvl = player.GetComponent<Movement>().damagelvl;
+        damagelvl = Movement.damagelvl;
         //projectile only exists for 2.5 secs
         if (time <= 0f)
         {

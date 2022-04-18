@@ -19,15 +19,21 @@ public class Movement : MonoBehaviour
     public GameObject healthbar;
     public GameObject staminabar;
     public GameObject score;
-    public float health = 1;
+    public float health;
+    public float maxhealth;
     public Transform GameObject;
     public Rigidbody rb;
 
-    public int sheildlvl = 0;
-    public int boostlvl = 0;
-    public int firinglvl = 0;
-    public int damagelvl = 0;
-    public int speedlvl = 0;
+    public static int sheildlvl = 0;
+    public static int boostlvl = 0;
+    public static int firinglvl = 0;
+    public static int damagelvl = 0;
+    public static int speedlvl = 0;
+
+    void Start()
+    {
+        maxhealth = health;
+    }
 
     void FixedUpdate()
     {
@@ -67,6 +73,7 @@ public class Movement : MonoBehaviour
         //checks for keyboard input
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
+            float currentboostvalue = boostlvl / 3.5f + 1 * 5000;
             //W key input
             if (Input.GetKey(KeyCode.W))
             {
@@ -83,13 +90,12 @@ public class Movement : MonoBehaviour
                 //boost
                 if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                 {
-                    rb.AddForce(-flipped * speed * ((boostlvl / 2 + 1) * 5000) * Time.fixedDeltaTime);
-                    maxspeed = speed * (boostlvl / 2 + 1) * 5000;
+                    rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+                    maxspeed = speed * currentboostvalue;
                     boosttimer = 0;
                     inboosttimer = .2f;
                 }
             }
-
             //S key input
             if (Input.GetKey(KeyCode.S))
             {
@@ -105,13 +111,12 @@ public class Movement : MonoBehaviour
                 //boost
                 if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                 {
-                    rb.AddForce(flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
-                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+                    maxspeed = speed * currentboostvalue;
                     boosttimer = 0;
                     inboosttimer = .2f;
                 }
             }
-
             //D key input
             if (Input.GetKey(KeyCode.D))
             {
@@ -126,8 +131,8 @@ public class Movement : MonoBehaviour
                 //boost
                 if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                 {
-                    rb.AddForce(-flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
-                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+                    maxspeed = speed * currentboostvalue;
                     boosttimer = 0;
                     inboosttimer = .2f;
                 }
@@ -146,8 +151,8 @@ public class Movement : MonoBehaviour
                 //boost
                 if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                 {
-                    rb.AddForce(flipped * speed * ((boostlvl + 1) * 5000) * Time.fixedDeltaTime);
-                    maxspeed = speed * (boostlvl + 1) * 5000;
+                    rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+                    maxspeed = speed * currentboostvalue;
                     boosttimer = 0;
                     inboosttimer = .2f;
                 }
@@ -523,6 +528,18 @@ public class Movement : MonoBehaviour
             }
             //apply changes to player velocity
             rb.velocity = changevelocityvector;
+        }
+        if (other.tag.Equals("HealthPickup"))
+        {
+            if (health <= maxhealth / 2)
+            {
+                health = health + maxhealth / 2;
+            }
+            else
+            {
+                health = maxhealth;
+            }
+            Destroy(other.gameObject);
         }
     }
 }

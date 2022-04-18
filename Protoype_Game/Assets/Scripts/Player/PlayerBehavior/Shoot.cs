@@ -14,7 +14,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        firinglvl = player.GetComponent<Movement>().firinglvl;
+        firinglvl = Movement.firinglvl;
         float firingdecimal = (firinglvl + 3) / 10;
         time -= 1 * Time.fixedDeltaTime;
         if (Input.GetMouseButton(0))

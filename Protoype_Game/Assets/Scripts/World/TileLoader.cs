@@ -31,6 +31,11 @@ public class TileLoader : MonoBehaviour
                 other.gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = true;
             }
         }
+        if (other.gameObject.tag == "HealthPickup")
+        {
+            other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            other.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+        }
         //checks for world gen hitboxes
         else if (other.gameObject.tag == "North")
         {
@@ -130,6 +135,10 @@ public class TileLoader : MonoBehaviour
             {
                 other.gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
             }
+        }
+        if (other.gameObject.tag == "HealthPickup")
+        {
+            other.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
     void generateTile(float xcoord, float zcoord)

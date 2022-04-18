@@ -21,6 +21,7 @@ TagManager:
   - Sensitivity
   - Tree
   - Spawner
+  - HealthPickup
   layers:
   - Default
   - TransparentFX

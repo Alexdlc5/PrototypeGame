@@ -9,6 +9,6 @@ public class FinalScore : MonoBehaviour
     void Start()
     {
         TextMeshProUGUI scoretext = gameObject.GetComponent<TextMeshProUGUI>();
-        scoretext.text = "[Score: " + ((int)Score.savedscore).ToString() + "]";
+        scoretext.text = "[Score: " + ((int)Score.savedscore).ToString() + "]" + "\n";
     }
 }

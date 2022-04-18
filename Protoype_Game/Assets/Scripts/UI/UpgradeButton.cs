@@ -27,7 +27,7 @@ public class UpgradeButton : MonoBehaviour
     {
         if (currrentcoincount >= 1000)
         {
-            value += .5f;
+            value += .25f;
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(1000);
             player.SendMessage("set" + stat + "Lvl", value);

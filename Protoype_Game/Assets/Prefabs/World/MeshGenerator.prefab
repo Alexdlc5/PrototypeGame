@@ -472,7 +472,7 @@ MonoBehaviour:
   tree: {fileID: 4450627009382728263, guid: 0a672890894b27243aa436a2426857a7, type: 3}
   oak_tree: {fileID: 2098624070113787716, guid: 6aa7cddb7d6251148a841afc5907c76f, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
-  deadbush: {fileID: 4553434261702310954, guid: ff25d51d1a7f99648aa6be8e156d3856, type: 3}
+  healthpickup: {fileID: 2724742745382141902, guid: db80fbd08032c354e8f91d56a96c2803, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}
