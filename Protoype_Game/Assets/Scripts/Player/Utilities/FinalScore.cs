@@ -9,6 +9,6 @@ public class FinalScore : MonoBehaviour
     void Start()
     {
         TextMeshProUGUI scoretext = gameObject.GetComponent<TextMeshProUGUI>();
-        scoretext.text = "[Score: " + ((int)Score.savedscore).ToString() + "]" + "\n";
+        scoretext.text = "Score: [" + Score.savedscore + "]\n\n[Player Levels]\nSheild: [" + Movement.sheildlvl + "]\n" + "Boost: [" + (double)Movement.boostlvl + "]\nFiring Speed: [" + (double)Movement.firinglvl +"]\nDamage: [" + (double)Movement.damagelvl + "]\nSpeed: [" + (double)Movement.speedlvl + "]";
     }
 }

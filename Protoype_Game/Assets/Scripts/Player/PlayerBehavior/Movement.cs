@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     public GameObject staminabar;
     public GameObject score;
     public float health;
-    public float maxhealth;
+    private float maxhealth;
     public Transform GameObject;
     public Rigidbody rb;
 
@@ -184,7 +184,7 @@ public class Movement : MonoBehaviour
             }
             else if (jumptimer >= 1f)
             {
-                rb.AddForce(Vector3.up * jumppower / 4 * 10);
+                rb.AddForce(Vector3.up * jumppower / 2 * 10);
                 staminabar.SendMessage("SetSlider", jumptimer);
                 balanceX(Xrot);
                 balanceZ(Zrot);
@@ -533,11 +533,13 @@ public class Movement : MonoBehaviour
         {
             if (health <= maxhealth / 2)
             {
-                health = health + maxhealth / 2;
+                health = health + (maxhealth / 2);
+                healthbar.SendMessage("SetSlider", health);
             }
             else
             {
                 health = maxhealth;
+                healthbar.SendMessage("SetSlider", health);
             }
             Destroy(other.gameObject);
         }

@@ -16,8 +16,27 @@ public class UpgradeButton : MonoBehaviour
     private void Start()
     {
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
-        value = 0;
-        UpgradeBar.value = 0;
+        if (stat.Equals("Sheild"))
+        {
+            value = Movement.sheildlvl;
+        } 
+        else if (stat.Equals("Boost"))
+        {
+            value = Movement.boostlvl;
+        }
+        else if (stat.Equals("Firing"))
+        {
+            value = Movement.firinglvl;
+        }
+        else if (stat.Equals("Damage"))
+        {
+            value = Movement.damagelvl;
+        }
+        else if (stat.Equals("Speed"))
+        {
+            value = Movement.speedlvl;
+        }
+        UpgradeBar.value = value;
     }
     private void Update()
     {
