@@ -7,6 +7,7 @@ public class ShootingEnemySpawner : MonoBehaviour
     public float time = 5.0f;
     public float settime = 5.0f;
     public bool inloadingdistance;
+    public bool spawneractive;
     public GameObject Enemy;
     public GameObject player;
     public GameObject score;
@@ -15,13 +16,17 @@ public class ShootingEnemySpawner : MonoBehaviour
     public GameObject deathbit;
     public GameObject projectile;
 
+    private void Start()
+    {
+        score = GameObject.FindGameObjectWithTag("Score");
+    }
     void Update()
     {
         if (gameObject.GetComponent<WorldObject>())
         {
             inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;
         }
-        if (time <= 0.0f && inloadingdistance)
+        if (time <= 0.0f && inloadingdistance && spawneractive)
         {
             GameObject newEnemy = Instantiate(Enemy, transform.position, transform.rotation);
             newEnemy.SendMessage("setPlayer", player);
@@ -37,5 +42,21 @@ public class ShootingEnemySpawner : MonoBehaviour
             time -= 1 * Time.deltaTime;
         }
     }
+    public void setPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
+    }
+
+    public void setParent(Transform newparent)
+    {
+        transform.parent = newparent;
+    }
+
+    public void setSpawnerActive(bool boolean)
+    {
+        spawneractive = boolean;
+    }
 }
+
 

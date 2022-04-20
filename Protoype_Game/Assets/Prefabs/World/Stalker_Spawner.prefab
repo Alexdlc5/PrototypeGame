@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &36797369610671292
+--- !u!1 &1986612112343339380
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 36797369610671283}
-  - component: {fileID: 36797369610671282}
-  - component: {fileID: 4600436207568680693}
-  - component: {fileID: -1724153883326567484}
+  - component: {fileID: 1986612112343339387}
+  - component: {fileID: 1986612112343339386}
+  - component: {fileID: 2651334201900495677}
+  - component: {fileID: 8287174298952740364}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Stalker_Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &36797369610671283
+--- !u!4 &1986612112343339387
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36797369610671292}
+  m_GameObject: {fileID: 1986612112343339380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 31.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &36797369610671282
+--- !u!114 &1986612112343339386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36797369610671292}
+  m_GameObject: {fileID: 1986612112343339380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9085f77dd80f1cb4c930daa523214536, type: 3}
@@ -48,19 +48,19 @@ MonoBehaviour:
   time: 5
   settime: 6
   inloadingdistance: 0
-  Enemy: {fileID: 867690739372413594, guid: ab959ba44b16e6e4193f0b6a8262db72, type: 3}
+  Enemy: {fileID: 6801178248042545568, guid: 836bc6815b8a0f448bdfcce3815d8c90, type: 3}
   player: {fileID: 0}
   score: {fileID: 0}
   coin: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
   coincounter: {fileID: 0}
   deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
---- !u!114 &4600436207568680693
+--- !u!114 &2651334201900495677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36797369610671292}
+  m_GameObject: {fileID: 1986612112343339380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
@@ -70,13 +70,13 @@ MonoBehaviour:
   setVisOnStart: 0
   visstate: 0
   isenemy: 0
---- !u!65 &-1724153883326567484
+--- !u!65 &8287174298952740364
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36797369610671292}
+  m_GameObject: {fileID: 1986612112343339380}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

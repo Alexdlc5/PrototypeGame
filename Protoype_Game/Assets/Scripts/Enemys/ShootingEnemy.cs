@@ -94,7 +94,7 @@ public class ShootingEnemy : MonoBehaviour
             time += Time.fixedDeltaTime;
         }
         
-        if (shootingtime > 1)
+        if (shootingtime > 3)
         {
             GameObject newprojectile = Instantiate(projectile, projectilespawn.transform.position, projectilespawn.transform.rotation);
             newprojectile.SendMessage("setPlayer", player);

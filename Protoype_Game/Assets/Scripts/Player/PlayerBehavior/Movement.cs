@@ -13,14 +13,18 @@ public class Movement : MonoBehaviour
     public float tipspeed = 0;
     public float jumppower = 0;
     public float resetmultiplier = 0;
+    
     public float jumptimer = 0;
     public float boosttimer = 0;
     public float inboosttimer = 0;
+    
     public GameObject healthbar;
     public GameObject staminabar;
     public GameObject score;
+    
     public float health;
     private float maxhealth;
+    
     public Transform GameObject;
     public Rigidbody rb;
 
@@ -139,7 +143,7 @@ public class Movement : MonoBehaviour
             }
             //A key input
             if (Input.GetKey(KeyCode.A))
-            {
+            {;
                 //rotates player
                 //rotateZ(1);
                 transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
@@ -173,6 +177,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
+
             //checks jump timer to see if player should boostjump, hop or not jump at all
             if (jumptimer >= 1.5f)
             {

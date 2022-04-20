@@ -7,6 +7,7 @@ public class SimpleEnemySpawn : MonoBehaviour
     public float time = 5.0f;
     public float settime = 5.0f;
     public bool inloadingdistance = false;
+    public bool spawneractive = false;
     public GameObject Enemy;
     public GameObject player;
     public GameObject score;
@@ -24,7 +25,7 @@ public class SimpleEnemySpawn : MonoBehaviour
         {
             inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;
         }
-        if (time <= 0.0f && inloadingdistance)
+        if (time <= 0.0f && inloadingdistance && spawneractive)
         {
             GameObject newEnemy = Instantiate(Enemy, transform.position, transform.rotation);
             newEnemy.SendMessage("setPlayer", player);
@@ -49,5 +50,10 @@ public class SimpleEnemySpawn : MonoBehaviour
     public void setParent(Transform newparent)
     {
         transform.parent = newparent;
+    }
+
+    public void setSpawnerActive(bool boolean)
+    {
+        spawneractive = boolean;
     }
 }

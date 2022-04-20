@@ -472,11 +472,15 @@ MonoBehaviour:
   tree: {fileID: 4450627009382728263, guid: 0a672890894b27243aa436a2426857a7, type: 3}
   oak_tree: {fileID: 2098624070113787716, guid: 6aa7cddb7d6251148a841afc5907c76f, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
+  cactus: {fileID: 5357392381484799591, guid: 7c22688b28743a04fbcabd4d71e28611, type: 3}
   healthpickup: {fileID: 2724742745382141902, guid: db80fbd08032c354e8f91d56a96c2803, type: 3}
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}
-  spawner: {fileID: 6609304693747013650, guid: 10e720134e529f54182f1f78abf03103, type: 3}
+  spawner: {fileID: 7646372383387900657, guid: f6743904d142e0b4a8017790602138a0, type: 3}
+  spawnera: {fileID: 8375797639782992743, guid: 58e829c1ff1cde745a3964979423aaf0, type: 3}
+  spawnerb: {fileID: 1986612112343339380, guid: 138bb800552fa624399478bef4c5289b, type: 3}
+  spawnerc: {fileID: 1723923817001227291, guid: d619baae440c7884fbfdb66feef733b0, type: 3}
   spawnerfolder: {fileID: 7325498811626630822}
   currentcoordsx: 0
   currentcoordsz: 0

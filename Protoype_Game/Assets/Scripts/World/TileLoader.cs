@@ -20,7 +20,7 @@ public class TileLoader : MonoBehaviour
         {
             other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(true);
         }
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Spawner")
+        if (other.gameObject.tag == "Spawner")
         {
             other.gameObject.GetComponentInParent<WorldObject>().setVis(true);
         }
@@ -124,10 +124,6 @@ public class TileLoader : MonoBehaviour
         if (other.gameObject.tag == "Tile")
         {
             other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(false);
-        }
-        if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponentInParent<WorldObject>().setVis(false);
         }
         if (other.gameObject.tag == "Prop")
         {

@@ -28,11 +28,15 @@ public class MeshGen : MonoBehaviour
     public GameObject tree;
     public GameObject oak_tree;
     public GameObject grass;
+    public GameObject cactus;
     public GameObject healthpickup;
     public Color currentcolor;
     public Transform folder;
     public GameObject origin;
     public GameObject spawner;
+    public GameObject spawnera;
+    public GameObject spawnerb;
+    public GameObject spawnerc;
     public Transform spawnerfolder;
     private string biome = "";
 
@@ -107,9 +111,14 @@ public class MeshGen : MonoBehaviour
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
+            ip.SendMessage("setObject", spawnerb);
+            ip.SendMessage("PlaceObjects", 1);
+
+            ip.SendMessage("setObject", spawnera);
+            ip.SendMessage("PlaceObjects", 1);
+
             ip.SendMessage("setObject", spawner);
-            ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", 3);
+            ip.SendMessage("PlaceObjects", 1);
         }
         else if (biome.Equals("Grass_Planes"))
         {
@@ -157,7 +166,13 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setYoff", 10);
             ip.SendMessage("setObject", spawner);
             ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", 3);
+            ip.SendMessage("PlaceObjects", 1);
+
+            ip.SendMessage("setObject", spawnerc);
+            ip.SendMessage("PlaceObjects", 1);
+
+            ip.SendMessage("setObject", spawnera);
+            ip.SendMessage("PlaceObjects", 1);
         }
         else if (biome.Equals("Desert"))
         {
@@ -177,6 +192,14 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
+            ip.SendMessage("setObject", cactus);
+            ip.SendMessage("setScaleRange", new Vector2(2, 3));
+            ip.SendMessage("setRandomRotation", true);
+            ip.SendMessage("setYoff", -8);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 9);
+
+
             ip.SendMessage("setObject", rocka);
             ip.SendMessage("setScaleRange", new Vector2(1, 5));
             ip.SendMessage("setRandomRotation", true);
@@ -191,9 +214,12 @@ public class MeshGen : MonoBehaviour
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
-            ip.SendMessage("setObject", spawner);
+            ip.SendMessage("setObject", spawnera);
             ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", 3);
+            ip.SendMessage("PlaceObjects", 1);
+
+            ip.SendMessage("setObject", spawnerc);
+            ip.SendMessage("PlaceObjects", 2);
         }
 
         //visual perlin

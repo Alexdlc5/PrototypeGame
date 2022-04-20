@@ -6,6 +6,10 @@ using TMPro;
 
 public class CoinInv : MonoBehaviour
 {
+    private void Start()
+    {
+        coins = 0;
+    }
     public int coinstoaddinconsole = 0;
     public static int coins = 0;
     // Update is called once per frame
