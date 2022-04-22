@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class MeshGen : MonoBehaviour
 {
-    //add health kits
     //random extra loot (weapons armor new weapon types)
-    //line up terrain and not hitboxes
+    //mesh building
     Mesh mesh;
     Vector3[] vertices;
     int[] triangles;
     Vector2[] UVs;
-
     public int width = 256;
     public int height = 256;
     public float offsetx = 100;
@@ -21,6 +19,7 @@ public class MeshGen : MonoBehaviour
     public int zSize = 20;
     public float amp = 1;
     public Texture texture;
+    //props
     public GameObject itemPlacer;
     public GameObject building;
     public GameObject rock;
@@ -31,13 +30,24 @@ public class MeshGen : MonoBehaviour
     public GameObject cactus;
     public GameObject healthpickup;
     public Color currentcolor;
+    //misc
     public Transform folder;
     public GameObject origin;
+    //spanwers
     public GameObject spawner;
     public GameObject spawnera;
     public GameObject spawnerb;
     public GameObject spawnerc;
     public Transform spawnerfolder;
+    //buildings
+    public int chanceofbuilding = 100;
+    public int buildingtype;
+    public GameObject building_a;
+    public GameObject building_b;
+    public GameObject building_c;
+    public GameObject building_d;
+    public GameObject building_e;
+
     private string biome = "";
 
     public float currentcoordsx = 0;
@@ -67,6 +77,7 @@ public class MeshGen : MonoBehaviour
         GameObject ip = Instantiate(itemPlacer, transform);
         ip.SendMessage("setXoff", currentcoordsx);
         ip.SendMessage("setZoff", currentcoordsz);
+        
         //checks biome, spawns accordingly
         if (biome.Equals("Pine"))
         {
@@ -222,10 +233,42 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("PlaceObjects", 2);
         }
 
-        //visual perlin
-        //Renderer renderer = GetComponent<Renderer>();
-        //renderer.material.mainTexture = GenTexture();
-    } 
+        ip.SendMessage("isSpawner", false);
+        // 1 / [chanceofbuilding] chance of spwaning building
+        if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
+        {
+            //sets building
+            buildingtype = Random.Range(0, 4);
+            if (buildingtype < 1)
+            {
+                ip.SendMessage("setObject", building_e);
+            }
+            else if (buildingtype < 2)
+            {
+                ip.SendMessage("setObject", building_a);
+            }
+            else if (buildingtype < 3)
+            {
+                ip.SendMessage("setObject", building_b);
+            }
+            else if (buildingtype < 4)
+            {
+                ip.SendMessage("setObject", building_c);
+            }
+            else
+            {
+                ip.SendMessage("setObject", building_d);
+            }
+            //finishes placement settings then places building
+            ip.SendMessage("setScaleRange", new Vector2(5,5));
+            ip.SendMessage("setRandomRotation", true);
+            ip.SendMessage("setYoff", 5);
+            ip.SendMessage("PlaceObjects", 1);
+        }
+            //visual perlin
+            //Renderer renderer = GetComponent<Renderer>();
+            //renderer.material.mainTexture = GenTexture();
+        } 
     void CreateShape()
     {
 

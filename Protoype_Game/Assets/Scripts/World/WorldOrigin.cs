@@ -9,6 +9,7 @@ public class WorldOrigin : MonoBehaviour
     public int currentbiomecount = 0;
     public string currentbiome = "";
     public string startingbiome = "Desert";
+    public GameObject loadingscreen;
 
     public float amp = 1;
     void Start()
@@ -21,6 +22,7 @@ public class WorldOrigin : MonoBehaviour
 
         //random amplitude
         amp = Random.Range(15, 45);
+        loadingscreen.GetComponent<loading>().SendMessage("clear");
     }
     private void Update()
     {

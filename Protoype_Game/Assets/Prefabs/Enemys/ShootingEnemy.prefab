@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needscolor: 0
   setVisOnStart: 0
+  visstate: 0
   isenemy: 1
 --- !u!1 &3439661374615330506
 GameObject:
@@ -215,7 +216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b30bde0ba9b64e14eb7c10975788571a, type: 2}
+  - {fileID: 2100000, guid: 40d7141b298f8c54a88f8b2cd50d5dec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
