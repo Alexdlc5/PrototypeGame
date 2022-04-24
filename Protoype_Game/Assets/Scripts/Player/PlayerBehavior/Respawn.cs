@@ -18,5 +18,6 @@ public class Respawn : MonoBehaviour
     void ChangeScene()
     {
         SceneManager.LoadScene(location);
+        Time.timeScale = 1;
     } 
 }

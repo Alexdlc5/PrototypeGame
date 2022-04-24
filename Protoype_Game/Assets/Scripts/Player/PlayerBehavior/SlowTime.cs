@@ -34,5 +34,6 @@ public class SlowTime : MonoBehaviour
             Time.timeScale = 1f;
             pausewindowopen = false;
         }
+        Time.fixedDeltaTime = Time.timeScale * .02f;
     }
 }
