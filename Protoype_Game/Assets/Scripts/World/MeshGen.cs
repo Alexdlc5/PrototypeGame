@@ -97,10 +97,43 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
+            ip.SendMessage("isSpawner", false);
+            // 1 / [chanceofbuilding] chance of spwaning building
+            if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
+            {
+                //sets building
+                buildingtype = Random.Range(0, 4);
+                if (buildingtype < 1)
+                {
+                    ip.SendMessage("setObject", building_e);
+                }
+                else if (buildingtype < 2)
+                {
+                    ip.SendMessage("setObject", building_a);
+                }
+                else if (buildingtype < 3)
+                {
+                    ip.SendMessage("setObject", building_b);
+                }
+                else if (buildingtype < 4)
+                {
+                    ip.SendMessage("setObject", building_c);
+                }
+                else
+                {
+                    ip.SendMessage("setObject", building_d);
+                }
+                //finishes placement settings then places building
+                ip.SendMessage("setScaleRange", new Vector2(5, 5));
+                ip.SendMessage("setRandomRotation", true);
+                ip.SendMessage("setYoff", -.5f);
+                ip.SendMessage("PlaceObjects", 1);
+            }
+
             ip.SendMessage("setObject", tree);
-            ip.SendMessage("setScaleRange", new Vector2(1,5));
+            ip.SendMessage("setScaleRange", new Vector2(3,5));
             ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setYoff", -8);
+            ip.SendMessage("setYoff", -10);
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 15); 
 
@@ -108,7 +141,7 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 20);
+            ip.SendMessage("PlaceObjects", 10);
 
             ip.SendMessage("setObject", healthpickup);
             ip.SendMessage("setYoff", 3);
@@ -118,7 +151,7 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 20);
+            ip.SendMessage("PlaceObjects", 10);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);
@@ -148,6 +181,39 @@ public class MeshGen : MonoBehaviour
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
+
+            ip.SendMessage("isSpawner", false);
+            // 1 / [chanceofbuilding] chance of spwaning building
+            if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
+            {
+                //sets building
+                buildingtype = Random.Range(0, 4);
+                if (buildingtype < 1)
+                {
+                    ip.SendMessage("setObject", building_e);
+                }
+                else if (buildingtype < 2)
+                {
+                    ip.SendMessage("setObject", building_a);
+                }
+                else if (buildingtype < 3)
+                {
+                    ip.SendMessage("setObject", building_b);
+                }
+                else if (buildingtype < 4)
+                {
+                    ip.SendMessage("setObject", building_c);
+                }
+                else
+                {
+                    ip.SendMessage("setObject", building_d);
+                }
+                //finishes placement settings then places building
+                ip.SendMessage("setScaleRange", new Vector2(5, 5));
+                ip.SendMessage("setRandomRotation", true);
+                ip.SendMessage("setYoff", -.5f);
+                ip.SendMessage("PlaceObjects", 1);
+            }
 
             ip.SendMessage("setObject", rock);
             ip.SendMessage("setScaleRange", new Vector2(2, 3f));
@@ -203,6 +269,39 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
+            ip.SendMessage("isSpawner", false);
+            // 1 / [chanceofbuilding] chance of spwaning building
+            if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
+            {
+                //sets building
+                buildingtype = Random.Range(0, 4);
+                if (buildingtype < 1)
+                {
+                    ip.SendMessage("setObject", building_e);
+                }
+                else if (buildingtype < 2)
+                {
+                    ip.SendMessage("setObject", building_a);
+                }
+                else if (buildingtype < 3)
+                {
+                    ip.SendMessage("setObject", building_b);
+                }
+                else if (buildingtype < 4)
+                {
+                    ip.SendMessage("setObject", building_c);
+                }
+                else
+                {
+                    ip.SendMessage("setObject", building_d);
+                }
+                //finishes placement settings then places building
+                ip.SendMessage("setScaleRange", new Vector2(5, 5));
+                ip.SendMessage("setRandomRotation", true);
+                ip.SendMessage("setYoff", -1);
+                ip.SendMessage("PlaceObjects", 1);
+            }
+
             ip.SendMessage("setObject", cactus);
             ip.SendMessage("setScaleRange", new Vector2(2, 3));
             ip.SendMessage("setRandomRotation", true);
@@ -227,44 +326,13 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setYoff", 10);
             ip.SendMessage("setObject", spawnera);
             ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", 1);
+            ip.SendMessage("PlaceObjects", -.5f);
 
             ip.SendMessage("setObject", spawnerc);
             ip.SendMessage("PlaceObjects", 2);
         }
 
-        ip.SendMessage("isSpawner", false);
-        // 1 / [chanceofbuilding] chance of spwaning building
-        if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
-        {
-            //sets building
-            buildingtype = Random.Range(0, 4);
-            if (buildingtype < 1)
-            {
-                ip.SendMessage("setObject", building_e);
-            }
-            else if (buildingtype < 2)
-            {
-                ip.SendMessage("setObject", building_a);
-            }
-            else if (buildingtype < 3)
-            {
-                ip.SendMessage("setObject", building_b);
-            }
-            else if (buildingtype < 4)
-            {
-                ip.SendMessage("setObject", building_c);
-            }
-            else
-            {
-                ip.SendMessage("setObject", building_d);
-            }
-            //finishes placement settings then places building
-            ip.SendMessage("setScaleRange", new Vector2(5,5));
-            ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setYoff", 5);
-            ip.SendMessage("PlaceObjects", 1);
-        }
+
             //visual perlin
             //Renderer renderer = GetComponent<Renderer>();
             //renderer.material.mainTexture = GenTexture();

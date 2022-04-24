@@ -80,7 +80,7 @@ public class ItemPlacer : MonoBehaviour
         for (int i = 0; i < objectcount; i++)
         {
             //get random location within current tile and moves spanwer to that location
-            Vector3 randomlocation = new Vector3(Random.Range(offsetx, offsetx + 200), 99, Random.Range(offsetz, offsetz + 200));
+            Vector3 randomlocation = new Vector3(Random.Range(offsetx, offsetx + 190), 99, Random.Range(offsetz, offsetz + 190));
             transform.position = randomlocation;
             //raycasts for random location down onto mesh and places item ontop of mesh
             RaycastHit hit;
@@ -115,7 +115,7 @@ public class ItemPlacer : MonoBehaviour
                 {
                     float scale = Random.Range(minscale, maxscale);
                     newobject.transform.localScale = new Vector3(newobject.transform.localScale.x * scale, newobject.transform.localScale.y * scale, newobject.transform.localScale.z * scale);
-                }    
+                }
             }
         }
     }

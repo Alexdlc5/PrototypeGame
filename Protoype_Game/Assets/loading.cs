@@ -6,7 +6,7 @@ public class loading : MonoBehaviour
 {
     void clear()
     {
-        Destroy(gameObject, .05f);
+        Destroy(gameObject);
     }
     
 }

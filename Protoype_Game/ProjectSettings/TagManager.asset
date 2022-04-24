@@ -22,6 +22,9 @@ TagManager:
   - Tree
   - Spawner
   - HealthPickup
+  - NoColor
+  - AllColor
+  - DungeonEntrance
   layers:
   - Default
   - TransparentFX
