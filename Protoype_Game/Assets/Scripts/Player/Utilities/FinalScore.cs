@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class FinalScore : MonoBehaviour
@@ -9,6 +10,8 @@ public class FinalScore : MonoBehaviour
     void Start()
     {
         TextMeshProUGUI scoretext = gameObject.GetComponent<TextMeshProUGUI>();
-        scoretext.text = "Score: [" + Score.savedscore + "]\n\nPlayer Levels\nSheild: [" + Movement.sheildlvl + "]\n" + "Boost: [" + (double)Movement.boostlvl + "]\nFiring Speed: [" + (double)Movement.firinglvl +"]\nDamage: [" + (double)Movement.damagelvl + "]\nSpeed: [" + (double)Movement.speedlvl + "]\n\nCoins Lost\nCoins: " + CoinInv.coins;
+        scoretext.text = "Score: [" + Math.Truncate(Score.savedscore * 100) / 100  + "]\n\nPlayer Levels\nSheild: [" + Movement.sheildlvl
+            + "]\n" + "Boost: [" + Movement.boostlvl + "]\nFiring Speed: [" + Movement.firinglvl + "]\nDamage: [" 
+            + Movement.damagelvl + "]\nSpeed: [" + Movement.speedlvl + "]\n\nCoins Lost\nCoins: " + CoinInv.coins;
     }
 }

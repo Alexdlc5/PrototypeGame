@@ -5,20 +5,25 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
+    private bool isAlive = true;
+    private bool enemylock = false;
+    private GameObject LockedEnemy;
     // Update is called once per frame
     void Update()
     {
-        //gets the players position and rotation
-        Transform playertran = player.transform;
-        Quaternion playerrot = playertran.rotation;
-       
-        //creates floats with averages the angles on with z flipped and one with x flipped
-        float avgrot = (playerrot.eulerAngles.z + playerrot.eulerAngles.x) / 2;
-        float avgrotz = ((360 - playerrot.eulerAngles.z) + playerrot.eulerAngles.x) / 2;
-        float avgrotx = (playerrot.eulerAngles.z + (360 - playerrot.eulerAngles.x)) / 2;
+        if (isAlive)
+        {
+            //gets the players position and rotation
+            Transform playertran = player.transform;
+            Quaternion playerrot = playertran.rotation;
 
-       // if (!(playerrot.eulerAngles.z > 20 && playerrot.eulerAngles.z < 340 || playerrot.eulerAngles.x > 20 && playerrot.eulerAngles.x < 340))
-       // {
+            //creates floats with averages the angles on with z flipped and one with x flipped
+            float avgrot = (playerrot.eulerAngles.z + playerrot.eulerAngles.x) / 2;
+            float avgrotz = ((360 - playerrot.eulerAngles.z) + playerrot.eulerAngles.x) / 2;
+            float avgrotx = (playerrot.eulerAngles.z + (360 - playerrot.eulerAngles.x)) / 2;
+
+            // if (!(playerrot.eulerAngles.z > 20 && playerrot.eulerAngles.z < 340 || playerrot.eulerAngles.x > 20 && playerrot.eulerAngles.x < 340))
+            // {
             //if both angles positive
             if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0 && playerrot.eulerAngles.x <= 180 && playerrot.eulerAngles.x >= 0)
             {
@@ -49,11 +54,35 @@ public class CameraFollow : MonoBehaviour
                 transform.localPosition = new Vector3(2f, (360 - avgrot) / 15 + 2, -7.15f + (360 - avgrot) / 8);
                 transform.localRotation = Quaternion.Euler((360 - avgrot) * 1.35f, 0, 1);
             }
-        //} 
-        
-        //old following code
-        //Vector3 playerlocation = player.transform.position;
-        //Vector3 offset = new Vector3(0, -followdistance, followdistance * 2);
-        //transform.localPosition = playerlocation + offset;
+            //} 
+
+            //old following code
+            //Vector3 playerlocation = player.transform.position;
+            //Vector3 offset = new Vector3(0, -followdistance, followdistance * 2);
+            //transform.localPosition = playerlocation + offset;
+        }
+        else
+        {
+            enemylock = true;
+            if (LockedEnemy != null)
+            {
+                transform.parent = LockedEnemy.transform;
+                Vector3 vector3 = new Vector3(LockedEnemy.transform.position.x, LockedEnemy.transform.position.y, LockedEnemy.transform.position.z);   
+                transform.LookAt(vector3);
+                transform.position = new Vector3(transform.position.x, transform.position.y + Time.deltaTime * 3, transform.position.z);
+            }
+        }
     }
+    void die() 
+    {
+        isAlive = false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (enemylock && LockedEnemy == null)
+        {
+            LockedEnemy = other.gameObject;
+        }
+    }
+
 }

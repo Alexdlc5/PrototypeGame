@@ -24,6 +24,8 @@ public class Movement : MonoBehaviour
     public GameObject staminabar;
     public GameObject score;
     public GameObject deathoverlay;
+    public GameObject cam;
+    public GameObject aimcontroller;
     
     public float health;
     private float maxhealth;
@@ -44,15 +46,24 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            health = 0;
+        }
         //checks if players health is 0 or less
         if (health <= 0)
         {
+            cam.SendMessage("die");
+            aimcontroller.SendMessage("die");
             isAlive = false;
             gameObject.GetComponent<Rigidbody>().freezeRotation = false;
-            if (Time.timeScale >= 0.0001f)
+            if (Time.timeScale >= 0.01f)
             {
                 Time.timeScale = Time.timeScale - Time.fixedDeltaTime;
+            }
+            else
+            {
+                Time.timeScale = 0;
             }
             if (deathoverlay.GetComponent<RawImage>().color.a < 1)
             {

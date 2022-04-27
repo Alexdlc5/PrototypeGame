@@ -2361,8 +2361,9 @@ GameObject:
   - component: {fileID: 1372060564581778260}
   - component: {fileID: 5504908059961073576}
   - component: {fileID: 2065262257564666742}
+  - component: {fileID: 2389600894078409832}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Entrance
   m_TagString: DungeonEntrance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2444,6 +2445,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2.5360389}
   m_Center: {x: 0, y: 0, z: -0.76801664}
+--- !u!114 &2389600894078409832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512558147543411646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775ab70b0f450049bd2798f6cebb6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4599022652327002225
 GameObject:
   m_ObjectHideFlags: 0

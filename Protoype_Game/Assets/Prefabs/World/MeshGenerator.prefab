@@ -471,6 +471,7 @@ MonoBehaviour:
   rocka: {fileID: 5534731907631708010, guid: 41284483604374e4d8a64be3cab2188f, type: 3}
   tree: {fileID: 4450627009382728263, guid: 0a672890894b27243aa436a2426857a7, type: 3}
   oak_tree: {fileID: 2098624070113787716, guid: 6aa7cddb7d6251148a841afc5907c76f, type: 3}
+  talltree: {fileID: 8927940474882829954, guid: e3fe15a4aa1594d4aa97ec5e7a65e136, type: 3}
   grass: {fileID: 7045954329643516829, guid: 5ba90ba811071be42b5c3b2c21e1e6a2, type: 3}
   cactus: {fileID: 5357392381484799591, guid: 7c22688b28743a04fbcabd4d71e28611, type: 3}
   healthpickup: {fileID: 2724742745382141902, guid: db80fbd08032c354e8f91d56a96c2803, type: 3}

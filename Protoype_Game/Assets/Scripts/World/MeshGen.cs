@@ -26,6 +26,7 @@ public class MeshGen : MonoBehaviour
     public GameObject rocka;
     public GameObject tree;
     public GameObject oak_tree;
+    public GameObject talltree;
     public GameObject grass;
     public GameObject cactus;
     public GameObject healthpickup;
@@ -98,6 +99,7 @@ public class MeshGen : MonoBehaviour
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
             ip.SendMessage("isSpawner", false);
+
             // 1 / [chanceofbuilding] chance of spwaning building
             if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
             {
@@ -164,7 +166,7 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObject", spawner);
             ip.SendMessage("PlaceObjects", 1);
         }
-        else if (biome.Equals("Grass_Planes"))
+        else if (biome.Equals("Oak"))
         {
             //changes the current mesh color to random value
             currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
@@ -237,7 +239,15 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", -5);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 5);
+            ip.SendMessage("PlaceObjects", 3);
+
+            ip.SendMessage("setObject", talltree);
+            ip.SendMessage("setScaleRange", new Vector2(1, 2f));
+            ip.SendMessage("setObjectColor", currentcolor);
+            ip.SendMessage("setYoff", -5);
+            ip.SendMessage("setFolder", folder);
+            ip.SendMessage("PlaceObjects", 1);
+            ip.SendMessage("setScaleRange", new Vector2(2, 3f));
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);

@@ -11,6 +11,7 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject coincounter;
     public GameObject projectile;
     public GameObject projectilespawn;
+    public int difficulty = 0;
     public int coinreward = 3;
     public float speed = 0;
     private float time = 0;
@@ -18,6 +19,11 @@ public class ShootingEnemy : MonoBehaviour
     public float health = 1;
     public float scoreforkill = 0;
     public GameObject deathbit;
+    private void Start()
+    {
+        difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
+        health = health + difficulty;
+    }
     public void setPlayer(GameObject player)
     {
         this.player = player;
@@ -104,7 +110,7 @@ public class ShootingEnemy : MonoBehaviour
         }
         else
         {
-            shootingtime += Time.fixedDeltaTime;
+            shootingtime += Time.fixedDeltaTime + difficulty / 10;
         }
 
     }

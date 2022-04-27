@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
-  settime: 6
+  settime: 15
   inloadingdistance: 0
+  spawneractive: 0
   Enemy: {fileID: 824342947955777709, guid: d78674473789b4a43b3cdbcfb4f6248d, type: 3}
   player: {fileID: 0}
   score: {fileID: 0}

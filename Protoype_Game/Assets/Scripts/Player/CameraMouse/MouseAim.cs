@@ -6,10 +6,18 @@ public class MouseAim : MonoBehaviour
 {
     public Transform player;
     private float sensitivity = SliderValueDisplay.sensitivityvalue;
+    private bool isAlive = true;
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        transform.Rotate(Vector3.up * mouseX * sensitivity * Time.deltaTime, Space.Self);
+        if (isAlive)
+        {
+            float mouseX = Input.GetAxis("Mouse X");
+            transform.Rotate(Vector3.up * mouseX * sensitivity * Time.deltaTime, Space.Self);
+        }
+    }
+    void die ()
+    {
+        isAlive = false;
     }
     //void FixedUpdate()
     //{

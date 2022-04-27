@@ -10,11 +10,18 @@ public class StalkerEnemy : MonoBehaviour
     public GameObject coin;
     public GameObject coincounter;
     public GameObject deathbit;
+    public int difficulty = 0;
     public int coinreward = 3;
     public float speed = 0;
     public float time = 0;
     public float health = 1;
     public float scoreforkill = 0;
+
+    private void Start()
+    {
+        difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
+        health = health + difficulty * .90f;
+    }
 
     //set targetplayer
     public void setPlayer(GameObject player)

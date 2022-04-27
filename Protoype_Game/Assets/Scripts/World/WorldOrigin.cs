@@ -7,6 +7,7 @@ public class WorldOrigin : MonoBehaviour
     public int offsetx = 0;
     public int offsetz = 0;
     public int currentbiomecount = 0;
+    public int difficulty = 0;
     public string currentbiome = "";
     public string startingbiome = "Desert";
     public GameObject loadingscreen;
@@ -28,6 +29,7 @@ public class WorldOrigin : MonoBehaviour
     {
         if (currentbiomecount >= 20)
         {
+            difficulty++;
             currentbiomecount = 0;
             float random = Random.Range(0,3);
             if (random >= 2)
@@ -36,7 +38,7 @@ public class WorldOrigin : MonoBehaviour
             } 
             else if (random >= 1)
             {
-                currentbiome = "Grass_Planes";
+                currentbiome = "Oak";
             }
             else if (random >= 0)
             {
