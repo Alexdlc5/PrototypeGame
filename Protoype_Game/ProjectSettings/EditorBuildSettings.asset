@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/DeathScreen.unity
     guid: 6902aedb75954954eb0b53f862e83de6
   - enabled: 1
-    path: Assets/Scenes/Levels/MainScene.unity
+    path: Assets/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Menu/HelpMenu.unity

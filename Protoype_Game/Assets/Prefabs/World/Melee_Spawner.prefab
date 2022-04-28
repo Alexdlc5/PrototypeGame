@@ -48,12 +48,8 @@ MonoBehaviour:
   time: 5
   settime: 6
   inloadingdistance: 0
-  Enemy: {fileID: 1952653588693199924, guid: 1483444b421e3984d94e049e609eb034, type: 3}
-  player: {fileID: 0}
-  score: {fileID: 0}
-  coin: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
-  coincounter: {fileID: 0}
-  deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
+  spawneractive: 0
+  Enemy: {fileID: 3270495425197707464, guid: 954b1fb90461e434880f9c22b0646491, type: 3}
 --- !u!114 &6145140198181746872
 MonoBehaviour:
   m_ObjectHideFlags: 0

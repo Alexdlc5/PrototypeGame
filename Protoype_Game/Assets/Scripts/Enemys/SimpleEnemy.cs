@@ -17,6 +17,7 @@ public class SimpleEnemy : MonoBehaviour
     public float health = 1;
     public float scoreforkill = 0;
     private bool pain = false;
+    private float paintime = 0;
 
     private void Start()
     {
@@ -24,35 +25,23 @@ public class SimpleEnemy : MonoBehaviour
         difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
         //health increased by difficulty
         health = health + difficulty;
-    }
-
-    //set targetplayer
-    public void setPlayer(GameObject player)
-    {
-        this.player = player;
-    }
-    public void setScoreTracker(GameObject score)
-    {
-        this.score = score;
-    }
-    public void setCoinType(GameObject coin)
-    {
-        this.coin = coin;
-    }
-    public void setCoinCounter(GameObject coincounter)
-    {
-        this.coincounter = coincounter;
-    }
-    public void setDeathBit(GameObject deathbit)
-    {
-        this.deathbit = deathbit;
+        player = GameObject.FindGameObjectWithTag("Player");
+        coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
+        score = GameObject.FindGameObjectWithTag("Score");
     }
 
     void Update()
     {
+        //work on dmg indicator
         if (pain)
         {
-            gameObject.GetComponent<Material>
+            gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 50, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+            pain = false;
+        }
+        else if (paintime > .25f)
+        {
+            paintime = 0;
+            gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 50, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
         }
         //despawns if lower than -50
         if (transform.position.y < -50)

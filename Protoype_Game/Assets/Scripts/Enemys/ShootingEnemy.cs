@@ -23,22 +23,13 @@ public class ShootingEnemy : MonoBehaviour
     {
         difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
         health = health + difficulty;
-    }
-    public void setPlayer(GameObject player)
-    {
-        this.player = player;
-    }
-    public void setScoreTracker(GameObject score)
-    {
-        this.score = score;
+        player = GameObject.FindGameObjectWithTag("Player");
+        coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
+        score = GameObject.FindGameObjectWithTag("Score");
     }
     public void setCoinType(GameObject coin)
     {
         this.coin = coin;
-    }
-    public void setCoinCounter(GameObject coincounter)
-    {
-        this.coincounter = coincounter;
     }
     public void setDeathBit(GameObject deathbit)
     {

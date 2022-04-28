@@ -129,9 +129,10 @@ MonoBehaviour:
   rb: {fileID: 867690739372413597}
   player: {fileID: 0}
   score: {fileID: 0}
-  coin: {fileID: 0}
+  coin: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
   coincounter: {fileID: 0}
-  deathbit: {fileID: 0}
+  deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
+  difficulty: 0
   speed: 738.6
   coinreward: 30
   time: 0
@@ -151,4 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needscolor: 0
   setVisOnStart: 0
+  visstate: 0
   isenemy: 1

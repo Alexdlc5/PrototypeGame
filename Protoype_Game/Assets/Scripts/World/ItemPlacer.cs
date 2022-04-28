@@ -100,10 +100,6 @@ public class ItemPlacer : MonoBehaviour
             {
                 newobject.SendMessage("setVis", false);
             }
-            else
-            {
-                newobject.SendMessage("setPlayer");
-            }
 
             if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)
             {
