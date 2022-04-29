@@ -46,6 +46,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        gameObject.transform.rotation = Quaternion.Euler(gameObject.transform.rotation.eulerAngles.x, 0, gameObject.transform.rotation.eulerAngles.z);
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             health = 0;

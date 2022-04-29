@@ -19,6 +19,10 @@ public class ShootingEnemy : MonoBehaviour
     public float health = 1;
     public float scoreforkill = 0;
     public GameObject deathbit;
+
+    private bool pain = false;
+    private bool paindelt = false;
+    private float paintime = 0;
     private void Start()
     {
         difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
@@ -42,8 +46,24 @@ public class ShootingEnemy : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-
     {
+        //work on dmg indicator
+        if (pain)
+        {
+            if (!paindelt)
+            {
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                paindelt = true;
+            }
+            paintime += Time.deltaTime;
+            if (paintime > .07f)
+            {
+                paindelt = false;
+                pain = false;
+                paintime = 0;
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+            }
+        }
         if (transform.position.y < -50)
         {
             Destroy(gameObject);
@@ -82,7 +102,7 @@ public class ShootingEnemy : MonoBehaviour
             }
             else
             {
-                rb.AddRelativeForce(Vector3.forward * -speed * 3);
+                rb.AddRelativeForce(Vector3.forward * -speed * 6);
                 time = 0;
             }
         }
