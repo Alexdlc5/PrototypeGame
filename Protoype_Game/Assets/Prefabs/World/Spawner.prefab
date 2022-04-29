@@ -46,15 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
-  settime: 15
+  settime: 20
   inloadingdistance: 0
   spawneractive: 0
   Enemy: {fileID: 867690739372413594, guid: ab959ba44b16e6e4193f0b6a8262db72, type: 3}
-  player: {fileID: 0}
-  score: {fileID: 0}
-  coin: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
-  coincounter: {fileID: 0}
-  deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
 --- !u!114 &4600436207568680693
 MonoBehaviour:
   m_ObjectHideFlags: 0

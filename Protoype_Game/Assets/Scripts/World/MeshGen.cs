@@ -235,18 +235,18 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setFolder", folder);
             ip.SendMessage("PlaceObjects", 10);
 
-            ip.SendMessage("setObject", oak_tree);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", -5);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 3);
+            //ip.SendMessage("setObject", oak_tree);
+            //ip.SendMessage("setObjectColor", currentcolor);
+            //ip.SendMessage("setYoff", -5);
+            //ip.SendMessage("setFolder", folder);
+            //ip.SendMessage("PlaceObjects", 3);
 
             ip.SendMessage("setObject", talltree);
             ip.SendMessage("setScaleRange", new Vector2(1, 2f));
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", -5);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 1);
+            ip.SendMessage("PlaceObjects", 4);
             ip.SendMessage("setScaleRange", new Vector2(2, 3f));
 
             ip.SendMessage("isSpawner", true);

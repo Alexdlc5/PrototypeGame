@@ -8,17 +8,12 @@ public class CoinObject : MonoBehaviour
     public GameObject coincounter;
     public GameObject player;
     public Rigidbody rb;
-    
-    void setCounter(GameObject coincounter)
-    {
-        this.coincounter = coincounter;
-    }
 
-    void setPlayer(GameObject player)
+    private void Start()
     {
-        this.player = player;
+        player = GameObject.FindGameObjectWithTag("Player");
+        coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
     }
-
     void addCoin()
     {
         coincounter.SendMessage("addCoins", value);

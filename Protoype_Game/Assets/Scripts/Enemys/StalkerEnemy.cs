@@ -46,7 +46,7 @@ public class StalkerEnemy : MonoBehaviour
         {
             if (!paindelt)
             {
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
                 paindelt = true;
             }
             paintime += Time.deltaTime;
@@ -55,7 +55,7 @@ public class StalkerEnemy : MonoBehaviour
                 paindelt = false;
                 pain = false;
                 paintime = 0;
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
             }
         }
         if (transform.position.y < -50)
@@ -69,9 +69,7 @@ public class StalkerEnemy : MonoBehaviour
             for (int i = 0; i < coinreward; i++)
             {
                 Instantiate(deathbit, transform.position, transform.rotation);
-                GameObject newcoin = Instantiate(coin, transform.position, transform.rotation);
-                newcoin.SendMessage("setCounter", coincounter);
-                newcoin.SendMessage("setPlayer", player);
+                Instantiate(coin, transform.position, transform.rotation);
             }
             Destroy(gameObject);
         }

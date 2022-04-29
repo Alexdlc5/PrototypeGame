@@ -75,13 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
-  settime: 15
+  settime: 20
   inloadingdistance: 0
   spawneractive: 0
   Enemy: {fileID: 5647044984461726307, guid: 50ba8f8e3d4bcc94ab582ee7997baf7a, type: 3}
-  player: {fileID: 0}
-  score: {fileID: 0}
-  coin: {fileID: 5635881433922798155, guid: ca4f56cfedf853f43b79596790c57c7c, type: 3}
-  coincounter: {fileID: 0}
-  deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
-  projectile: {fileID: 3501212943989511819, guid: aee1f98bf57f0a340bd32c09bc909bec, type: 3}

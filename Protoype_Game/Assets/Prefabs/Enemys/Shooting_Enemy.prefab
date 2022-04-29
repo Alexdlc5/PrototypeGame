@@ -181,7 +181,7 @@ MonoBehaviour:
   projectile: {fileID: 3501212943989511819, guid: aee1f98bf57f0a340bd32c09bc909bec, type: 3}
   projectilespawn: {fileID: 897650835282336844}
   difficulty: 0
-  coinreward: 3
+  coinreward: 15
   speed: 0
   health: 1
   scoreforkill: 0

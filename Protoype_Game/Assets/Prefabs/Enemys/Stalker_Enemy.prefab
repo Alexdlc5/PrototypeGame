@@ -150,7 +150,7 @@ MonoBehaviour:
   coincounter: {fileID: 0}
   deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
   difficulty: 0
-  coinreward: 20
+  coinreward: 15
   speed: 7
   time: 0
   health: 2

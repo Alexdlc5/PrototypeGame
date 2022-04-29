@@ -31,18 +31,6 @@ public class ShootingEnemy : MonoBehaviour
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
         score = GameObject.FindGameObjectWithTag("Score");
     }
-    public void setCoinType(GameObject coin)
-    {
-        this.coin = coin;
-    }
-    public void setDeathBit(GameObject deathbit)
-    {
-        this.deathbit = deathbit;
-    }
-    public void setProjectile(GameObject projectile)
-    {
-        this.projectile = projectile;
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -52,7 +40,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             if (!paindelt)
             {
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
                 paindelt = true;
             }
             paintime += Time.deltaTime;
@@ -61,7 +49,7 @@ public class ShootingEnemy : MonoBehaviour
                 paindelt = false;
                 pain = false;
                 paintime = 0;
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
             }
         }
         if (transform.position.y < -50)
@@ -75,9 +63,7 @@ public class ShootingEnemy : MonoBehaviour
             for (int i = 0; i < coinreward; i++)
             {
                 Instantiate(deathbit, transform.position, transform.rotation);
-                GameObject newcoin = Instantiate(coin, transform.position, transform.rotation);
-                newcoin.SendMessage("setCounter", coincounter);
-                newcoin.SendMessage("setPlayer", player);
+                Instantiate(coin, transform.position, transform.rotation);
             }
             Destroy(gameObject);
         }

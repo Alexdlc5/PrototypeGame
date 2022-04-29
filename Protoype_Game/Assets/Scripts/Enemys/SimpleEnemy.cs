@@ -76,10 +76,8 @@ public class SimpleEnemy : MonoBehaviour
             score.SendMessage("LogEnemyKill", scoreforkill);
             for (int i = 0; i < coinreward; i++)
             {
-                GameObject newcoin = Instantiate(coin, transform.position, transform.rotation);
+                Instantiate(coin, transform.position, transform.rotation);
                 Instantiate(deathbit, transform.position, transform.rotation);
-                newcoin.SendMessage("setCounter", coincounter);
-                newcoin.SendMessage("setPlayer", player);
             }
             Destroy(gameObject);
         }
