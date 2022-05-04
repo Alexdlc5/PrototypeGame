@@ -6,24 +6,33 @@ public class SimpleEnemySpawn : MonoBehaviour
 {
     public float time = 5.0f;
     public float settime = 5.0f;
+    public int enemyspawncount = 4;
     public bool inloadingdistance = false;
     public bool spawneractive = false;
     public GameObject Enemy;
 
     void Update()
     {
-        if (gameObject.GetComponent<WorldObject>())
+        if (enemyspawncount >= 0)
         {
-            inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;
-        }
-        if (time <= 0.0f && inloadingdistance && spawneractive)
-        {
-            Instantiate(Enemy, transform.position, transform.rotation);
-            time = settime;
+            if (gameObject.GetComponent<WorldObject>())
+            {
+                inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;
+            }
+            if (time <= 0.0f && inloadingdistance && spawneractive)
+            {
+                Instantiate(Enemy, transform.position, transform.rotation);
+                enemyspawncount--;
+                time = settime;
+            }
+            else
+            {
+                time -= 1 * Time.deltaTime;
+            }
         } 
         else
         {
-            time -= 1 * Time.deltaTime;
+            Destroy(gameObject);
         }
     }
     public void setParent(Transform newparent)

@@ -7,6 +7,7 @@ public class MouseAim : MonoBehaviour
     public Transform player;
     private float sensitivity = SliderValueDisplay.sensitivityvalue;
     private bool isAlive = true;
+    //use is reseting to make the y value of the weprot reset when player is balancing 
     void Update()
     {
         if (isAlive)

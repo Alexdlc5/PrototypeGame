@@ -22,12 +22,12 @@ public class WorldOrigin : MonoBehaviour
         offsetz = Random.Range(0, 999);
 
         //random amplitude
-        amp = Random.Range(15, 45);
+        amp = Random.Range(15, 20);
         loadingscreen.GetComponent<loading>().SendMessage("clear");
     }
     private void Update()
     {
-        if (currentbiomecount >= 20)
+        if (currentbiomecount >= 12)
         {
             difficulty++;
             currentbiomecount = 0;

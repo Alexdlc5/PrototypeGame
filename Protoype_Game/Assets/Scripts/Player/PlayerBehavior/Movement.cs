@@ -5,9 +5,7 @@ using TMPro;
 
 public class Movement : MonoBehaviour
 {
-    //add regen?
     public Transform playerrotation;
-    public Transform weprot;
     public bool isAlive = true;
     public float playerspeed = 0;
     public float smallobjectscollision = 1;

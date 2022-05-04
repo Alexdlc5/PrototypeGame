@@ -61,13 +61,12 @@ public class SimpleEnemy : MonoBehaviour
         transform.LookAt(new Vector3(playerLocation[0], transform.position.y, playerLocation[2]));
         if (time >= .75) 
         {
-            //increases speed by difficulty
-            rb.AddRelativeForce(Vector3.forward * (float)(speed + difficulty / 2));
+            rb.AddRelativeForce(Vector3.forward * speed);
             time = 0;
         }
         else
         {
-            time += difficulty / 5 + Time.deltaTime;
+            time += Time.deltaTime;
         }
 
         //checks if health is at or below 0

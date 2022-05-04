@@ -25,6 +25,7 @@ TagManager:
   - NoColor
   - AllColor
   - DungeonEntrance
+  - WeaponRotator
   layers:
   - Default
   - TransparentFX
