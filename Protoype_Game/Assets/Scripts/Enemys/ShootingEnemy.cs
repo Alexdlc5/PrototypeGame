@@ -150,6 +150,7 @@ public class ShootingEnemy : MonoBehaviour
     public void DealDamage(float damagedealt)
     {
         health -= damagedealt;
+        pain = true;
     }
 }
 

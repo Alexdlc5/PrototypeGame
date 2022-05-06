@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SlowTime : MonoBehaviour
 {
-    public bool windowopen = false;
-    public bool pausewindowopen = false;
+    private bool windowopen = false;
+    private bool pausewindowopen = false;
 
     // Update is called once per frame
     void Update()

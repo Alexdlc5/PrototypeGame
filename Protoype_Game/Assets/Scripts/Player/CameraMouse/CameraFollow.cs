@@ -13,9 +13,16 @@ public class CameraFollow : MonoBehaviour
     {
         if (isAlive)
         {
+
             //gets the players position and rotation
             Transform playertran = player.transform;
             Quaternion playerrot = playertran.rotation;
+
+            //old following code
+            //Vector3 playerlocation = GameObject.FindGameObjectWithTag("Player").transform.position;
+            //Vector3 offset = new Vector3(0, -15, 15 * 2);
+            //transform.position = playerlocation + offset;
+            //transform.rotation = playerrot;
 
             //creates floats with averages the angles on with z flipped and one with x flipped
             float avgrot = (playerrot.eulerAngles.z + playerrot.eulerAngles.x) / 2;
@@ -41,7 +48,7 @@ public class CameraFollow : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(avgrotz * 1.35f, 0, 1);
             }
             //only z angle positive
-            else if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0)
+            else if (playerrot.eulerAngles.z < 180 && playerrot.eulerAngles.z > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 transform.localPosition = new Vector3(2f, avgrotx / 15 + 2, -7.15f + avgrotx / 8);
@@ -55,15 +62,12 @@ public class CameraFollow : MonoBehaviour
                 transform.localRotation = Quaternion.Euler((360 - avgrot) * 1.35f, 0, 1);
             }
             //} 
-
-            //old following code
-            //Vector3 playerlocation = player.transform.position;
-            //Vector3 offset = new Vector3(0, -followdistance, followdistance * 2);
-            //transform.localPosition = playerlocation + offset;
         }
+        //on death
         else
         {
             enemylock = true;
+            //locks on enemy once player is dead (locking on to projectile instead but might keep it)
             if (LockedEnemy != null)
             {
                 transform.parent = LockedEnemy.transform;

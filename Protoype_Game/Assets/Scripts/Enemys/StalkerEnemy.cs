@@ -144,5 +144,6 @@ public class StalkerEnemy : MonoBehaviour
     public void DealDamage(float damagedealt)
     {
         health -= damagedealt;
+        pain = true;
     }
 }

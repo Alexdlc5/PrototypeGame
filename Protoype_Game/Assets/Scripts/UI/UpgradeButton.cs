@@ -50,6 +50,10 @@ public class UpgradeButton : MonoBehaviour
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(1000);
             player.SendMessage("set" + stat + "Lvl", value);
+            if (value >= UpgradeBar.maxValue)
+            {
+                UpgradeBar.GetComponentInChildren<Image>().color = new Color(UpgradeBar.GetComponentInChildren<Image>().color.r + .03f, UpgradeBar.GetComponentInChildren<Image>().color.g - .03f, UpgradeBar.GetComponentInChildren<Image>().color.b - .03f, UpgradeBar.GetComponentInChildren<Image>().color.a);
+            }
         }
 
     }

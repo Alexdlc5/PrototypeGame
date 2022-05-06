@@ -9,7 +9,7 @@ public class WorldOrigin : MonoBehaviour
     public int currentbiomecount = 0;
     public int difficulty = 0;
     public string currentbiome = "";
-    public string startingbiome = "Desert";
+    public string startingbiome = "Oak";
     public GameObject loadingscreen;
 
     public float amp = 1;
