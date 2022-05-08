@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
             //SceneManager.LoadScene("DeathScreen");
         }
         if (isAlive) {
+
             //modifyable version of playerspeed
             float speed = playerspeed;
             speed = speed * (1 + (speedlvl / 5));
