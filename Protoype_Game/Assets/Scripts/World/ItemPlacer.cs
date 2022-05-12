@@ -91,8 +91,22 @@ public class ItemPlacer : MonoBehaviour
                 Vector3 newrotation = new Vector3(gameObject.transform.eulerAngles.x, Random.Range(0, 360), gameObject.transform.eulerAngles.z);
                 transform.rotation = Quaternion.Euler(newrotation);
             }
+            GameObject newobject;
             //instantiates new object
-            GameObject newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
+            //checks if item will be placed on ground (prevents props from being spawned on top of each other)
+            //======|
+            //
+            //could use in future to place certain objects at certain elevations ie water, small to large trees, etc.
+            //
+            //======|
+            if ((hit.point + Vector3.up * offsety).y > 15)
+            {
+                continue;
+            } 
+            else
+            {
+                newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
+            }
             //makes a child of another gameobject that will act as a folder
             newobject.SendMessage("setParent", folder);
             //if spawner no need to set visability

@@ -13,7 +13,7 @@ Progress:
 
 TODO:
 - Fix the camera bug.
-- Polish Popup menus.
 - Add a tutorial or some kind of instruction on how to play.
 - Add better(or maybe simpler) textures.
 - Polish enemy behavior
+- Game saves

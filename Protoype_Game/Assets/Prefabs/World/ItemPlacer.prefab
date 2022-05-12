@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3042558327528848739}
   - component: {fileID: 3042558327528848736}
   - component: {fileID: 3042558327528848737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemPlacer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,5 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15456064c5c3b344916ca03b53000c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folder: {fileID: 0}
   Object: {fileID: 3860444289452742791, guid: 4a97f699a642d524d942cb88607b1df3, type: 3}
-  ItemCount: 7
+  currentcolor: {r: 0, g: 0, b: 0, a: 0}
+  offsetx: 0
+  randomrotation: 0
+  randomscale: 0
+  minscale: 1
+  maxscale: 5
+  offsetz: 0
+  isspawner: 0
+  offsety: 0

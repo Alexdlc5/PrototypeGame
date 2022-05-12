@@ -139,13 +139,13 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setRandomRotation", true);
             ip.SendMessage("setYoff", -10);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 15); 
+            ip.SendMessage("PlaceObjects", 10); 
 
             ip.SendMessage("setObject", rock);
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10);
+            ip.SendMessage("PlaceObjects", 8);
 
             ip.SendMessage("setObject", healthpickup);
             ip.SendMessage("setYoff", 3);
@@ -155,7 +155,7 @@ public class MeshGen : MonoBehaviour
             ip.SendMessage("setObjectColor", currentcolor);
             ip.SendMessage("setYoff", .6);
             ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10);
+            ip.SendMessage("PlaceObjects", 5);
 
             ip.SendMessage("isSpawner", true);
             ip.SendMessage("setYoff", 10);

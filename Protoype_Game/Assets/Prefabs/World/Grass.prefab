@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needscolor: 1
   setVisOnStart: 0
+  visstate: 0
   isenemy: 0
 --- !u!65 &6890222380421071035
 BoxCollider:
