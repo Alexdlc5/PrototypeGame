@@ -94,7 +94,7 @@ public class StalkerEnemy : MonoBehaviour
             }
             else
             {
-                rb.AddRelativeForce(Vector3.forward * speed * 2000);
+                rb.AddRelativeForce(Vector3.forward * speed * 850);
                 time = 0;
             }
 

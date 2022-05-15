@@ -5,7 +5,8 @@ using UnityEngine;
 public class WorldObject : MonoBehaviour
 {
     public bool needscolor;
-    private Transform player_location; 
+    private Transform player_location;
+    private float distancefromplayer;
     public bool setVisOnStart = false;
     public bool visstate = false;
     public bool isenemy = false;
@@ -22,7 +23,18 @@ public class WorldObject : MonoBehaviour
     }
 
     private void Update()
-    {   if (isenemy)
+    {   
+        //distancefromplayer = Mathf.Sqrt(Mathf.Pow(transform.position.x - player_location.position.x, 2) + Mathf.Pow(transform.position.y - player_location.position.y, 2) + Mathf.Pow(transform.position.y - player_location.position.y, 2));
+        //if (distancefromplayer > 200)
+        //{
+        //   setVis(false);
+        //}
+        //else
+        //{
+        //   setVis(true);
+        //}
+
+        if (isenemy)
         {
             if (visstate == true)
             {
