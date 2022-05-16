@@ -108,11 +108,11 @@ public class ItemPlacer : MonoBehaviour
                 newobject = Instantiate(Object, hit.point + Vector3.up * offsety, transform.rotation);
             }
             //makes a child of another gameobject that will act as a folder
-            newobject.SendMessage("setParent", folder);
+            newobject.GetComponent<WorldObject>().setParent(folder);                               /////////////////////////////////////////NEEDS TO BE CHANGED//////////////////////////////////////////////////
             //if spawner no need to set visability
             if (!isspawner)
             {
-                newobject.SendMessage("setVis", false);
+                newobject.GetComponent<WorldObject>().setVis(false);
             }
 
             if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)

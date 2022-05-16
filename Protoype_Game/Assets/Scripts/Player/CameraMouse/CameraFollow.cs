@@ -77,7 +77,7 @@ public class CameraFollow : MonoBehaviour
             }
         }
     }
-    void die() 
+    public void die() 
     {
         isAlive = false;
     }

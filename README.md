@@ -13,6 +13,7 @@ Progress:
 
 TODO:
 - Fix the camera bug.
+  - maybe caused by player movement during balance function call
 - Add a tutorial or some kind of instruction on how to play.
 - Add better(or maybe simpler) textures.
 - Polish enemy behavior

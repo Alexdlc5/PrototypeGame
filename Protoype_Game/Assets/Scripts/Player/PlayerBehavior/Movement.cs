@@ -50,8 +50,8 @@ public class Movement : MonoBehaviour
         //checks if players health is 0 or less
         if (health <= 0)
         {
-            cam.SendMessage("die");
-            aimcontroller.SendMessage("die");
+            cam.GetComponent<CameraFollow>().die();
+            aimcontroller.GetComponent<MouseAim>().die();
             isAlive = false;
             gameObject.GetComponent<Rigidbody>().freezeRotation = false;
             if (Time.timeScale >= 0.01f)
@@ -73,7 +73,7 @@ public class Movement : MonoBehaviour
             //{
             //    gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
             //}
-            score.SendMessage("saveScore");
+            score.GetComponent<Score>().saveScore();
             //SceneManager.LoadScene("DeathScreen");
         }
         if (isAlive) {
@@ -200,7 +200,7 @@ public class Movement : MonoBehaviour
             if (jumptimer < 5f)
             {
                 jumptimer += 1f * Time.fixedDeltaTime;
-                staminabar.SendMessage("SetSlider", jumptimer);
+                staminabar.GetComponent<Bar>().SetSlider(jumptimer);
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -210,7 +210,7 @@ public class Movement : MonoBehaviour
                 if (jumptimer >= 1.5f)
                 {
                     rb.AddForce(Vector3.up * jumppower * 10);
-                    staminabar.SendMessage("SetSlider", jumptimer);
+                    staminabar.GetComponent<Bar>().SetSlider(jumptimer);
                     balanceX(Xrot);
                     balanceZ(Zrot);
                     jumptimer = 0;
@@ -218,7 +218,7 @@ public class Movement : MonoBehaviour
                 else if (jumptimer >= 1f)
                 {
                     rb.AddForce(Vector3.up * jumppower / 2 * 10);
-                    staminabar.SendMessage("SetSlider", jumptimer);
+                    staminabar.GetComponent<Bar>().SetSlider(jumptimer);
                     balanceX(Xrot);
                     balanceZ(Zrot);
                     jumptimer = 0;
@@ -292,7 +292,7 @@ public class Movement : MonoBehaviour
             DealDamage(1);
 
             //sets slider to current health
-            healthbar.SendMessage("SetSlider", health);
+            healthbar.GetComponent<Bar>().SetSlider(health);
         }
         //collects coin
         if (collision.collider.tag.Equals("Coin"))
@@ -300,7 +300,7 @@ public class Movement : MonoBehaviour
             GameObject coin = collision.gameObject;
             
             //runs addCoin Method in the coinObject;
-            coin.SendMessage("addCoin");
+            coin.GetComponent<CoinObject>().addCoin();
         }
     }
 
@@ -396,7 +396,7 @@ public class Movement : MonoBehaviour
     public void DealDamage(float damagedealt)
     {
         health -= damagedealt / (sheildlvl + 1);
-        healthbar.SendMessage("SetSlider", health);
+        healthbar.GetComponent<Bar>().SetSlider(health);
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -460,12 +460,12 @@ public class Movement : MonoBehaviour
             if (health <= maxhealth / 2)
             {
                 health = health + (maxhealth / 2);
-                healthbar.SendMessage("SetSlider", health);
+                healthbar.GetComponent<Bar>().SetSlider(health);
             }
             else
             {
                 health = maxhealth;
-                healthbar.SendMessage("SetSlider", health);
+                healthbar.GetComponent<Bar>().SetSlider(health);
             }
             Destroy(other.gameObject);
         }

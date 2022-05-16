@@ -72,7 +72,7 @@ public class SimpleEnemy : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
-            score.SendMessage("LogEnemyKill", scoreforkill);
+            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward; i++)
             {
                 Instantiate(coin, transform.position, transform.rotation);

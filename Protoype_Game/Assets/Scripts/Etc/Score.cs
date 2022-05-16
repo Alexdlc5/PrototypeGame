@@ -14,11 +14,11 @@ public class Score : MonoBehaviour
         score += 10 * Time.deltaTime;
         scoretext.text = "Score: [" + ((int)score).ToString() + "]";
     }
-    void LogEnemyKill(float score)
+    public void LogEnemyKill(float score)
     {
         this.score += score;
     }
-    void saveScore()
+    public void saveScore()
     {
         savedscore = score;
     }

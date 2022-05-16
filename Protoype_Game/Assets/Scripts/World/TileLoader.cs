@@ -5,7 +5,6 @@ using UnityEngine;
 public class TileLoader : MonoBehaviour
 {
     public GameObject tile;
-    public GameObject origin;
     HashSet<Vector2> tilelocations = new HashSet<Vector2>();
     private void Start()
     {
@@ -113,7 +112,6 @@ public class TileLoader : MonoBehaviour
         {
             Destroy(other.gameObject);
             GameObject newtile = Instantiate(tile);
-            newtile.SendMessage("setOrigin", origin);
             newtile.GetComponent<Tile>().setTilePos(0, 0);
             tilelocations.Add(new Vector2(0, 0));
         }
@@ -140,7 +138,6 @@ public class TileLoader : MonoBehaviour
     void generateTile(float xcoord, float zcoord)
     {
         GameObject newtile = Instantiate(tile);
-        newtile.SendMessage("setOrigin", origin);
         newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
         tilelocations.Add(new Vector2(xcoord, zcoord));
     }

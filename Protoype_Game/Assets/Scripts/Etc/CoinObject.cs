@@ -14,9 +14,9 @@ public class CoinObject : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
     }
-    void addCoin()
+    public void addCoin()
     {
-        coincounter.SendMessage("addCoins", value);
+        coincounter.GetComponent<CoinInv>().addCoins(value);
         Destroy(gameObject, .25f);
     }
 

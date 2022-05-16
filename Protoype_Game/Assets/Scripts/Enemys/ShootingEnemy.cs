@@ -59,7 +59,7 @@ public class ShootingEnemy : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
-            score.SendMessage("LogEnemyKill", scoreforkill);
+            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward; i++)
             {
                 Instantiate(deathbit, transform.position, transform.rotation);
@@ -100,7 +100,6 @@ public class ShootingEnemy : MonoBehaviour
         if (shootingtime > 3)
         {
             GameObject newprojectile = Instantiate(projectile, projectilespawn.transform.position, projectilespawn.transform.rotation);
-            newprojectile.SendMessage("setPlayer", player);
             //projectile ignores collisions with the itself
             Physics.IgnoreCollision(newprojectile.GetComponent<Collider>(), GetComponent<Collider>());
             shootingtime = 0;

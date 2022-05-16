@@ -9,6 +9,10 @@ public class Projectile : MonoBehaviour
     public float BulletSpeed = 0;
     public GameObject player;
     public float damagelvl = 0;
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,28 +37,34 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.GetComponent<tree_behavior>())
         {
             GameObject tree = collision.gameObject;
-            tree.SendMessage("DealDamage", 1.0f);
+            tree.GetComponent<tree_behavior>().DealDamage(1.0f);
         }
         if (isEnemyProjectile == false)
         {
             if (collision.collider.tag.Equals("Enemy"))
             {
                 GameObject enemy = collision.gameObject;
-                enemy.SendMessage("DealDamage", 1.0f * damagelvl + 1);
+                if (enemy.GetComponent<SimpleEnemy>())
+                {
+                    enemy.GetComponent<SimpleEnemy>().DealDamage(1.0f * damagelvl + 1);
+                }
+                else if (enemy.GetComponent<StalkerEnemy>())
+                {
+                    enemy.GetComponent<StalkerEnemy>().DealDamage(1.0f * damagelvl + 1);
+                }
+                else if (enemy.GetComponent<ShootingEnemy>())
+                {
+                    enemy.GetComponent<ShootingEnemy>().DealDamage(1.0f * damagelvl + 1);
+                }
             }
         } else
         {
             if (collision.collider.tag.Equals("Player"))
             {
                 GameObject enemy = collision.gameObject;
-                enemy.SendMessage("DealDamage", 1.0f);
+                enemy.GetComponent<Movement>().DealDamage(1.0f);
             }
         }
 
     }
-    public void setPlayer(GameObject player)
-    {
-        this.player = player;
-    }
-
 }

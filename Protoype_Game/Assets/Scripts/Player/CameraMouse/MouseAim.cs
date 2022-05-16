@@ -16,7 +16,7 @@ public class MouseAim : MonoBehaviour
             transform.Rotate(Vector3.up * mouseX * sensitivity * Time.deltaTime, Space.Self);
         }
     }
-    void die ()
+    public void die ()
     {
         isAlive = false;
     }

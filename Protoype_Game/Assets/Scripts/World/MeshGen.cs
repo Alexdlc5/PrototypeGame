@@ -56,6 +56,7 @@ public class MeshGen : MonoBehaviour
 
     void Start()
     {
+        origin = GameObject.FindGameObjectWithTag("WorldOrigin");
         //sets biome to start 
         biome = origin.GetComponent<WorldOrigin>().currentbiome;
 

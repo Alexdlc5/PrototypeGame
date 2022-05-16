@@ -6201,7 +6201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 1602595145676016861, guid: 5d778286f3e5e8841a65b9672f0b65ef, type: 3}
-  origin: {fileID: 518239324}
 --- !u!136 &1754849315
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6212,10 +6211,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2.6702294
-  m_Height: 6.325326
+  m_Radius: 2.1713767
+  m_Height: 6.564252
   m_Direction: 1
-  m_Center: {x: 0.1498173, y: 0, z: -0.119892985}
+  m_Center: {x: 0.104466856, y: 0.11946119, z: -0.11989296}
 --- !u!23 &1754849316
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7225,10 +7224,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.58757025
-  m_Height: 2.9348724
+  m_Radius: 1.5530279
+  m_Height: 3.106056
   m_Direction: 1
-  m_Center: {x: 0.04587279, y: 0, z: 0.08852074}
+  m_Center: {x: 0.25275794, y: 0, z: 0.08852074}
 --- !u!23 &1998354849
 MeshRenderer:
   m_ObjectHideFlags: 0
