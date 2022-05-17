@@ -29,6 +29,7 @@ public class WorldOrigin : MonoBehaviour
     {
         if (currentbiomecount >= 12)
         {
+            //increase difficulty and change biome
             difficulty++;
             currentbiomecount = 0;
             float random = Random.Range(0,3);

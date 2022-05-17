@@ -77,8 +77,9 @@ public class MeshGen : MonoBehaviour
 
         //places assets on map
         GameObject ip = Instantiate(itemPlacer, transform);
-        ip.SendMessage("setXoff", currentcoordsx);
-        ip.SendMessage("setZoff", currentcoordsz);
+        ItemPlacer itemplacer = ip.GetComponent<ItemPlacer>();
+        itemplacer.setXoff(currentcoordsx);
+        itemplacer.setZoff(currentcoordsz);
         
         //add biomes, snowy, plamtree, open field with flowers
 
@@ -101,7 +102,7 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
-            ip.SendMessage("isSpawner", false);
+            ip.GetComponent<ItemPlacer>().isSpawner(false);
 
             //// 1 / [chanceofbuilding] chance of spwaning building
             //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
@@ -135,39 +136,36 @@ public class MeshGen : MonoBehaviour
             //    ip.SendMessage("PlaceObjects", 1);
             //}
 
-            ip.SendMessage("setObject", tree);
-            ip.SendMessage("setScaleRange", new Vector2(3,5));
-            ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setYoff", -10);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10); 
+            itemplacer.setObject(tree);
+            itemplacer.setScaleRange(new Vector2(3,5));
+            itemplacer.setRandomRotation(true);
+            itemplacer.setYoff(-10);
+            itemplacer.setFolder(folder);
+            itemplacer.PlaceObjects(10);
 
-            ip.SendMessage("setObject", rock);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", .6);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 8);
+            itemplacer.setObject(rock);
+            itemplacer.setObjectColor(currentcolor);
+            itemplacer.setYoff(.6f);
+            itemplacer.PlaceObjects(8);
 
-            ip.SendMessage("setObject", healthpickup);
-            ip.SendMessage("setYoff", 3);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(healthpickup);
+            itemplacer.setYoff(3);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", rocka);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", .6);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 5);
+            itemplacer.setObject(rocka);
+            itemplacer.setYoff(.6f);
+            itemplacer.PlaceObjects(5);
 
-            ip.SendMessage("isSpawner", true);
-            ip.SendMessage("setYoff", 10);
-            ip.SendMessage("setObject", spawnerb);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.isSpawner(true);
+            itemplacer.setYoff(10);
+            itemplacer.setObject(spawnerb);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", spawnera);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(spawnera);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", spawner);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(spawner);
+            itemplacer.PlaceObjects(1);
         }
         else if (biome.Equals("Oak"))
         {
@@ -220,49 +218,43 @@ public class MeshGen : MonoBehaviour
             //    ip.SendMessage("PlaceObjects", 1);
             //}
 
-            ip.SendMessage("setObject", rock);
-            ip.SendMessage("setScaleRange", new Vector2(2, 3f));
-            ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", .2);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10);
+            itemplacer.setObject(rock);
+            itemplacer.setScaleRange(new Vector2(2, 3f));
+            itemplacer.setObjectColor(currentcolor);
+            itemplacer.setYoff(.2f);
+            itemplacer.setFolder(folder);
+            itemplacer.PlaceObjects(10);
 
-            ip.SendMessage("setObject", healthpickup);
-            ip.SendMessage("setYoff", .6);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(healthpickup);
+            itemplacer.setYoff(.6f);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", rocka);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", .2);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10);
+            itemplacer.setObject(rocka);
+            itemplacer.setYoff(.2f);
+            itemplacer.PlaceObjects(10);
 
-            ip.SendMessage("setObject", oak_tree);
-            ip.SendMessage("setScaleRange", new Vector2(1, 2f));
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", -5);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 3);
+            itemplacer.setObject(oak_tree);
+            itemplacer.setScaleRange(new Vector2(1, 2f));
+            itemplacer.setYoff(-5);
+            itemplacer.PlaceObjects(3);
 
-            ip.SendMessage("setObject", talltree);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", -5);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 4);
-            ip.SendMessage("setScaleRange", new Vector2(2, 3f));
+            itemplacer.setObject(talltree);
+            itemplacer.setObjectColor(currentcolor);
+            itemplacer.setYoff(-5);
+            itemplacer.PlaceObjects(4);
+            itemplacer.setScaleRange(new Vector2(2, 3f));
 
-            ip.SendMessage("isSpawner", true);
-            ip.SendMessage("setYoff", 10);
-            ip.SendMessage("setObject", spawner);
-            ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.isSpawner(true);
+            itemplacer.setYoff(10);
+            itemplacer.setObject(spawner);
+            itemplacer.setFolder(spawnerfolder);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", spawnerc);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(spawnerc);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", spawnera);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(spawnera);
+            itemplacer.PlaceObjects(1);
         }
         else if (biome.Equals("Desert"))
         {
@@ -315,34 +307,31 @@ public class MeshGen : MonoBehaviour
             //    ip.SendMessage("PlaceObjects", 1);
             //}
 
-            ip.SendMessage("setObject", cactus);
-            ip.SendMessage("setScaleRange", new Vector2(2, 3));
-            ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setYoff", -8);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 9);
+            itemplacer.setObject(cactus);
+            itemplacer.setScaleRange(new Vector2(2, 3));
+            itemplacer.setYoff(-8);
+            itemplacer.setFolder(folder);
+            itemplacer.PlaceObjects(9);
 
 
-            ip.SendMessage("setObject", rocka);
-            ip.SendMessage("setScaleRange", new Vector2(1, 5));
-            ip.SendMessage("setRandomRotation", true);
-            ip.SendMessage("setObjectColor", currentcolor);
-            ip.SendMessage("setYoff", -.2);
-            ip.SendMessage("setFolder", folder);
-            ip.SendMessage("PlaceObjects", 10);
+            itemplacer.setObject(rocka);
+            itemplacer.setScaleRange(new Vector2(1, 5));
+            itemplacer.setObjectColor(currentcolor);
+            itemplacer.setYoff(-.2f);
+            itemplacer.PlaceObjects(10);
 
-            ip.SendMessage("setObject", healthpickup);
-            ip.SendMessage("setYoff", .6);
-            ip.SendMessage("PlaceObjects", 1);
+            itemplacer.setObject(healthpickup);
+            itemplacer.setYoff(.6f);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("isSpawner", true);
-            ip.SendMessage("setYoff", 10);
-            ip.SendMessage("setObject", spawnera);
-            ip.SendMessage("setFolder", spawnerfolder);
-            ip.SendMessage("PlaceObjects", -.5f);
+            itemplacer.isSpawner(true);
+            itemplacer.setYoff(10);
+            itemplacer.setObject(spawnera);
+            itemplacer.setFolder(spawnerfolder);
+            itemplacer.PlaceObjects(1);
 
-            ip.SendMessage("setObject", spawnerc);
-            ip.SendMessage("PlaceObjects", 2);
+            itemplacer.setObject(spawnerc);
+            itemplacer.PlaceObjects(2);
         }
 
 

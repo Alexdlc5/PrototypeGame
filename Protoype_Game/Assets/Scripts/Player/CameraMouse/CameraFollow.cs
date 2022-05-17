@@ -48,7 +48,7 @@ public class CameraFollow : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(avgrotz * 1.35f, 0, 1);
             }
             //only z angle positive
-            else if (playerrot.eulerAngles.z < 180 && playerrot.eulerAngles.z > 0)
+            else if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 transform.localPosition = new Vector3(2f, avgrotx / 15 + 2, -7.15f + avgrotx / 8);

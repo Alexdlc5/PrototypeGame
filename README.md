@@ -10,11 +10,13 @@ Progress:
  - Interactive world objects.
  - Power upgrades.
  - Overall complete gameplay loop and progression that spans over multiple rounds.
+ - Fixed the camera bug.
 
 TODO:
-- Fix the camera bug.
-  - maybe caused by player movement during balance function call
 - Add a tutorial or some kind of instruction on how to play.
-- Add better(or maybe simpler) textures.
-- Polish enemy behavior
-- Game saves
+- Add textures.
+- Polish enemy behavior.
+- Game saves.
+- Tile loading queue 
+	-world origin holds a queue that loads tiles one by one 
+	 -tile generator waits for the queue to generate or maybe just waits to generate props
