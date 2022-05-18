@@ -32,7 +32,7 @@ public class CameraFollow : MonoBehaviour
             // if (!(playerrot.eulerAngles.z > 20 && playerrot.eulerAngles.z < 340 || playerrot.eulerAngles.x > 20 && playerrot.eulerAngles.x < 340))
             // {
             //if both angles positive
-            if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0 && playerrot.eulerAngles.x <= 180 && playerrot.eulerAngles.x >= 0)
+            if (playerrot.eulerAngles.z < 180 && playerrot.eulerAngles.z > 0 && playerrot.eulerAngles.x < 180 && playerrot.eulerAngles.x > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 //new Vector3(camera offset right, camera off set up, camera offset back)
@@ -41,21 +41,21 @@ public class CameraFollow : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(avgrot * 1.35f, 0, 1);
             }
             //only x angle positive 
-            else if (playerrot.eulerAngles.x <= 180 && playerrot.eulerAngles.x >= 0)
+            else if (playerrot.eulerAngles.x < 180 && playerrot.eulerAngles.x > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 transform.localPosition = new Vector3(2f, avgrotz / 15 + 2, -7.15f + avgrotz / 8);
                 transform.localRotation = Quaternion.Euler(avgrotz * 1.35f, 0, 1);
             }
             //only z angle positive
-            else if (playerrot.eulerAngles.z <= 180 && playerrot.eulerAngles.z >= 0)
+            else if (playerrot.eulerAngles.z < 180 && playerrot.eulerAngles.z > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 transform.localPosition = new Vector3(2f, avgrotx / 15 + 2, -7.15f + avgrotx / 8);
                 transform.localRotation = Quaternion.Euler(avgrotx * 1.35f, 0, 1);
             }
             //both angles negative
-            else
+            else if (playerrot.eulerAngles.z >= 180 && playerrot.eulerAngles.z <= 360 && playerrot.eulerAngles.x >= 180 && playerrot.eulerAngles.x <= 360) 
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 transform.localPosition = new Vector3(2f, (360 - avgrot) / 15 + 2, -7.15f + (360 - avgrot) / 8);

@@ -23,8 +23,11 @@ public class SimpleEnemy : MonoBehaviour
 
     private void Start()
     {
-        //sets difficulty 
-        difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
+        //sets difficulty
+        if (GameObject.FindGameObjectWithTag("WorldOrigin"))
+        {
+            difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
+        }
         //health increased by difficulty
         health = health + difficulty;
         player = GameObject.FindGameObjectWithTag("Player");

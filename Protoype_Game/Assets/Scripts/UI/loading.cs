@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class loading : MonoBehaviour
 {
+    public bool intutorial;
     private bool appear = false;
     private float counter = .5f;
     void clear()
@@ -13,6 +14,10 @@ public class loading : MonoBehaviour
     }
     private void Update()
     {
+        if (intutorial)
+        {
+            appear = true;
+        }
         if (appear)
         {
             if (counter <= 0)
