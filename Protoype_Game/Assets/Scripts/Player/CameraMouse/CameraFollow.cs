@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     private bool isAlive = true;
     private bool enemylock = false;
     private GameObject LockedEnemy;
+
     // Update is called once per frame
     void Update()
     {
@@ -36,30 +37,30 @@ public class CameraFollow : MonoBehaviour
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
                 //new Vector3(camera offset right, camera off set up, camera offset back)
-                transform.localPosition = new Vector3(2f, avgrot / 15 + 2, -7.15f + avgrot / 8);
+                transform.localPosition = new Vector3(3f, avgrot / 25 + 1.5f, -4.5f);
                 //Quaternion.Euler(up and down looking angle, sideways rotation, tilt)
-                transform.localRotation = Quaternion.Euler(avgrot * 1.35f, 0, 1);
+                transform.localRotation = Quaternion.Euler(15, 0, 1);
             }
             //only x angle positive 
             else if (playerrot.eulerAngles.x < 180 && playerrot.eulerAngles.x > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
-                transform.localPosition = new Vector3(2f, avgrotz / 15 + 2, -7.15f + avgrotz / 8);
-                transform.localRotation = Quaternion.Euler(avgrotz * 1.35f, 0, 1);
+                transform.localPosition = new Vector3(3f, avgrotz / 25 + 1.5f, -4.5f);
+                transform.localRotation = Quaternion.Euler(15, 0, 1);
             }
             //only z angle positive
             else if (playerrot.eulerAngles.z < 180 && playerrot.eulerAngles.z > 0)
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
-                transform.localPosition = new Vector3(2f, avgrotx / 15 + 2, -7.15f + avgrotx / 8);
-                transform.localRotation = Quaternion.Euler(avgrotx * 1.35f, 0, 1);
+                transform.localPosition = new Vector3(3f, avgrotx / 25 + 1.5f, -4.5f);
+                transform.localRotation = Quaternion.Euler(15, 0, 1);
             }
             //both angles negative
-            else if (playerrot.eulerAngles.z >= 180 && playerrot.eulerAngles.z <= 360 && playerrot.eulerAngles.x >= 180 && playerrot.eulerAngles.x <= 360) 
+            else //(playerrot.eulerAngles.z >= 180 && playerrot.eulerAngles.z <= 360 && playerrot.eulerAngles.x >= 180 && playerrot.eulerAngles.x <= 360) 
             {
                 //changes position and rotation of camera in relation to the player to avoid clipping the ground
-                transform.localPosition = new Vector3(2f, (360 - avgrot) / 15 + 2, -7.15f + (360 - avgrot) / 8);
-                transform.localRotation = Quaternion.Euler((360 - avgrot) * 1.35f, 0, 1);
+                transform.localPosition = new Vector3(3f, (360 - avgrot) / 25 + 1.5f, -4.5f);
+                transform.localRotation = Quaternion.Euler(15, 0, 1);
             }
             //} 
         }

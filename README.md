@@ -20,3 +20,4 @@ TODO:
 - Tile loading queue 
 	-world origin holds a queue that loads tiles one by one 
 	 -tile generator waits for the queue to generate or maybe just waits to generate props
+- Increase subtracted S and V values from props and meshes as difficulty goes up 

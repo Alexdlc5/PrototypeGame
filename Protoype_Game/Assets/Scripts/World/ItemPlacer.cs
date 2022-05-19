@@ -117,9 +117,23 @@ public class ItemPlacer : MonoBehaviour
 
             if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)
             {
+                ////values that will hold hue, saturation and brightness value of current color
+                //float H, S, V;
+                //Color.RGBToHSV(currentcolor, out H, out S, out V);
+                ////decreases saturation and brightness
+                //S -= .09f;
+                //V -= .05f;
+                ////set current color with new lower saturation
+                //currentcolor = Color.HSVToRGB(H, S, V);
+
+                GetComponent<MeshRenderer>().material.color = currentcolor;
                 //sets mesh to new color
                 GetComponent<MeshRenderer>().material.color = currentcolor;
-                newobject.GetComponentInChildren<MeshRenderer>().material.color = currentcolor;
+                for (int j = 0; j < newobject.GetComponentsInChildren<MeshRenderer>().Length; j++)
+                {
+                    newobject.GetComponentsInChildren<MeshRenderer>()[j].material.color = currentcolor;
+                }
+
                 //makes rocks random size
                 if (randomscale)
                 {
