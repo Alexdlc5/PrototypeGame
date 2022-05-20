@@ -917,10 +917,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Controls:
 
-    [W] Forward    [A] Left      [space] jump/stabalize
+    [W] Forward    [A] Left      [Space] jump/stabalize  [L]
+    Open Menu
 
-    [S]
-    Backward   [S] Right    [Directional Key] [shift] boost
+    [S] Backward   [D] Right    [Directional Key] [shift] boost  [Esc]
+    Pause
 
 '
   m_isRightToLeft: 0

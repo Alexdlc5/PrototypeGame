@@ -5,7 +5,7 @@ using UnityEngine;
 public class StoreScript : MonoBehaviour
 {
     public GameObject StorePopUp;
-    private bool storeactive = false;
+    public bool storeactive = false;
     void Update()
     {
         //store menu

@@ -445,6 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StorePopUp: {fileID: 1881152979}
+  storeactive: 0
 --- !u!114 &95578136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1437144994}
+  - {fileID: 1060441542}
   - {fileID: 1568495766}
   m_Father: {fileID: 612551531}
   m_RootOrder: 4
@@ -2471,7 +2473,7 @@ MonoBehaviour:
   playerspeed: 25
   smallobjectscollision: 1
   accelerationspeed: 40
-  tipspeed: 2000
+  tipspeed: 1900
   jumppower: 55
   resetmultiplier: 25
   jumptimer: 0
@@ -3837,6 +3839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c75fc8550b2c3a4599ba6471f2e41d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameratype: 0
   player: {fileID: 612551530}
 --- !u!81 &963194230
 AudioListener:
@@ -4197,6 +4200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060441542}
   - component: {fileID: 1060441543}
+  - component: {fileID: 1060441544}
   m_Layer: 0
   m_Name: StablePlat
   m_TagString: Untagged
@@ -4211,13 +4215,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060441541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
-  m_Father: {fileID: 1568495766}
-  m_RootOrder: 2
+  m_Father: {fileID: 141342045}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1060441543
 MonoBehaviour:
@@ -4232,6 +4236,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1568495765}
+--- !u!114 &1060441544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060441541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fd34d35488fc246a1b788563261ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 141342045}
 --- !u!1 &1086393331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5324,9 +5341,8 @@ Transform:
   m_Children:
   - {fileID: 1651136686}
   - {fileID: 2090065781750040685}
-  - {fileID: 1060441542}
   m_Father: {fileID: 141342045}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1568495767
 MonoBehaviour:
@@ -7813,7 +7829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2101106716
 RectTransform:
   m_ObjectHideFlags: 0

@@ -133,7 +133,7 @@ public class Movement : MonoBehaviour
                 {
                     //rotates player
                     //rotateX(0);
-                    transform.RotateAround(transform.position, playerrotation.right, tipspeed / 200 * Time.fixedDeltaTime);
+                    transform.RotateAround(transform.position, playerrotation.right, tipspeed / 400 * Time.fixedDeltaTime);
 
 
                     //Adds velocity to player

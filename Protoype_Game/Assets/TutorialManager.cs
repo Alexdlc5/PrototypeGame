@@ -8,10 +8,19 @@ public class TutorialManager : MonoBehaviour
     public GameObject InstructionTwo;
     public GameObject InstructionThree;
     public GameObject InstructionFour;
+    public GameObject InstructionFive;
+    public GameObject InstructionSix;
+
+    public GameObject InstructionSeven;
+
     private bool StageOne = true;
     private bool StageTwo = false;
     private bool StageThree = false;
     private bool StageFour = false;
+    private bool StageFive = false;
+    private bool StageSix = false;
+    public bool StageSeven = false;
+
 
     // Update is called once per frame
     void Update()
@@ -21,10 +30,10 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 StageTwo = true;
-                Destroy(InstructionOne);
+                InstructionOne.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionOne, 1);
                 InstructionTwo.SetActive(true);
                 StageOne = false;
-                Destroy(InstructionOne);
             }
         }
         else if (StageTwo)
@@ -32,26 +41,57 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 StageThree = true;
-                Destroy(InstructionTwo);
+                InstructionTwo.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionTwo, 1);
                 InstructionThree.SetActive(true);
                 StageTwo = false;
             }
 
         }
-        else if (StageTwo)
+        else if (StageThree)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StageFour = true;
-                Destroy(InstructionThree);
+                InstructionThree.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionThree, 1);
                 InstructionFour.SetActive(true);
                 StageThree = false;
             }
 
         }
-        else if (StageTwo)
+        else if (StageFour)
         {
-
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                StageFive = true;
+                InstructionFour.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionFour, 1);
+                InstructionFive.SetActive(true);
+                StageFour = false;
+            }
+        }
+        else if (StageFive)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                StageSix = true;
+                InstructionFive.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionFive, 1);
+                InstructionSix.SetActive(true);
+                StageFive = false;
+            }
+        }
+        else if (StageSix)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                StageSeven = true;
+                InstructionSix.GetComponent<Rigidbody>().AddForce(Vector3.up * -200);
+                Destroy(InstructionFive, 1);
+                InstructionSeven.SetActive(true);
+                StageSix = false;
+            }
         }
     }
 }

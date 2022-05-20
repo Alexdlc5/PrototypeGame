@@ -7,11 +7,6 @@ public class SlowTime : MonoBehaviour
     private bool windowopen = false;
     private bool pausewindowopen = false;
 
-    private void Start()
-    {
-        Time.timeScale = .90f;
-        Time.fixedDeltaTime = Time.timeScale * .02f;
-    }
     // Update is called once per frame
     void Update()
     {
