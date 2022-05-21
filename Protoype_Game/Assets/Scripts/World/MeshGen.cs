@@ -34,6 +34,9 @@ public class MeshGen : MonoBehaviour
     //misc
     public Transform folder;
     public GameObject origin;
+    public int goahead = -1;
+    public bool queuerequested = false;
+
     //spanwers
     public GameObject spawner;
     public GameObject spawnera;
@@ -75,16 +78,100 @@ public class MeshGen : MonoBehaviour
         //updates it
         UpdateMesh();
 
+
+        //add biomes, snowy, plamtree, open field with flowers
+        goahead = origin.GetComponent<WorldOrigin>().requestQueue();
+        queuerequested = true;
+            //visual perlin
+            //Renderer renderer = GetComponent<Renderer>();
+            //renderer.material.mainTexture = GenTexture();
+    }
+    private void Update()
+    {
+        if (queuerequested && origin.GetComponent<WorldOrigin>().itemplacerqueue.Peek() == goahead)
+        {
+            generateProps(biome);
+            Destroy(gameObject.GetComponent<MeshGen>());
+        }
+    }
+    void CreateShape()
+    {
+
+        //creates grid of vertices
+        vertices = new Vector3[(xSize + 1) * (zSize + 1)];
+        
+        int index = 0;
+        for (int z = 0; z <= zSize; z++)
+        {
+            for (int x = 0; x <= xSize; x++)
+            {
+                if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
+                {
+                    if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
+                    {
+                        //pixel to world coord and set vertices
+                        setVerts(index, x, z, 20f);
+                        index++;
+                    }
+                    else
+                    {
+                        //pixel to world coord and set vertices
+                        setVerts(index, x, z, 1.1f);
+                        index++;
+                    }
+                }
+                else
+                {
+                    //pixel to world coord and set vertices
+                    setVerts(index, x, z, 1);
+                    index++;
+                }
+            }
+        }
+        
+        //creates triangles/squares in grid
+        triangles = new int[xSize * zSize * 6];
+        int vert = 0;
+        int tri = 0;
+        for (int z = 0; z < zSize; z++)
+        {
+            for (int x = 0; x < xSize; x++)
+            {
+                //first triangle
+                triangles[tri] = vert + 0;
+                triangles[tri + 1] = vert + xSize + 1;
+                triangles[tri + 2] = vert + 1;
+                //second triangle
+                triangles[tri + 3] = triangles[tri + 2];
+                triangles[tri + 4] = triangles[tri + 1];
+                triangles[tri + 5] = vert + xSize + 2;
+
+                vert++;
+                tri += 6;
+            }
+            vert++;
+        }
+
+        UVs = new Vector2[vertices.Length];
+        for (int i = 0, z = 0; z <= zSize; z++)
+        {
+            for(int x = 0; x <= xSize; x++)
+            {
+                UVs[i] = new Vector2((float)x / xSize,(float)z / zSize);
+                i++;
+            }
+        }
+    } 
+    void generateProps(string currentbiome)
+    {
         //places assets on map
         GameObject ip = Instantiate(itemPlacer, transform);
         ItemPlacer itemplacer = ip.GetComponent<ItemPlacer>();
         itemplacer.setXoff(currentcoordsx);
         itemplacer.setZoff(currentcoordsz);
-        
-        //add biomes, snowy, plamtree, open field with flowers
 
         //checks biome, spawns accordingly
-        if (biome.Equals("Pine"))
+        if (currentbiome.Equals("Pine"))
         {
             //changes the current mesh color to random value
             currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
@@ -136,8 +223,9 @@ public class MeshGen : MonoBehaviour
             //    ip.SendMessage("PlaceObjects", 1);
             //}
 
+            //Item placer methods described in Item Placer script
             itemplacer.setObject(tree);
-            itemplacer.setScaleRange(new Vector2(3,5));
+            itemplacer.setScaleRange(new Vector2(3, 5));
             itemplacer.setRandomRotation(true);
             itemplacer.setYoff(-10);
             itemplacer.setFolder(folder);
@@ -167,7 +255,7 @@ public class MeshGen : MonoBehaviour
             itemplacer.setObject(spawner);
             itemplacer.PlaceObjects(1);
         }
-        else if (biome.Equals("Oak"))
+        else if (currentbiome.Equals("Oak"))
         {
             //changes the current mesh color to random value
             currentcolor = new Color(Random.Range(.5f, .8f), Random.Range(0.6f, 1f), Random.Range(0.0f, 0.00f), 1.0f);
@@ -184,8 +272,6 @@ public class MeshGen : MonoBehaviour
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
-
-            ip.SendMessage("isSpawner", false);
             //// 1 / [chanceofbuilding] chance of spwaning building
             //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
             //{
@@ -256,7 +342,7 @@ public class MeshGen : MonoBehaviour
             itemplacer.setObject(spawnera);
             itemplacer.PlaceObjects(1);
         }
-        else if (biome.Equals("Desert"))
+        else if (currentbiome.Equals("Desert"))
         {
             //changes the current mesh color to random value
             currentcolor = new Color(1, Random.Range(0.6f, .8f), 0, 1.0f);
@@ -274,7 +360,6 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
-            ip.SendMessage("isSpawner", false);
             //// 1 / [chanceofbuilding] chance of spwaning building
             //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
             //{
@@ -333,80 +418,8 @@ public class MeshGen : MonoBehaviour
             itemplacer.setObject(spawnerc);
             itemplacer.PlaceObjects(2);
         }
-
-
-            //visual perlin
-            //Renderer renderer = GetComponent<Renderer>();
-            //renderer.material.mainTexture = GenTexture();
-        } 
-    void CreateShape()
-    {
-
-        //creates grid of vertices
-        vertices = new Vector3[(xSize + 1) * (zSize + 1)];
-        
-        int index = 0;
-        for (int z = 0; z <= zSize; z++)
-        {
-            for (int x = 0; x <= xSize; x++)
-            {
-                if (z <= 2 || zSize - 2 <= z || x <= 2 || xSize - 2 <= x)
-                {
-                    if (z <= 1 || zSize - 1 <= z || x <= 1 || xSize - 1 <= x)
-                    {
-                        //pixel to world coord and set vertices
-                        setVerts(index, x, z, 20f);
-                        index++;
-                    }
-                    else
-                    {
-                        //pixel to world coord and set vertices
-                        setVerts(index, x, z, 1.1f);
-                        index++;
-                    }
-                }
-                else
-                {
-                    //pixel to world coord and set vertices
-                    setVerts(index, x, z, 1);
-                    index++;
-                }
-            }
-        }
-        
-        //creates triangles/squares in grid
-        triangles = new int[xSize * zSize * 6];
-        int vert = 0;
-        int tri = 0;
-        for (int z = 0; z < zSize; z++)
-        {
-            for (int x = 0; x < xSize; x++)
-            {
-                //first triangle
-                triangles[tri] = vert + 0;
-                triangles[tri + 1] = vert + xSize + 1;
-                triangles[tri + 2] = vert + 1;
-                //second triangle
-                triangles[tri + 3] = triangles[tri + 2];
-                triangles[tri + 4] = triangles[tri + 1];
-                triangles[tri + 5] = vert + xSize + 2;
-
-                vert++;
-                tri += 6;
-            }
-            vert++;
-        }
-
-        UVs = new Vector2[vertices.Length];
-        for (int i = 0, z = 0; z <= zSize; z++)
-        {
-            for(int x = 0; x <= xSize; x++)
-            {
-                UVs[i] = new Vector2((float)x / xSize,(float)z / zSize);
-                i++;
-            }
-        }
-    } 
+        Destroy(ip);
+    }
 
     void UpdateMesh()
     {

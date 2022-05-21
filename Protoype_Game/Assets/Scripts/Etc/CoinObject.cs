@@ -6,28 +6,23 @@ public class CoinObject : MonoBehaviour
 {
     public int value = 1;
     public GameObject coincounter;
-    public GameObject player;
-    public Rigidbody rb;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
     }
     public void addCoin()
     {
-        coincounter.GetComponent<CoinInv>().addCoins(value);
+        coincounter.GetComponent<CoinInv>().addCoins(value * 4);
         Destroy(gameObject, .25f);
     }
 
     private float time = 0;
     void Update()
     {
-        if (time > 5)
+        if (time > 2)
         {
-            transform.LookAt(player.transform);
             GetComponent<BoxCollider>().enabled = false;
-            rb.AddForce(transform.forward * 25);
             addCoin();
         }
         else

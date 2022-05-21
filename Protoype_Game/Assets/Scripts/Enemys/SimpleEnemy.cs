@@ -37,6 +37,21 @@ public class SimpleEnemy : MonoBehaviour
 
     void Update()
     {
+        //checks if health is at or below 0
+        if (health <= 0)
+        {
+            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
+            for (int i = 0; i < coinreward / 4; i++)
+            {
+                Instantiate(coin, transform.position, transform.rotation);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                Instantiate(deathbit, transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
+
         //work on dmg indicator
         if (pain)
         {
@@ -70,18 +85,6 @@ public class SimpleEnemy : MonoBehaviour
         else
         {
             time += Time.deltaTime;
-        }
-
-        //checks if health is at or below 0
-        if (health <= 0)
-        {
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
-            for (int i = 0; i < coinreward; i++)
-            {
-                Instantiate(coin, transform.position, transform.rotation);
-                Instantiate(deathbit, transform.position, transform.rotation);
-            }
-            Destroy(gameObject);
         }
     }
 

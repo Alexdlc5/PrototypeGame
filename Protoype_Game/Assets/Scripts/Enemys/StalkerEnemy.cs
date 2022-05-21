@@ -66,10 +66,13 @@ public class StalkerEnemy : MonoBehaviour
         if (health <= 0)
         {
             score.GetComponent<Score>().LogEnemyKill(scoreforkill);
-            for (int i = 0; i < coinreward; i++)
+            for (int i = 0; i < coinreward/4; i++)
+            {
+                Instantiate(coin, transform.position, transform.rotation);
+            }
+            for (int i = 0; i < 4; i++)
             {
                 Instantiate(deathbit, transform.position, transform.rotation);
-                Instantiate(coin, transform.position, transform.rotation);
             }
             Destroy(gameObject);
         }

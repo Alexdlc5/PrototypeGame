@@ -35,6 +35,20 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //checks if health is at or below 0
+        if (health <= 0)
+        {
+            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
+            for (int i = 0; i < coinreward / 4; i++)
+            {
+                Instantiate(coin, transform.position, transform.rotation);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                Instantiate(deathbit, transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
         //work on dmg indicator
         if (pain)
         {
@@ -52,19 +66,9 @@ public class ShootingEnemy : MonoBehaviour
                 gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
             }
         }
+
         if (transform.position.y < -50)
         {
-            Destroy(gameObject);
-        }
-        //checks if health is at or below 0
-        if (health <= 0)
-        {
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
-            for (int i = 0; i < coinreward / 4; i++)
-            {
-                Instantiate(deathbit, transform.position, transform.rotation);
-                Instantiate(coin, transform.position, transform.rotation);
-            }
             Destroy(gameObject);
         }
 

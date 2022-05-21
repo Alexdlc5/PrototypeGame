@@ -7,7 +7,7 @@ public class loading : MonoBehaviour
 {
     public bool intutorial;
     private bool appear = false;
-    private float counter = .5f;
+    private float counter = .75f;
     void clear()
     {
         appear = true;
