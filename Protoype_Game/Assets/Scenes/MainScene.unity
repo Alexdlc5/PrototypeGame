@@ -2015,6 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af5c278d4d57ea41a777a0b66bfa974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isArenaMode: 0
   offsetx: 0
   offsetz: 0
   currentbiomecount: 0
@@ -2488,6 +2489,7 @@ MonoBehaviour:
   health: 15
   GameObject: {fileID: 612551531}
   rb: {fileID: 612551533}
+  isArenaMode: 0
 --- !u!54 &612551533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2515,9 +2517,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5095929
-  m_Height: 2.349249
+  m_Height: 2.603506
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8675661, z: 0}
+  m_Center: {x: 0, y: 0.7404375, z: 0}
 --- !u!114 &612551535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,7 +3841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c75fc8550b2c3a4599ba6471f2e41d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameratype: 0
   player: {fileID: 612551530}
 --- !u!81 &963194230
 AudioListener:
@@ -7690,6 +7691,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c531ad2c39fbff4b9ef3801ef0b58f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inMainMenu: 0
+  isArenaMode: 0
 --- !u!1 &2094316771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7862,14 +7865,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15272339, g: 0.21413314, b: 0.2264151, a: 1}
+  m_Color: {r: 0.15272339, g: 0.21413314, b: 0.2264151, a: 0.09411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 638babe53297507469d21c8d01f79137, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0

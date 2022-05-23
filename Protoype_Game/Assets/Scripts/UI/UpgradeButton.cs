@@ -15,6 +15,7 @@ public class UpgradeButton : MonoBehaviour
     public GameObject player;
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
         if (stat.Equals("Sheild"))
         {

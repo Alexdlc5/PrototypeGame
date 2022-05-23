@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085f77dd80f1cb4c930daa523214536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2
-  settime: 10
+  time: 1
+  settime: 6
   enemyspawncount: 2
   inloadingdistance: 0
   spawneractive: 0

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class WorldOrigin : MonoBehaviour
 {
+    public bool isArenaMode = false;
+
     public int offsetx = 0;
     public int offsetz = 0;
     public int currentbiomecount = 0;
+    public int currentdifficultycount = 0;
     public int difficulty = 0;
     public string currentbiome = "";
     public string startingbiome = "Oak";
@@ -19,48 +22,60 @@ public class WorldOrigin : MonoBehaviour
     public float amp = 1;
     void Start()
     {
-        currentbiome = startingbiome;
-
-        //random offset in noise
-        offsetx = Random.Range(0, 999);
-        offsetz = Random.Range(0, 999);
-
-        //random amplitude
-        amp = Random.Range(15, 20);
-        loadingscreen.GetComponent<loading>().SendMessage("clear");
-
-        itemplacerqueue.Enqueue(0);
-
-        if (currentbiomecount >= 12)
+        if (isArenaMode == false)
         {
-            //increase difficulty and change biome
-            difficulty++;
-            currentbiomecount = 0;
-            float random = Random.Range(0, 3);
-            if (random >= 2)
-            {
-                currentbiome = "Pine";
-            }
-            else if (random >= 1)
-            {
-                currentbiome = "Oak";
-            }
-            else if (random >= 0)
-            {
-                currentbiome = "Desert";
-            }
+            currentbiome = startingbiome;
+
+            //random offset in noise
+            offsetx = Random.Range(0, 999);
+            offsetz = Random.Range(0, 999);
+
+            //random amplitude
+            amp = Random.Range(5, 10);
+            loadingscreen.GetComponent<loading>().SendMessage("clear");
+
+            itemplacerqueue.Enqueue(0);
         }
+       
     }
     private void Update()
     {
-        queuetimer += Time.deltaTime;
-        if (queuetimer > .02 && itemplacerqueue.Count != 1)
+        if (isArenaMode == false)
         {
-            itemplacerqueue.Dequeue();
-        }
-        else if (itemplacerqueue.Peek() == 1)
-        {
-            queuetimer = 0;
+            queuetimer += Time.deltaTime;
+            if (queuetimer > .02 && itemplacerqueue.Count != 1)
+            {
+                itemplacerqueue.Dequeue();
+            }
+            else if (itemplacerqueue.Peek() == 1)
+            {
+                queuetimer = 0;
+            }
+
+            if (currentdifficultycount > 10)
+            {
+                difficulty++;
+                currentdifficultycount = 0;
+            }
+
+            if (currentbiomecount >= 5)
+            {
+                //change biome
+                currentbiomecount = 0;
+                float random = Random.Range(0, 3);
+                if (random >= 2)
+                {
+                    currentbiome = "Pine";
+                }
+                else if (random >= 1)
+                {
+                    currentbiome = "Oak";
+                }
+                else if (random >= 0)
+                {
+                    currentbiome = "Desert";
+                }
+            }
         }
     }
 

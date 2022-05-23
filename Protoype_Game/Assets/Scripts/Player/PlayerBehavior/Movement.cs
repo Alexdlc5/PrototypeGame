@@ -35,9 +35,43 @@ public class Movement : MonoBehaviour
     public static int damagelvl = 0;
     public static int speedlvl = 0;
 
+    public bool isArenaMode = false;
+    //arena mode stats
+    public static int sheildlvlarenamode = 0;
+    public static int boostlvlarenamode = 0;
+    public static int firinglvlarenamode = 0;
+    public static int damagelvlarenamode = 0;
+    public static int speedlvlarenamode = 0;
+
+    //infinite world stats
+    public static int sheildlvlinfinite = 0;
+    public static int boostlvlinfinite = 0;
+    public static int firinglvlinfinite = 0;
+    public static int damagelvlinfinite = 0;
+    public static int speedlvlinfinite = 0;
+
     void Start()
     {
         maxhealth = health;
+
+        //Arena Mode
+        if (isArenaMode)
+        {
+            sheildlvl = sheildlvlarenamode;
+            boostlvl = boostlvlarenamode;
+            firinglvl = firinglvlarenamode;
+            damagelvl = damagelvlarenamode;
+            speedlvl = speedlvlarenamode;
+        }
+        //infinite Mode
+        else
+        {
+            sheildlvl = sheildlvlinfinite;
+            boostlvl = boostlvlinfinite;
+            firinglvl = firinglvlinfinite;
+            damagelvl = damagelvlinfinite;
+            speedlvl = speedlvlinfinite;
+        }
     }
 
     void FixedUpdate()
@@ -50,10 +84,31 @@ public class Movement : MonoBehaviour
         //checks if players health is 0 or less
         if (health <= 0)
         {
+            //saves stats
+            //Arena Mode
+            if (isArenaMode)
+            {
+                sheildlvlarenamode = sheildlvl;
+                boostlvlarenamode = boostlvl;
+                firinglvlarenamode = firinglvl;
+                damagelvlarenamode = damagelvl;
+                speedlvlarenamode = speedlvl;
+            }
+            //infinite Mode
+            else
+            {
+                sheildlvlinfinite = sheildlvl;
+                boostlvlinfinite = boostlvl;
+                firinglvlinfinite = firinglvl;
+                damagelvlinfinite = damagelvl;
+                speedlvlinfinite = speedlvl;
+            }
+            //lets camera and aim controllers know player died
             cam.GetComponent<CameraFollow>().die();
             aimcontroller.GetComponent<MouseAim>().die();
             isAlive = false;
             gameObject.GetComponent<Rigidbody>().freezeRotation = false;
+            //slows time to stop
             if (Time.timeScale >= 0.01f)
             {
                 Time.timeScale = Time.timeScale - Time.fixedDeltaTime;
@@ -62,19 +117,16 @@ public class Movement : MonoBehaviour
             {
                 Time.timeScale = 0;
             }
+            //deathoverlay fades in
             if (deathoverlay.GetComponent<RawImage>().color.a < 1)
             {
                 deathoverlay.GetComponent<RawImage>().color = new Color(deathoverlay.GetComponent<RawImage>().color.r, deathoverlay.GetComponent<RawImage>().color.g, deathoverlay.GetComponent<RawImage>().color.b, deathoverlay.GetComponent<RawImage>().color.a + Time.fixedDeltaTime);
             }
             deathoverlay.SetActive(true);
+            //time scale set
             Time.fixedDeltaTime = Time.timeScale * .02f;
-            //sends player to death screen
-            //for (int i = 0; i < gameObject.GetComponentsInChildren<MeshRenderer>().Length; i++)
-            //{
-            //    gameObject.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
-            //}
+            //saves score
             score.GetComponent<Score>().saveScore();
-            //SceneManager.LoadScene("DeathScreen");
         }
         if (isAlive) {
 
@@ -85,6 +137,7 @@ public class Movement : MonoBehaviour
             //sets initial max speed
             float maxspeed = speed;
 
+            //boost
             if (inboosttimer > 0)
             {
                 maxspeed = speed * (boostlvl + 1) * 500;
