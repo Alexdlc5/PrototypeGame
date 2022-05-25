@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.timeScale * .02f;
+        cam = UnityEngine.GameObject.FindGameObjectWithTag("MainCamera");
 
         maxhealth = health;
 
