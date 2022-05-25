@@ -6,6 +6,7 @@ public class ProximityLoader : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        //checks for nearby enenmys and spanwers and activates them
         if (other.gameObject.tag == "Spawner")
         {
             if (other.gameObject.GetComponentInParent<SimpleEnemySpawn>())
@@ -25,6 +26,7 @@ public class ProximityLoader : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //checks for nearby enenmys and spanwers and deactivates them
         if (other.gameObject.tag == "Spawner")
         {
             if (other.gameObject.GetComponentInParent<SimpleEnemySpawn>())

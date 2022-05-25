@@ -15,6 +15,7 @@ public class UpgradeButton : MonoBehaviour
     public GameObject player;
     private void Start()
     {
+        ///changes stat
         player = GameObject.FindGameObjectWithTag("Player");
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
         if (stat.Equals("Sheild"))
@@ -47,12 +48,14 @@ public class UpgradeButton : MonoBehaviour
     {
         if (currrentcoincount >= 1000)
         {
-            value += .25f;
+            //increaes lvl if player has the coins to upgrade
+            value += .50f;
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(1000);
             player.GetComponent<Movement>().SendMessage("set" + stat + "Lvl", value);
             if (value >= UpgradeBar.maxValue)
             {
+                //makes color more and more red when the bar is at full
                 UpgradeBar.GetComponentInChildren<Image>().color = new Color(UpgradeBar.GetComponentInChildren<Image>().color.r + .03f, UpgradeBar.GetComponentInChildren<Image>().color.g - .03f, UpgradeBar.GetComponentInChildren<Image>().color.b - .03f, UpgradeBar.GetComponentInChildren<Image>().color.a);
             }
         }

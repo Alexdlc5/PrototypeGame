@@ -52,7 +52,7 @@ public class SimpleEnemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //work on dmg indicator
+        //dmg indicator
         if (pain)
         {
             if (!paindelt)

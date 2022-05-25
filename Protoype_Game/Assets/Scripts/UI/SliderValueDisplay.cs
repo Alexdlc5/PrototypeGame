@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SliderValueDisplay : MonoBehaviour
 {
+    //UI in options menu for mouse sensitivity slider
     public static float sensitivityvalue = 250;
     private void Start()
     {
@@ -14,6 +15,7 @@ public class SliderValueDisplay : MonoBehaviour
     }
     void Update()
     {
+        //checks sens value and updates number accordingly
         GameObject senslider = GameObject.Find("Sensitivity");
         sensitivityvalue = senslider.GetComponent<Slider>().value;
         gameObject.GetComponent<TextMeshProUGUI>().text = "[" + sensitivityvalue + "]";

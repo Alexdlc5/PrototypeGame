@@ -15,6 +15,7 @@ public class WorldOrigin : MonoBehaviour
     public string startingbiome = "Oak";
     public GameObject loadingscreen;
 
+    //delays itemplacer so there are not major lag spike from multiple tiles loading all at once
     public Queue<int> itemplacerqueue = new Queue<int>();
     private float queuetimer = 0;
     private int previousadded = 0;
@@ -42,6 +43,7 @@ public class WorldOrigin : MonoBehaviour
     {
         if (isArenaMode == false)
         {
+            //goes thru queue on timer
             queuetimer += Time.deltaTime;
             if (queuetimer > .02 && itemplacerqueue.Count != 1)
             {
@@ -51,7 +53,7 @@ public class WorldOrigin : MonoBehaviour
             {
                 queuetimer = 0;
             }
-
+            //increases difficulty 
             if (currentdifficultycount > 10)
             {
                 difficulty++;
@@ -60,8 +62,9 @@ public class WorldOrigin : MonoBehaviour
 
             if (currentbiomecount >= 5)
             {
-                //change biome
+                //change biome 
                 currentbiomecount = 0;
+                //chooses biome based on random int
                 float random = Random.Range(0, 3);
                 if (random >= 2)
                 {
@@ -78,7 +81,7 @@ public class WorldOrigin : MonoBehaviour
             }
         }
     }
-
+    //called by item placer to get a spot in the queue 
     public int requestQueue()
     {
         itemplacerqueue.Enqueue(previousadded + 1);

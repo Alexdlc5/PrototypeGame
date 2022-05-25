@@ -13,6 +13,7 @@ public class ShootingEnemySpawner : MonoBehaviour
 
     void Update()
     {  
+        //if in range of player 
         if (enemyspawncount >= 0)
         {
             if (gameObject.GetComponent<WorldObject>())

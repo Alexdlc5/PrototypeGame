@@ -52,9 +52,12 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+
         maxhealth = health;
 
-        //Arena Mode
+        //Sets Arena Mode Stats
         if (isArenaMode)
         {
             sheildlvl = sheildlvlarenamode;
@@ -63,7 +66,7 @@ public class Movement : MonoBehaviour
             damagelvl = damagelvlarenamode;
             speedlvl = speedlvlarenamode;
         }
-        //infinite Mode
+        //Sets Infinite Mode Stats
         else
         {
             sheildlvl = sheildlvlinfinite;
@@ -76,7 +79,9 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        //sets player y rotation 0
         gameObject.transform.rotation = Quaternion.Euler(gameObject.transform.rotation.eulerAngles.x, 0, gameObject.transform.rotation.eulerAngles.z);
+        //for testing
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             health = 0;
@@ -94,7 +99,7 @@ public class Movement : MonoBehaviour
                 damagelvlarenamode = damagelvl;
                 speedlvlarenamode = speedlvl;
             }
-            //infinite Mode
+            //Infinite Mode stats
             else
             {
                 sheildlvlinfinite = sheildlvl;
@@ -131,8 +136,7 @@ public class Movement : MonoBehaviour
         if (isAlive) {
 
             //modifyable version of playerspeed
-            float speed = playerspeed;
-            speed = speed * (1 + (speedlvl / 5));
+            float speed = playerspeed * (1 + (speedlvl / 5));
 
             //sets initial max speed
             float maxspeed = speed;

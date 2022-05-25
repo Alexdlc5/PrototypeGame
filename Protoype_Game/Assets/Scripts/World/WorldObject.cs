@@ -5,8 +5,6 @@ using UnityEngine;
 public class WorldObject : MonoBehaviour
 {
     public bool needscolor;
-    private Transform player_location;
-    private float distancefromplayer;
     public bool setVisOnStart = false;
     public bool visstate = false;
     public bool isenemy = false;
@@ -14,8 +12,6 @@ public class WorldObject : MonoBehaviour
 
     private void Start()
     {
-        player_location = GameObject.FindGameObjectWithTag("Player").transform;
-
         if (isenemy)
         {
             setVis(setVisOnStart);

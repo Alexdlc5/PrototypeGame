@@ -46,15 +46,17 @@ public class Projectile : MonoBehaviour
                 GameObject enemy = collision.gameObject;
                 if (enemy.GetComponent<SimpleEnemy>())
                 {
-                    enemy.GetComponent<SimpleEnemy>().DealDamage(1.0f * damagelvl + 1);
+                    //deas damage based on lvl
+                    //one added so that when damage lvl == 0, you deal damage
+                    enemy.GetComponent<SimpleEnemy>().DealDamage(damagelvl + 1);
                 }
                 else if (enemy.GetComponent<StalkerEnemy>())
                 {
-                    enemy.GetComponent<StalkerEnemy>().DealDamage(1.0f * damagelvl + 1);
+                    enemy.GetComponent<StalkerEnemy>().DealDamage(damagelvl + 1);
                 }
                 else if (enemy.GetComponent<ShootingEnemy>())
                 {
-                    enemy.GetComponent<ShootingEnemy>().DealDamage(1.0f * damagelvl + 1);
+                    enemy.GetComponent<ShootingEnemy>().DealDamage(damagelvl + 1);
                 }
             }
         } else

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class loading : MonoBehaviour
 {
+    //UI image to obscure intitial tile generation
     public bool intutorial;
     private bool appear = false;
     private float counter = .75f;
@@ -20,6 +21,7 @@ public class loading : MonoBehaviour
         }
         if (appear)
         {
+            //fades out 
             if (counter <= 0)
             {
                 if (gameObject.GetComponent<RawImage>().color.a > 0)

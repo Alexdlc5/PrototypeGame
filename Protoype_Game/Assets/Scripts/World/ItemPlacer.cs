@@ -94,11 +94,6 @@ public class ItemPlacer : MonoBehaviour
             GameObject newobject;
             //instantiates new object
             //checks if item will be placed on ground (prevents props from being spawned on top of each other)
-            //======|
-            //
-            //could use in future to place certain objects at certain elevations ie water, small to large trees, etc.
-            //
-            //======|
             if ((hit.point + Vector3.up * offsety).y > 15)
             {
                 continue;
@@ -117,15 +112,6 @@ public class ItemPlacer : MonoBehaviour
 
             if (Object.GetComponent<WorldObject>() && Object.GetComponent<WorldObject>().needscolor)
             {
-                ////values that will hold hue, saturation and brightness value of current color
-                //float H, S, V;
-                //Color.RGBToHSV(currentcolor, out H, out S, out V);
-                ////decreases saturation and brightness
-                //S -= .09f;
-                //V -= .05f;
-                ////set current color with new lower saturation
-                //currentcolor = Color.HSVToRGB(H, S, V);
-
                 GetComponent<MeshRenderer>().material.color = currentcolor;
                 //sets mesh to new color
                 GetComponent<MeshRenderer>().material.color = currentcolor;

@@ -85,16 +85,19 @@ public class StalkerEnemy : MonoBehaviour
         //move toward player at various speeds when at diffrent distances
         if (time >= .1)
         {
+            //move slow if player is far away
             if (distanceMoreThan(playerLocation, transform.position, 30))
             {
                 rb.AddRelativeForce(Vector3.forward * speed * 50);
                 time = 0;
             }
+            //faster once player in range
             else if (distanceMoreThan(playerLocation, transform.position, 20) && distanceLessThan(playerLocation, transform.position, 30))
             {
                 rb.AddRelativeForce(Vector3.forward * speed * 500);
                 time = 0;
             }
+            //even faster when closer
             else
             {
                 rb.AddRelativeForce(Vector3.forward * speed * 850);

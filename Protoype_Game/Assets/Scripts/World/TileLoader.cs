@@ -8,6 +8,7 @@ public class TileLoader : MonoBehaviour
     HashSet<Vector2> tilelocations = new HashSet<Vector2>();
     private void Start()
     {
+        //adds first tile to set
         tilelocations.Add(new Vector2(0, 0));
     }
     private void OnTriggerEnter(Collider other)
@@ -15,6 +16,7 @@ public class TileLoader : MonoBehaviour
         //value to offset generated tiles
         float tileoffset = 200;
 
+        //checks for diffrent tags on objects and loads in or activates the objects
         if (other.gameObject.tag == "Tile")
         {
             other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(true);
@@ -110,15 +112,18 @@ public class TileLoader : MonoBehaviour
         }
         else if (other.gameObject.tag == "WorldOrigin")
         {
+            //when first loading in a world gen hitbox is collided with
+            //destroys hit box
             Destroy(other.gameObject);
+            //creates new tile and adds it to set
             GameObject newtile = Instantiate(tile);
             newtile.GetComponent<Tile>().setTilePos(0, 0);
             tilelocations.Add(new Vector2(0, 0));
         }
     }
-    //need hitbox to cover tile to load and unload tile 
     private void OnTriggerExit(Collider other)
     {
+        //checks for tags and unloads or deactivates gameobjects
         if (other.gameObject.tag == "Tile")
         {
             other.gameObject.GetComponentInParent<Tile>().setInLoadingDistance(false);
@@ -137,6 +142,7 @@ public class TileLoader : MonoBehaviour
     }
     void generateTile(float xcoord, float zcoord)
     {
+        //creates and adds new tile
         GameObject newtile = Instantiate(tile);
         newtile.GetComponent<Tile>().setTilePos(xcoord, zcoord);
         tilelocations.Add(new Vector2(xcoord, zcoord));

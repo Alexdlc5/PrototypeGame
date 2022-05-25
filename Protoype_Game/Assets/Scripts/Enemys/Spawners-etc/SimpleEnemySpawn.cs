@@ -15,6 +15,7 @@ public class SimpleEnemySpawn : MonoBehaviour
     {
         if (enemyspawncount >= 0)
         {
+            //if player is in range spanwn enemys every x seconds
             if (gameObject.GetComponent<WorldObject>())
             {
                 inloadingdistance = gameObject.GetComponent<WorldObject>().visstate;

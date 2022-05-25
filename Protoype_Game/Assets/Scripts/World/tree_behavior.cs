@@ -12,6 +12,7 @@ public class tree_behavior : MonoBehaviour
 
     private void Start()
     {
+        //random tree falling direction
         random = Random.Range(1, 4);
     }
     // Update is called once per frame
@@ -55,9 +56,10 @@ public class tree_behavior : MonoBehaviour
             despawntimer -= Time.deltaTime;
         }
     }
-
-   private bool hasfallen()
-   {
+    
+    //checks if tree has fallen
+    private bool hasfallen()
+    {
         if (gameObject.transform.rotation.eulerAngles.x >= 90 && gameObject.transform.rotation.eulerAngles.x <= 270 || gameObject.transform.rotation.eulerAngles.z >= 90 && gameObject.transform.rotation.eulerAngles.z <= 270)
         {
             return true;
@@ -66,7 +68,7 @@ public class tree_behavior : MonoBehaviour
         {
             return false;
         }
-   }
+    }
 
     public void DealDamage(float damage)
     {
