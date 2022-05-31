@@ -13,9 +13,12 @@ public class Movement : MonoBehaviour
     public float resetmultiplier = 0;
     
     public float jumptimer = 0;
+    public float injumptimer = 0;
     public float boosttimer = 0;
     public float inboosttimer = 0;
-    
+
+    public float maxspeed;
+
     public GameObject healthbar;
     public GameObject staminabar;
     public GameObject score;
@@ -137,10 +140,10 @@ public class Movement : MonoBehaviour
         if (isAlive) {
 
             //modifyable version of playerspeed
-            float speed = playerspeed * (1 + (speedlvl / 5));
+            float speed = playerspeed * (1 + (speedlvl / 6));
 
             //sets initial max speed
-            float maxspeed = speed;
+            maxspeed = speed;
 
             //boost
             if (inboosttimer > 0)
@@ -155,7 +158,10 @@ public class Movement : MonoBehaviour
             {
                 inboosttimer -= Time.fixedDeltaTime;
             }
-
+            if (injumptimer >= 0)
+            {
+                injumptimer -= Time.fixedDeltaTime;
+            }
             //rotations
             float Xrot = transform.rotation.eulerAngles.x;
             float Zrot = transform.rotation.eulerAngles.z;
@@ -163,7 +169,7 @@ public class Movement : MonoBehaviour
             //checks for keyboard input
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
-                float currentboostvalue = boostlvl / 3.5f + 1 * 5000;
+                float currentboostvalue = boostlvl / 3.5f + 1 * 2000;
                 //W key input
                 if (Input.GetKey(KeyCode.W))
                 {
@@ -177,13 +183,17 @@ public class Movement : MonoBehaviour
                     //adds velocity to player
                     rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
 
+                    //checks if in boost
+                    if (inboosttimer > 0)
+                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+
                     //boost
                     if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                     {
-                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                         maxspeed = speed * currentboostvalue;
                         boosttimer = 0;
                         inboosttimer = .2f;
+                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                     }
                 }
                 //S key input
@@ -198,13 +208,17 @@ public class Movement : MonoBehaviour
                     Vector3 flipped = new Vector3(-(playerrotation.forward.x), playerrotation.forward.y, -(playerrotation.forward.z));
                     rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
 
+                    //checks if in boost
+                    if (inboosttimer > 0)
+                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+
                     //boost
                     if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                     {
-                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                         maxspeed = speed * currentboostvalue;
                         boosttimer = 0;
                         inboosttimer = .2f;
+                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                     }
                 }
                 //D key input
@@ -218,18 +232,22 @@ public class Movement : MonoBehaviour
                     Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
                     rb.AddForce(-flipped * speed * 100 * Time.fixedDeltaTime);
 
+                    //checks if in boost
+                    if (inboosttimer > 0)
+                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+
                     //boost
                     if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
                     {
-                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                         maxspeed = speed * currentboostvalue;
                         boosttimer = 0;
                         inboosttimer = .2f;
+                        rb.AddForce(-flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                     }
                 }
                 //A key input
                 if (Input.GetKey(KeyCode.A))
-                {;
+                {
                     //rotates player
                     //rotateZ(1);
                     transform.RotateAround(transform.position, playerrotation.forward, -tipspeed / 200 * Time.fixedDeltaTime);
@@ -238,13 +256,18 @@ public class Movement : MonoBehaviour
                     Vector3 flipped = new Vector3(-(playerrotation.right.x), playerrotation.right.y, -(playerrotation.right.z));
                     rb.AddForce(flipped * speed * 100 * Time.fixedDeltaTime);
 
+                    //checks if in boost
+                    if (inboosttimer > 0)
+                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+
+
                     //boost
                     if (Input.GetKeyDown(KeyCode.LeftShift) && boosttimer > 3)
-                    {
-                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
+                    {   
                         maxspeed = speed * currentboostvalue;
                         boosttimer = 0;
                         inboosttimer = .2f;
+                        rb.AddForce(flipped * speed * currentboostvalue * Time.fixedDeltaTime);
                     }
                 }
             }
@@ -253,6 +276,10 @@ public class Movement : MonoBehaviour
                 balanceX(Xrot);
                 balanceZ(Zrot);
             }
+
+            //checks if jumping
+            if (injumptimer > 0)
+                rb.AddForce(Vector3.up * jumppower * 3);
 
             //times when you can jump
             if (jumptimer < 5f)
@@ -264,10 +291,11 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
 
-                //checks jump timer to see if player should boostjump, hop or not jump at all
+                //checks jump timer to see if player should jump or not jump
                 if (jumptimer >= 1.5f)
                 {
-                    rb.AddForce(Vector3.up * jumppower * 10);
+                    injumptimer = .1f;
+                    rb.AddForce(Vector3.up * jumppower * 3);
                     staminabar.GetComponent<Bar>().SetSlider(jumptimer);
                     balanceX(Xrot);
                     balanceZ(Zrot);
@@ -275,7 +303,7 @@ public class Movement : MonoBehaviour
                 }
                 else if (jumptimer >= 1f)
                 {
-                    rb.AddForce(Vector3.up * jumppower / 2 * 10);
+                    rb.AddForce(Vector3.up * jumppower / 6);
                     staminabar.GetComponent<Bar>().SetSlider(jumptimer);
                     balanceX(Xrot);
                     balanceZ(Zrot);

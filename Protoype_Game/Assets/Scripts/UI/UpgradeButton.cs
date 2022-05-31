@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class UpgradeButton : MonoBehaviour
 {
+    public Text UpgradePriceText;
     public Slider UpgradeBar;
     public Button button;
     public float value;
@@ -13,6 +12,7 @@ public class UpgradeButton : MonoBehaviour
     public int currrentcoincount;
     public string stat;
     public GameObject player;
+    private int upgradeprice = 1000;
     private void Start()
     {
         ///changes stat
@@ -46,12 +46,14 @@ public class UpgradeButton : MonoBehaviour
     }
     public void OnClick()
     {
-        if (currrentcoincount >= 1000)
+        if (currrentcoincount >= upgradeprice)
         {
             //increaes lvl if player has the coins to upgrade
             value += .50f;
             UpgradeBar.value = value;
-            coininv.GetComponent<CoinInv>().spendCoins(1000);
+            coininv.GetComponent<CoinInv>().spendCoins(upgradeprice);
+            upgradeprice += 750;
+            UpgradePriceText.text = upgradeprice + " coins";
             player.GetComponent<Movement>().SendMessage("set" + stat + "Lvl", value);
             if (value >= UpgradeBar.maxValue)
             {

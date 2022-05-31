@@ -10,7 +10,16 @@ public class SimpleEnemySpawn : MonoBehaviour
     public bool inloadingdistance = false;
     public bool spawneractive = false;
     public GameObject Enemy;
+    private float difficultytimemult;
+    private WorldOrigin worldorigin;
+    private void Start()
+    {
+        worldorigin = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>();
+        difficultytimemult = 1 - worldorigin.difficulty * 1.5f / 100;
 
+        settime *= difficultytimemult;
+        enemyspawncount += worldorigin.difficulty * 2;
+    }
     void Update()
     {
         if (enemyspawncount >= 0)

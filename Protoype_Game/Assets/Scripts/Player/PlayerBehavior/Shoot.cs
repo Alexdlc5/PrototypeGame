@@ -17,7 +17,7 @@ public class Shoot : MonoBehaviour
         firinglvl = Movement.firinglvl;
         float firingdecimal = .75f;
         //firing speed changed by player lvl
-        time += (firinglvl / .25f + 1) * Time.fixedDeltaTime;
+        time += (firinglvl / 2f + .5f) * Time.fixedDeltaTime;
         if (Input.GetMouseButton(0))
         {
             if (time >= firingdecimal)
