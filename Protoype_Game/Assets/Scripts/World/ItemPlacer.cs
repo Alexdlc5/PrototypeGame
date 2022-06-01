@@ -15,10 +15,12 @@ public class ItemPlacer : MonoBehaviour
     public float offsetz;
     public bool isspawner = false;
     public float offsety = 0;
+    //sets if object will have random rotation
     public void setRandomRotation(bool boolean)
     {
         randomrotation = boolean;
     }
+    //set range of the size an object can spawn as
     public void setScaleRange(Vector2 minmax)
     {
         if (minmax == null)
@@ -32,6 +34,7 @@ public class ItemPlacer : MonoBehaviour
             randomscale = true;
         }
     }
+    //sets tile and object offsets from 0,0,0
     public void setXoff(float x)
     {
         offsetx = x;
@@ -44,22 +47,27 @@ public class ItemPlacer : MonoBehaviour
     {
         offsety = y;
     }
+    //if object being spawned is spawner 
     public void isSpawner(bool isspawner)
     {
         this.isspawner = isspawner;
     }
+    //sets parent in heirarchy
     public void setFolder(Transform folder)
     {
         this.folder = folder;
     }
+    //sets object being spawned
     public void setObject(GameObject Object)
     {
         this.Object = Object;
     }
+    //sets color
     public void setObjectColor(Color color)
     {
         currentcolor = color;
     }
+    //places object/s
     public void PlaceObjects(int objectcount)
     {
         int layermask = 1 << 6;

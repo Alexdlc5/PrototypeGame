@@ -15,6 +15,7 @@ public class CoinInv : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //updates coin counter
         TextMeshProUGUI coinstext = gameObject.GetComponent<TextMeshProUGUI>();
         coinstext.text = "Coins: [" + ((int)coins).ToString() + "]";
         addCoins(coinstoaddinconsole);

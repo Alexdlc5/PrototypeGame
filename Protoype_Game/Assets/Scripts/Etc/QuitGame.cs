@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//exits game at buton click
 public class QuitGame : MonoBehaviour
 {
     public Button ResButton;

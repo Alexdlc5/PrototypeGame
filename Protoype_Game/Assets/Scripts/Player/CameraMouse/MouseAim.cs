@@ -10,6 +10,7 @@ public class MouseAim : MonoBehaviour
     //use is reseting to make the y value of the weprot reset when player is balancing 
     void Update()
     {
+        //move camera from left to right 
         if (isAlive)
         {
             float mouseX = Input.GetAxis("Mouse X");
@@ -20,6 +21,7 @@ public class MouseAim : MonoBehaviour
     {
         isAlive = false;
     }
+    //topdown mouse control
     //void FixedUpdate()
     //{
     //    Ray camray = cam.ScreenPointToRay(Input.mousePosition);

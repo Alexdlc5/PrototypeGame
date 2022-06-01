@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestObjectMovement : MonoBehaviour
 {
-    //Test movement for world gen
+    //Test movement for world gen (not used in game)
     void Update()
     {
         if (Input.GetKey(KeyCode.W))

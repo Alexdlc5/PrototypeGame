@@ -20,6 +20,7 @@ public class CoinObject : MonoBehaviour
     private float time = 0;
     void Update()
     {
+        //after 2 seconds coin falls below floor
         if (time > 2)
         {
             GetComponent<BoxCollider>().enabled = false;

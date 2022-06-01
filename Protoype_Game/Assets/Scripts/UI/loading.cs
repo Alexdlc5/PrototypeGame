@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//fades loading screen out 
 public class loading : MonoBehaviour
 {
     //UI image to obscure intitial tile generation
     public bool intutorial;
     private bool appear = false;
     private float counter = .75f;
-    void clear()
-    {
-        appear = true;
-    }
     private void Update()
     {
         if (intutorial)

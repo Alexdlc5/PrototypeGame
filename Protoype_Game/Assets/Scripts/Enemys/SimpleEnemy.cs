@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class SimpleEnemy : MonoBehaviour
 {
+    //gameobjects
     public Rigidbody rb;
     public GameObject player;
     public GameObject score;
     public GameObject coin;
     public GameObject coincounter;
     public GameObject deathbit;
+    //stats
     public int difficulty = 0;
     public float speed = 0;
     public int coinreward = 1;
     public float time = 0;
     public float health = 1;
     public float scoreforkill = 0;
-
+    //damage indicator
     private bool pain = false;
     private bool paindelt = false;
     private float paintime = 0;

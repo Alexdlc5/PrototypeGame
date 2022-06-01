@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldObject : MonoBehaviour
@@ -19,17 +17,8 @@ public class WorldObject : MonoBehaviour
     }
 
     private void Update()
-    {   
-        //distancefromplayer = Mathf.Sqrt(Mathf.Pow(transform.position.x - player_location.position.x, 2) + Mathf.Pow(transform.position.y - player_location.position.y, 2) + Mathf.Pow(transform.position.y - player_location.position.y, 2));
-        //if (distancefromplayer > 200)
-        //{
-        //   setVis(false);
-        //}
-        //else
-        //{
-        //   setVis(true);
-        //}
-
+    { 
+        //if object is enemy despawn if not loaded in
         if (isenemy)
         {
             if (visstate == true)
@@ -52,6 +41,7 @@ public class WorldObject : MonoBehaviour
     }
     public void setVis(bool boolean)
     {
+        //sets the visibility of self and children
         visstate = boolean;
         if (gameObject.GetComponent<MeshRenderer>())
         {

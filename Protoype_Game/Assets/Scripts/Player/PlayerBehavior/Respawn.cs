@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//spawns player at designated location
 public class Respawn : MonoBehaviour
 {
     public Button ResButton;

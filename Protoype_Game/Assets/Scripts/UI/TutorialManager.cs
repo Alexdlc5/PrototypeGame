@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    //text
     public GameObject InstructionOne;
     public GameObject InstructionTwo;
     public GameObject InstructionThree;
     public GameObject InstructionFour;
     public GameObject InstructionFive;
     public GameObject InstructionSix;
-
     public GameObject InstructionSeven;
-
+    //what stage tutorial on
     private bool StageOne = true;
     private bool StageTwo = false;
     private bool StageThree = false;

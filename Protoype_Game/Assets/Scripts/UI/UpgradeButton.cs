@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
+    //UI
     public Text UpgradePriceText;
     public Slider UpgradeBar;
     public Button button;
+    //etc.
     public float value;
     public GameObject coininv;
     public int currrentcoincount;
@@ -15,7 +17,7 @@ public class UpgradeButton : MonoBehaviour
     private int upgradeprice = 1000;
     private void Start()
     {
-        ///changes stat
+        ///changes stat based on given string
         player = GameObject.FindGameObjectWithTag("Player");
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
         if (stat.Equals("Sheild"))
@@ -42,13 +44,14 @@ public class UpgradeButton : MonoBehaviour
     }
     private void Update()
     {
+        //accesses current coin count
         currrentcoincount = coininv.GetComponent<CoinInv>().getCoinCount();
     }
     public void OnClick()
     {
         if (currrentcoincount >= upgradeprice)
         {
-            //increaes lvl if player has the coins to upgrade
+            //increases lvl if player has the coins to upgrade
             value += .50f;
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(upgradeprice);

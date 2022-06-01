@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+//opens pause menu
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;

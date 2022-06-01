@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
+//play button
 public class PlayButton : MonoBehaviour
 {
     public Button playbutton;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeshGen : MonoBehaviour
@@ -44,14 +42,6 @@ public class MeshGen : MonoBehaviour
     public GameObject spawnerb;
     public GameObject spawnerc;
     public Transform spawnerfolder;
-    //buildings
-    public int chanceofbuilding = 100;
-    public int buildingtype;
-    public GameObject building_a;
-    public GameObject building_b;
-    public GameObject building_c;
-    public GameObject building_d;
-    public GameObject building_e;
 
     private string biome = "";
 
@@ -130,6 +120,12 @@ public class MeshGen : MonoBehaviour
         }
         
         //creates triangles/squares in grid
+        //             
+        //            /\------/
+        //           /  \    /
+        //          /    \  /
+        //         /------\/    
+        //
         triangles = new int[xSize * zSize * 6];
         int vert = 0;
         int tri = 0;
@@ -191,38 +187,6 @@ public class MeshGen : MonoBehaviour
 
             ip.GetComponent<ItemPlacer>().isSpawner(false);
 
-            //// 1 / [chanceofbuilding] chance of spwaning building
-            //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
-            //{
-            //    //sets building
-            //    buildingtype = Random.Range(0, 4);
-            //    if (buildingtype < 1)
-            //    {
-            //        ip.SendMessage("setObject", building_e);
-            //    }
-            //    else if (buildingtype < 2)
-            //    {
-            //        ip.SendMessage("setObject", building_a);
-            //    }
-            //    else if (buildingtype < 3)
-            //    {
-            //        ip.SendMessage("setObject", building_b);
-            //    }
-            //    else if (buildingtype < 4)
-            //    {
-            //        ip.SendMessage("setObject", building_c);
-            //    }
-            //    else
-            //    {
-            //        ip.SendMessage("setObject", building_d);
-            //    }
-            //    //finishes placement settings then places building
-            //    ip.SendMessage("setScaleRange", new Vector2(5, 5));
-            //    ip.SendMessage("setRandomRotation", true);
-            //    ip.SendMessage("setYoff", -.5f);
-            //    ip.SendMessage("PlaceObjects", 1);
-            //}
-
             //Item placer methods described in Item Placer script
             itemplacer.setObject(tree);
             itemplacer.setScaleRange(new Vector2(3, 5));
@@ -272,37 +236,6 @@ public class MeshGen : MonoBehaviour
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
-            //// 1 / [chanceofbuilding] chance of spwaning building
-            //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
-            //{
-            //    //sets building
-            //    buildingtype = Random.Range(0, 4);
-            //    if (buildingtype < 1)
-            //    {
-            //        ip.SendMessage("setObject", building_e);
-            //    }
-            //    else if (buildingtype < 2)
-            //    {
-            //        ip.SendMessage("setObject", building_a);
-            //    }
-            //    else if (buildingtype < 3)
-            //    {
-            //        ip.SendMessage("setObject", building_b);
-            //    }
-            //    else if (buildingtype < 4)
-            //    {
-            //        ip.SendMessage("setObject", building_c);
-            //    }
-            //    else
-            //    {
-            //        ip.SendMessage("setObject", building_d);
-            //    }
-            //    //finishes placement settings then places building
-            //    ip.SendMessage("setScaleRange", new Vector2(5, 5));
-            //    ip.SendMessage("setRandomRotation", true);
-            //    ip.SendMessage("setYoff", -.5f);
-            //    ip.SendMessage("PlaceObjects", 1);
-            //}
 
             itemplacer.setObject(rock);
             itemplacer.setScaleRange(new Vector2(2, 3f));
@@ -359,38 +292,6 @@ public class MeshGen : MonoBehaviour
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
-
-            //// 1 / [chanceofbuilding] chance of spwaning building
-            //if (Random.Range(1, chanceofbuilding) <= chanceofbuilding / 4)
-            //{
-            //    //sets building
-            //    buildingtype = Random.Range(0, 4);
-            //    if (buildingtype < 1)
-            //    {
-            //        ip.SendMessage("setObject", building_e);
-            //    }
-            //    else if (buildingtype < 2)
-            //    {
-            //        ip.SendMessage("setObject", building_a);
-            //    }
-            //    else if (buildingtype < 3)
-            //    {
-            //        ip.SendMessage("setObject", building_b);
-            //    }
-            //    else if (buildingtype < 4)
-            //    {
-            //        ip.SendMessage("setObject", building_c);
-            //    }
-            //    else
-            //    {
-            //        ip.SendMessage("setObject", building_d);
-            //    }
-            //    //finishes placement settings then places building
-            //    ip.SendMessage("setScaleRange", new Vector2(5, 5));
-            //    ip.SendMessage("setRandomRotation", true);
-            //    ip.SendMessage("setYoff", -1);
-            //    ip.SendMessage("PlaceObjects", 1);
-            //}
 
             itemplacer.setObject(cactus);
             itemplacer.setScaleRange(new Vector2(2, 3));

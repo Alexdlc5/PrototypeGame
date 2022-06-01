@@ -17,8 +17,10 @@ public class WorldOrigin : MonoBehaviour
     //etc.
     public GameObject loadingscreen;
     public bool isArenaMode = false;
+    //difficulty and bosses (Progression)
     public int bossspawncounter = 0;
     public float difficultyuptimer = 60;
+    public float bossDifficulty = 0;
 
     //delays itemplacer so there are not major lag spike from multiple tiles loading all at once
     public Queue<int> itemplacerqueue = new Queue<int>();
@@ -38,7 +40,6 @@ public class WorldOrigin : MonoBehaviour
 
             //random amplitude
             amp = Random.Range(2, 3);
-            loadingscreen.GetComponent<loading>().SendMessage("clear");
 
             itemplacerqueue.Enqueue(0);
         }
@@ -101,13 +102,15 @@ public class WorldOrigin : MonoBehaviour
 
         if (bossspawncounter >= 2)
         {
+            //increases boss difficulty, spawns boss near player
+            bossDifficulty++;
             Vector3 playerpostion = GameObject.FindGameObjectWithTag("Player").transform.position;
             GameObject boss = Instantiate(Beetle);
             boss.transform.position = new Vector3(playerpostion.x + 15, playerpostion.y + 15, playerpostion.z);
             bossspawncounter = 0;
         }
     }
-    //called by item placer to get a spot in the queue 
+    //called by item placer to get a spot in the queue to place objects
     public int requestQueue()
     {
         itemplacerqueue.Enqueue(previousadded + 1);

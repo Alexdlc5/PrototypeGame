@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingEnemy : MonoBehaviour
 {
+    //game objects and rb
     public Rigidbody rb;
     public GameObject player;
     public GameObject score;
@@ -11,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject coincounter;
     public GameObject projectile;
     public GameObject projectilespawn;
+    //stats
     public int difficulty = 0;
     public int coinreward = 3;
     public float speed = 0;
@@ -19,12 +21,13 @@ public class ShootingEnemy : MonoBehaviour
     public float health = 1;
     public float scoreforkill = 0;
     public GameObject deathbit;
-
+    //damage indicator
     private bool pain = false;
     private bool paindelt = false;
     private float paintime = 0;
     private void Start()
     {
+        //sets objects
         difficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().difficulty;
         health = health + difficulty;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,6 +41,7 @@ public class ShootingEnemy : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
+            //spawns coins and deathbits, logs points
             score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward / 4; i++)
             {
@@ -49,24 +53,29 @@ public class ShootingEnemy : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        //work on dmg indicator
+        //if hit 
         if (pain)
         {
+            //if damage not indicated
             if (!paindelt)
             {
-                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                //change color 
+                Color orange = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r + 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = orange;
                 paindelt = true;
             }
+            //stays color for certain amout of time then changes back
             paintime += Time.deltaTime;
             if (paintime > .07f)
             {
                 paindelt = false;
                 pain = false;
                 paintime = 0;
-                gameObject.GetComponent<MeshRenderer>().material.color = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                Color reverseorange = new Color(gameObject.GetComponent<MeshRenderer>().material.color.r - 20, gameObject.GetComponent<MeshRenderer>().material.color.b, gameObject.GetComponent<MeshRenderer>().material.color.g, gameObject.GetComponent<MeshRenderer>().material.color.a);
+                gameObject.GetComponent<MeshRenderer>().material.color = reverseorange;
             }
         }
-
+        //if enemy fall below world, despawn
         if (transform.position.y < -50)
         {
             Destroy(gameObject);
@@ -77,7 +86,7 @@ public class ShootingEnemy : MonoBehaviour
         //look at player
         transform.LookAt(new Vector3(playerLocation[0], transform.position.y, playerLocation[2]));
 
-        //move toward player at various speeds when at diffrent distances
+        //move toward player and away from player at various speeds when at diffrent distances
         if (time >= .1)
         {
             if (distanceMoreThan(playerLocation, transform.position, 30))
@@ -100,7 +109,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             time += Time.fixedDeltaTime;
         }
-        
+        //shoots at speed indicated by difficulty lvl
         if (shootingtime > 3)
         {
             GameObject newprojectile = Instantiate(projectile, projectilespawn.transform.position, projectilespawn.transform.rotation);

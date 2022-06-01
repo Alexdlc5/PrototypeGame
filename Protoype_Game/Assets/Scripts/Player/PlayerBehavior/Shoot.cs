@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    //projectile
     public GameObject projectile;
     public Transform projectilespawn;
+    //timing
     public float delay = 0f;
     public float time = 0.0f;
+    //etc
     public GameObject player;
     public float firinglvl = 0;
     

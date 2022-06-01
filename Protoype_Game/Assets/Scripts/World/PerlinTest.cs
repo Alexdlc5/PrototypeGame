@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PerlinTest : MonoBehaviour
 {
+    //size
     public int width = 256;
     public int height = 256;
     public float scale = 20;
+    //offset
     public float offsetx = 100f;
     public float offsety = 100f;
     void Update()
@@ -18,7 +20,7 @@ public class PerlinTest : MonoBehaviour
     {
         //adds texture and color then applies it
         Texture2D texture = new Texture2D(width, height);
-
+        //goes thru pixels setting color
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -32,6 +34,7 @@ public class PerlinTest : MonoBehaviour
         return(texture);
     }
 
+    //uses perlin noise to set pixel color
     Color CalcColor(float x, float y)
     {
         //returns color based on world coords

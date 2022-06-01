@@ -7,6 +7,7 @@ public class EnemyBit : MonoBehaviour
     float time = 0;
     void Update()
     {
+        //despawns afetr certain amount of time
         if (time > 5)
         {
             GetComponent<BoxCollider>().enabled = false;

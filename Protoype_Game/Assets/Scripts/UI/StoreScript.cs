@@ -8,7 +8,7 @@ public class StoreScript : MonoBehaviour
     public bool storeactive = false;
     void Update()
     {
-        //store menu
+        //opens and closes menu at button push
         if (Input.GetKeyDown(KeyCode.L) && storeactive == false)
         {
             StorePopUp.SetActive(true);

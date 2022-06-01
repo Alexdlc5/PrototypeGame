@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+    //player speed and power
     public Transform playerrotation;
     public bool isAlive = true;
     public float playerspeed = 0;
@@ -11,47 +12,44 @@ public class Movement : MonoBehaviour
     public float tipspeed = 0;
     public float jumppower = 0;
     public float resetmultiplier = 0;
-    
+    //timers
     public float jumptimer = 0;
     public float injumptimer = 0;
     public float boosttimer = 0;
     public float inboosttimer = 0;
-
+    //stats
     public float maxspeed;
-
     public GameObject healthbar;
     public GameObject staminabar;
     public GameObject score;
     public GameObject deathoverlay;
     public GameObject cam;
     public GameObject aimcontroller;
-    
     public float health;
     private float maxhealth;
-    
+    //transform and rb
     public Transform GameObject;
     public Rigidbody rb;
-
+    //lvls
     public static int sheildlvl = 0;
     public static int boostlvl = 0;
     public static int firinglvl = 0;
     public static int damagelvl = 0;
     public static int speedlvl = 0;
-
-    public bool isArenaMode = false;
     //arena mode stats
     public static int sheildlvlarenamode = 0;
     public static int boostlvlarenamode = 0;
     public static int firinglvlarenamode = 0;
     public static int damagelvlarenamode = 0;
     public static int speedlvlarenamode = 0;
-
     //infinite world stats
     public static int sheildlvlinfinite = 0;
     public static int boostlvlinfinite = 0;
     public static int firinglvlinfinite = 0;
     public static int damagelvlinfinite = 0;
     public static int speedlvlinfinite = 0;
+    //etc
+    public bool isArenaMode = false;
 
     void Start()
     {
