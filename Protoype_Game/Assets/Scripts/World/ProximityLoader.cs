@@ -18,7 +18,7 @@ public class ProximityLoader : MonoBehaviour
                 other.gameObject.GetComponentInParent<ShootingEnemySpawner>().setSpawnerActive(true);
             }
         }
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss")
         {
             other.gameObject.GetComponentInParent<WorldObject>().setVis(true);
         }
@@ -38,7 +38,7 @@ public class ProximityLoader : MonoBehaviour
                 other.gameObject.GetComponentInParent<ShootingEnemySpawner>().setSpawnerActive(false);
             }
         }
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss")
         {
             other.gameObject.GetComponentInParent<WorldObject>().setVis(false);
         }

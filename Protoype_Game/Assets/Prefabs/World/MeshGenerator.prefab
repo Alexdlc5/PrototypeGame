@@ -478,6 +478,9 @@ MonoBehaviour:
   currentcolor: {r: 0, g: 0, b: 0, a: 0}
   folder: {fileID: 2991486502784204218}
   origin: {fileID: 0}
+  goahead: -1
+  queuerequested: 0
+  simpleBoss: {fileID: 2840541347072264665, guid: 6688a3e292debb44c989462b8a46abab, type: 3}
   spawner: {fileID: 7646372383387900657, guid: f6743904d142e0b4a8017790602138a0, type: 3}
   spawnera: {fileID: 8375797639782992743, guid: 58e829c1ff1cde745a3964979423aaf0, type: 3}
   spawnerb: {fileID: 1986612112343339380, guid: 138bb800552fa624399478bef4c5289b, type: 3}

@@ -38,6 +38,7 @@ public class MeshGen : MonoBehaviour
     public bool queuerequested = false;
 
     //spanwers
+    public GameObject simpleBoss;
     public GameObject spawner;
     public GameObject spawnera;
     public GameObject spawnerb;
@@ -78,13 +79,12 @@ public class MeshGen : MonoBehaviour
         //updates it
         UpdateMesh();
 
-
         //add biomes, snowy, plamtree, open field with flowers
         goahead = origin.GetComponent<WorldOrigin>().requestQueue();
         queuerequested = true;
-            //visual perlin
-            //Renderer renderer = GetComponent<Renderer>();
-            //renderer.material.mainTexture = GenTexture();
+        //visual perlin
+        //Renderer renderer = GetComponent<Renderer>();
+        //renderer.material.mainTexture = GenTexture();
     }
     private void Update()
     {

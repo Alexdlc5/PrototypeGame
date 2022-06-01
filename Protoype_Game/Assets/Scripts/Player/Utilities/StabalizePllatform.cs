@@ -8,6 +8,8 @@ public class StabalizePllatform : MonoBehaviour
     private void LateUpdate()
     {
         transform.rotation = Quaternion.Euler(0f, weapon.transform.rotation.eulerAngles.y, 0f);
-        transform.localPosition = new Vector3(weapon.transform.position.x, weapon.transform.position.y * .95f + 1, weapon.transform.position.z);
+        float Y_transform_delay_percent = .95f;
+        float base_offset = .25f;
+        transform.localPosition = new Vector3(weapon.transform.position.x, weapon.transform.position.y * Y_transform_delay_percent - base_offset, weapon.transform.position.z);
     }
 }

@@ -12834,7 +12834,7 @@ MonoBehaviour:
   playerspeed: 25
   smallobjectscollision: 1
   accelerationspeed: 40
-  tipspeed: 1000
+  tipspeed: 500
   jumppower: 60
   resetmultiplier: 25
   jumptimer: 0

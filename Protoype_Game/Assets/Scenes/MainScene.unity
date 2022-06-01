@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af5c278d4d57ea41a777a0b66bfa974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isArenaMode: 0
+  Beetle: {fileID: 2840541347072264665, guid: 6688a3e292debb44c989462b8a46abab, type: 3}
   offsetx: 0
   offsetz: 0
   currentbiomecount: 0
@@ -2202,6 +2202,9 @@ MonoBehaviour:
   currentbiome: 
   startingbiome: Oak
   loadingscreen: {fileID: 2101106715}
+  isArenaMode: 0
+  bossspawncounter: 0
+  difficultyuptimer: 75
   amp: 1
 --- !u!4 &518239326
 Transform:
@@ -2268,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6192c408808cec246a69aff128fea1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstoaddinconsole: 999
+  coinstoaddinconsole: 0
 --- !u!114 &538366932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2632,7 +2635,7 @@ MonoBehaviour:
   playerspeed: 25
   smallobjectscollision: 1
   accelerationspeed: 40
-  tipspeed: 1000
+  tipspeed: 500
   jumppower: 60
   resetmultiplier: 25
   jumptimer: 0
@@ -3372,14 +3375,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 0.98823535, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.284
@@ -4193,7 +4196,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23566
+  m_Name: pb_Mesh21046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4351,59 +4354,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1055887035
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1055887037}
-  - component: {fileID: 1055887036}
-  m_Layer: 0
-  m_Name: PlayerData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1055887036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055887035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b341c3f64f99cf48bcafcbaa1ef8665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sheildlvlarenamode: 0
-  boostlvlarenamode: 0
-  firinglvlarenamode: 0
-  damagelvlarenamode: 0
-  speedlvlarenamode: 0
-  sheildlvlinfinite: 0
-  boostlvlinfinite: 0
-  firinglvlinfinite: 0
-  damagelvlinfinite: 0
-  speedlvlinfinite: 0
---- !u!4 &1055887037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055887035}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 996.40955, y: 512.73755, z: -178.37549}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060441541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7476,8 +7426,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 0.75
+  m_Radius: 1.45
+  m_Height: 1.45
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1998354849

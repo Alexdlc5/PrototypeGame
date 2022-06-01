@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (isAlive)
         {
-            transform.localRotation = Quaternion.Euler(10, 0, 1);
+            transform.localRotation = Quaternion.Euler(9, 0, 1);
         } 
         //on death
         else
@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
                 transform.parent = LockedEnemy.transform;
                 Vector3 vector3 = new Vector3(LockedEnemy.transform.position.x, LockedEnemy.transform.position.y, LockedEnemy.transform.position.z);   
                 transform.LookAt(vector3);
-                float Ytransformspeed = 3;
+                float Ytransformspeed = 4;
                 transform.position = new Vector3(transform.position.x, transform.position.y + Time.deltaTime * Ytransformspeed, transform.position.z);
             }
         }

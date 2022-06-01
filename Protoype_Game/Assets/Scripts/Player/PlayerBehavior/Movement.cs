@@ -380,6 +380,13 @@ public class Movement : MonoBehaviour
             //sets slider to current health
             healthbar.GetComponent<Bar>().SetSlider(health);
         }
+        if (collision.collider.tag.Equals("BossWeapon"))
+        {
+            DealDamage(2);
+
+            //sets slider to current health
+            healthbar.GetComponent<Bar>().SetSlider(health);
+        }
         //collects coin
         if (collision.collider.tag.Equals("Coin"))
         {

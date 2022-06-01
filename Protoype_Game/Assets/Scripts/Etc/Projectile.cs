@@ -59,6 +59,24 @@ public class Projectile : MonoBehaviour
                     enemy.GetComponent<ShootingEnemy>().DealDamage(damagelvl + 1);
                 }
             }
+            if (collision.collider.tag.Equals("Boss"))
+            {
+                GameObject enemy = collision.gameObject;
+                if (enemy.GetComponent<SimpleBoss>())
+                {
+                    //deas damage based on lvl
+                    //one added so that when damage lvl == 0, you deal damage
+                    enemy.GetComponent<SimpleBoss>().DealDamage(damagelvl + 1);
+                }
+                else if (enemy.GetComponent<SimpleBoss>())
+                {
+                    enemy.GetComponent<SimpleBoss>().DealDamage(damagelvl + 1);
+                }
+                else if (enemy.GetComponent<SimpleBoss>())
+                {
+                    enemy.GetComponent<SimpleBoss>().DealDamage(damagelvl + 1);
+                }
+            }
         } else
         {
             if (collision.collider.tag.Equals("Player"))

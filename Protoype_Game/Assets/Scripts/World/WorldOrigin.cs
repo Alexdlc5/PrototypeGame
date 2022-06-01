@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WorldOrigin : MonoBehaviour
 {
-    public bool isArenaMode = false;
-
+    //bosses 
+    public GameObject Beetle;
+   //world gen
     public int offsetx = 0;
     public int offsetz = 0;
     public int currentbiomecount = 0;
@@ -13,7 +14,11 @@ public class WorldOrigin : MonoBehaviour
     public int difficulty = 0;
     public string currentbiome = "";
     public string startingbiome = "Oak";
+    //etc.
     public GameObject loadingscreen;
+    public bool isArenaMode = false;
+    public int bossspawncounter = 0;
+    public float difficultyuptimer = 60;
 
     //delays itemplacer so there are not major lag spike from multiple tiles loading all at once
     public Queue<int> itemplacerqueue = new Queue<int>();
@@ -32,7 +37,7 @@ public class WorldOrigin : MonoBehaviour
             offsetz = Random.Range(0, 999);
 
             //random amplitude
-            amp = Random.Range(5, 10);
+            amp = Random.Range(2, 3);
             loadingscreen.GetComponent<loading>().SendMessage("clear");
 
             itemplacerqueue.Enqueue(0);
@@ -57,6 +62,7 @@ public class WorldOrigin : MonoBehaviour
             if (currentdifficultycount > 10)
             {
                 difficulty++;
+                bossspawncounter++;
                 currentdifficultycount = 0;
             }
 
@@ -79,6 +85,26 @@ public class WorldOrigin : MonoBehaviour
                     currentbiome = "Desert";
                 }
             }
+        }
+        //if player does not travel very far difficulty ramps up every 60 seconds
+        if (difficultyuptimer <= 0)
+        {
+            difficulty++;
+            bossspawncounter++;
+            currentdifficultycount = 0;
+            difficultyuptimer = 60 ;
+        }
+        else
+        {
+            difficultyuptimer -= Time.deltaTime;
+        }
+
+        if (bossspawncounter >= 2)
+        {
+            Vector3 playerpostion = GameObject.FindGameObjectWithTag("Player").transform.position;
+            GameObject boss = Instantiate(Beetle);
+            boss.transform.position = new Vector3(playerpostion.x + 15, playerpostion.y + 15, playerpostion.z);
+            bossspawncounter = 0;
         }
     }
     //called by item placer to get a spot in the queue 
