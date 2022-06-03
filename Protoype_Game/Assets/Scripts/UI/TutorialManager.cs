@@ -28,14 +28,13 @@ public class TutorialManager : MonoBehaviour
         //format
         //if (StageX)
         //  if (Instruction Complete)
-        //     Activate next step, pushes current instruction off screen, destroys current instruction, actives nexts instructions gameobject, go to next stage
+        //     Activate next step, destroys current instruction, actives nexts instructions gameobject, go to next stage
         if (StageOne)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 StageTwo = true;
-                InstructionOne.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionOne, 1);
+                Destroy(InstructionOne);
                 InstructionTwo.SetActive(true);
                 StageOne = false;
             }
@@ -45,8 +44,7 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 StageThree = true;
-                InstructionTwo.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionTwo, 1);
+                Destroy(InstructionTwo);
                 InstructionThree.SetActive(true);
                 StageTwo = false;
             }
@@ -57,8 +55,7 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StageFour = true;
-                InstructionThree.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionThree, 1);
+                Destroy(InstructionThree);
                 InstructionFour.SetActive(true);
                 StageThree = false;
             }
@@ -69,8 +66,7 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 StageFive = true;
-                InstructionFour.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionFour, 1);
+                Destroy(InstructionFour);
                 InstructionFive.SetActive(true);
                 StageFour = false;
             }
@@ -80,19 +76,17 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 StageSix = true;
-                InstructionFive.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionFive, 1);
+                Destroy(InstructionFive);
                 InstructionSix.SetActive(true);
                 StageFive = false;
             }
         }
         else if (StageSix)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 StageSeven = true;
-                InstructionSix.GetComponent<Rigidbody>().AddForce(Vector3.up * -10000);
-                Destroy(InstructionFive, 1);
+                Destroy(InstructionSix);
                 InstructionSeven.SetActive(true);
                 StageSix = false;
             }

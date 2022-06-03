@@ -32,7 +32,7 @@ public class SimpleBoss : MonoBehaviour
             bossdifficulty = GameObject.FindGameObjectWithTag("WorldOrigin").GetComponent<WorldOrigin>().bossDifficulty;
         }
         //health increased by difficulty
-        float additionalhealth = bossdifficulty * 20;
+        float additionalhealth = bossdifficulty * 60;
         health = health + additionalhealth;
         //finds necesarry gameobjects
         player = GameObject.FindGameObjectWithTag("Player");
