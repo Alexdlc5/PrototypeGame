@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33275301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.722038, y: -255.8338, z: 147.26744}
+  m_LocalPosition: {x: -232, y: -255.8338, z: 147.26744}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1253854651}
@@ -1097,7 +1097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &104729374
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104729373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.645918, y: 51.58095, z: 92.87913}
+  m_LocalPosition: {x: -170, y: 51.58095, z: 109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4915516909834603587}
@@ -3184,7 +3184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353379258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.212524, y: 12.238683, z: 91.54901}
+  m_LocalPosition: {x: -154.06543, y: 12.238683, z: 91.54901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1462572809}
@@ -5677,63 +5677,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1206983680075210606, guid: 6aa7cddb7d6251148a841afc5907c76f, type: 3}
   m_PrefabInstance: {fileID: 659241346}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &680966336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 680966338}
-  - component: {fileID: 680966337}
-  m_Layer: 0
-  m_Name: WO
-  m_TagString: WorldOrigin
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &680966337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680966336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5af5c278d4d57ea41a777a0b66bfa974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Beetle: {fileID: 0}
-  offsetx: 0
-  offsetz: 0
-  currentbiomecount: 0
-  currentdifficultycount: 0
-  difficulty: 3
-  currentbiome: 
-  startingbiome: Oak
-  loadingscreen: {fileID: 0}
-  isArenaMode: 1
-  bossspawncounter: 0
-  difficultyuptimer: 60
-  bossDifficulty: 0
-  amp: 1
---- !u!4 &680966338
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680966336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.423597, y: 51.158974, z: 229.11781}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691259001
 GameObject:
   m_ObjectHideFlags: 0
@@ -8498,7 +8441,7 @@ Transform:
   m_Children:
   - {fileID: 1099749537}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1004352215
 PrefabInstance:
@@ -12878,13 +12821,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644291103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -226.4, y: 24.5, z: 148}
+  m_LocalPosition: {x: -221, y: 25, z: 146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 429986333}
   - {fileID: 751649973}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1653767859
 PrefabInstance:
@@ -13010,6 +12953,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3929422577238546685, guid: 0a672890894b27243aa436a2426857a7, type: 3}
   m_PrefabInstance: {fileID: 1678601964}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1679495438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679495440}
+  - component: {fileID: 1679495439}
+  m_Layer: 0
+  m_Name: WO
+  m_TagString: WorldOrigin
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1679495439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679495438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af5c278d4d57ea41a777a0b66bfa974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Beetle: {fileID: 2840541347072264665, guid: 6688a3e292debb44c989462b8a46abab, type: 3}
+  offsetx: 0
+  offsetz: 0
+  currentbiomecount: 0
+  currentdifficultycount: 0
+  difficulty: 2
+  currentbiome: 
+  startingbiome: Oak
+  loadingscreen: {fileID: 0}
+  isArenaMode: 0
+  bossspawncounter: 0
+  difficultyuptimer: 60
+  bossDifficulty: 0
+  amp: 1
+--- !u!4 &1679495440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679495438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 555.98895, y: -19.079758, z: 208.9842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1684055962
 PrefabInstance:
   m_ObjectHideFlags: 0

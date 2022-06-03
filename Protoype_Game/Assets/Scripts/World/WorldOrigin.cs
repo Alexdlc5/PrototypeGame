@@ -30,6 +30,16 @@ public class WorldOrigin : MonoBehaviour
     public float amp = 1;
     void Start()
     {
+        //random biome chosen to start
+        int randomnumber = Random.Range(0, 3);
+        if (randomnumber == 0)
+            startingbiome = "Oak";
+        else if (randomnumber == 1)
+            startingbiome = "Pine";
+        else 
+            startingbiome = "Desert";
+
+
         if (isArenaMode == false)
         {
             currentbiome = startingbiome;

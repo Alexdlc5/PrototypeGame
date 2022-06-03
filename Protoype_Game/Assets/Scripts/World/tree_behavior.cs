@@ -74,11 +74,4 @@ public class tree_behavior : MonoBehaviour
     {
         health -= damage;
     }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Boss" || collision.gameObject.tag == "BossWeapon")
-        {
-            health = 0;
-        }
-    }
 }

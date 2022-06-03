@@ -120,12 +120,12 @@ public class MeshGen : MonoBehaviour
         }
         
         //creates triangles/squares in grid
-        //             
+        //             O       O
         //            /\------/
         //           /  \    /
         //          /    \  /
         //         /------\/    
-        //
+        //        O        O
         triangles = new int[xSize * zSize * 6];
         int vert = 0;
         int tri = 0;
@@ -177,8 +177,8 @@ public class MeshGen : MonoBehaviour
             float H, S, V;
             Color.RGBToHSV(currentcolor, out H, out S, out V);
             //decreases saturation and brightness
-            S -= .05f;
-            V -= .05f;
+            S -= .01f;
+            V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -229,8 +229,8 @@ public class MeshGen : MonoBehaviour
             float H, S, V;
             Color.RGBToHSV(currentcolor, out H, out S, out V);
             //decreases saturation and brightness
-            S -= .05f;
-            V -= .05f;
+            S -= .01f;
+            V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -285,8 +285,8 @@ public class MeshGen : MonoBehaviour
             float H, S, V;
             Color.RGBToHSV(currentcolor, out H, out S, out V);
             //decreases saturation and brightness
-            S -= .05f;
-            V -= .05f;
+            S -= .01f;
+            V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -297,7 +297,7 @@ public class MeshGen : MonoBehaviour
             itemplacer.setScaleRange(new Vector2(2, 3));
             itemplacer.setYoff(-8);
             itemplacer.setFolder(folder);
-            itemplacer.PlaceObjects(9);
+            itemplacer.PlaceObjects(6);
 
 
             itemplacer.setObject(rocka);

@@ -52,7 +52,7 @@ public class UpgradeButton : MonoBehaviour
         if (currrentcoincount >= upgradeprice)
         {
             //increases lvl if player has the coins to upgrade
-            value += .50f;
+            value ++;
             UpgradeBar.value = value;
             coininv.GetComponent<CoinInv>().spendCoins(upgradeprice);
             upgradeprice += 750;

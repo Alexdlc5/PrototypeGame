@@ -59,4 +59,14 @@ public class WorldObject : MonoBehaviour
             gameObject.GetComponentInChildren<MeshRenderer>().enabled = !boolean;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!isenemy)
+        {
+            if (collision.gameObject.tag == "Boss" || collision.gameObject.tag == "BossWeapon")
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }
