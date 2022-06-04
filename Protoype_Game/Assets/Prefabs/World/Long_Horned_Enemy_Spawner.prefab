@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 31.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1
   settime: 3
-  enemyspawncount: 10
+  enemyspawncount: 20
   inloadingdistance: 0
   spawneractive: 0
   Enemy: {fileID: 612113676613134829, guid: 74cea4fa669dbe9448bc9e21b4c3f4a6, type: 3}

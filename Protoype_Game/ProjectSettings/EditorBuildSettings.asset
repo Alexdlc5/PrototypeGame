@@ -18,15 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: fc1fd664ac7b57442ab18913ed911041
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/ArenaMode.unity
     guid: 381a76c20d8c9e44695186ae8907e22f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Development/TileLoaderTest.unity
-    guid: 96e35992694869c458c72574267beec4
+  - enabled: 1
+    path: Assets/Scenes/InfiniteMode.unity
+    guid: e9be87b7081b64542a57765fd990d761
   m_configObjects: {}

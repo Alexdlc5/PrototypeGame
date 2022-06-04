@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using TMPro;
 
 public class SpeedBar : MonoBehaviour
 {
     public Slider speedSlider;
-    public Image bar;
-    
+    public TextMeshProUGUI textMesh;
     private float maxspeed = 0;
     private float speed = 0;
     private Movement player;
@@ -17,10 +18,10 @@ public class SpeedBar : MonoBehaviour
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
         //sets max speed and speed
-        maxspeed = player.maxspeed;
+        maxspeed = player.maxspeed = 35;
         speed = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
         //sets up slider
-        speedSlider.maxValue = maxspeed;
+        speedSlider.maxValue = 50;
         speedSlider.minValue = 0;
         speedSlider.value = speed;
     }
@@ -29,18 +30,10 @@ public class SpeedBar : MonoBehaviour
     {
         //Updates slider
         speed = rb.velocity.magnitude;
-        maxspeed = player.maxspeed;
         //upates  slider
         speedSlider.maxValue = maxspeed;
         speedSlider.value = speed;
-
-        if (speed >= maxspeed / 2)
-        {
-            bar.color = new Color(bar.color.r + 2, bar.color.g - 1, bar.color.b, bar.color.a);
-        }
-        else if (bar.color.r >= 0)
-        {
-            bar.color = new Color(bar.color.r - 2, bar.color.g - 1, bar.color.b, bar.color.a);
-        }
+        //updates speed number
+        textMesh.text = "Speed: [                                                      ] " + Math.Truncate(speed);
     }
 }

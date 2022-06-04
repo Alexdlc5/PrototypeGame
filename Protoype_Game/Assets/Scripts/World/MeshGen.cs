@@ -185,8 +185,6 @@ public class MeshGen : MonoBehaviour
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
 
-            ip.GetComponent<ItemPlacer>().isSpawner(false);
-
             //Item placer methods described in Item Placer script
             itemplacer.setObject(tree);
             itemplacer.setScaleRange(new Vector2(3, 5));
@@ -208,7 +206,6 @@ public class MeshGen : MonoBehaviour
             itemplacer.setYoff(.6f);
             itemplacer.PlaceObjects(5);
 
-            itemplacer.isSpawner(true);
             itemplacer.setYoff(10);
             itemplacer.setObject(spawnerb);
             itemplacer.PlaceObjects(1);
@@ -263,7 +260,6 @@ public class MeshGen : MonoBehaviour
             itemplacer.PlaceObjects(4);
             itemplacer.setScaleRange(new Vector2(2, 3f));
 
-            itemplacer.isSpawner(true);
             itemplacer.setYoff(10);
             itemplacer.setObject(spawner);
             itemplacer.setFolder(spawnerfolder);
@@ -310,7 +306,6 @@ public class MeshGen : MonoBehaviour
             itemplacer.setYoff(.6f);
             itemplacer.PlaceObjects(1);
 
-            itemplacer.isSpawner(true);
             itemplacer.setYoff(10);
             itemplacer.setObject(spawnera);
             itemplacer.setFolder(spawnerfolder);

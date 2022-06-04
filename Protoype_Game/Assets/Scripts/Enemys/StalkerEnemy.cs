@@ -27,7 +27,6 @@ public class StalkerEnemy : MonoBehaviour
         health = health + difficulty * .90f;
         player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
-        score = GameObject.FindGameObjectWithTag("Score");
     }
     public void setCoinType(GameObject coin)
     {
@@ -65,7 +64,6 @@ public class StalkerEnemy : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward/4; i++)
             {
                 Instantiate(coin, transform.position, transform.rotation);

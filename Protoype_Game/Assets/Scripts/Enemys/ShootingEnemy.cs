@@ -32,7 +32,6 @@ public class ShootingEnemy : MonoBehaviour
         health = health + difficulty;
         player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
-        score = GameObject.FindGameObjectWithTag("Score");
     }
 
     // Update is called once per frame
@@ -42,7 +41,6 @@ public class ShootingEnemy : MonoBehaviour
         if (health <= 0)
         {
             //spawns coins and deathbits, logs points
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward / 4; i++)
             {
                 Instantiate(coin, transform.position, transform.rotation);

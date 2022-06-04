@@ -34,7 +34,6 @@ public class SimpleEnemy : MonoBehaviour
         health = health + difficulty;
         player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
-        score = GameObject.FindGameObjectWithTag("Score");
     }
 
     void Update()
@@ -42,7 +41,6 @@ public class SimpleEnemy : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             for (int i = 0; i < coinreward / 4; i++)
             {
                 Instantiate(coin, transform.position, transform.rotation);

@@ -15,7 +15,6 @@ public class WorldOrigin : MonoBehaviour
     public string currentbiome = "";
     public string startingbiome = "Oak";
     //etc.
-    public GameObject loadingscreen;
     public bool isArenaMode = false;
     //difficulty and bosses (Progression)
     public int bossspawncounter = 0;

@@ -37,7 +37,6 @@ public class SimpleBoss : MonoBehaviour
         //finds necesarry gameobjects
         player = GameObject.FindGameObjectWithTag("Player");
         coincounter = GameObject.FindGameObjectWithTag("CoinCounter");
-        score = GameObject.FindGameObjectWithTag("Score");
     }
 
     void Update()
@@ -45,8 +44,6 @@ public class SimpleBoss : MonoBehaviour
         //checks if health is at or below 0
         if (health <= 0)
         {
-            //gives points
-            score.GetComponent<Score>().LogEnemyKill(scoreforkill);
             //drops coins
             for (int i = 0; i < coinreward / 4; i++)
             {

@@ -47,11 +47,6 @@ public class ItemPlacer : MonoBehaviour
     {
         offsety = y;
     }
-    //if object being spawned is spawner 
-    public void isSpawner(bool isspawner)
-    {
-        this.isspawner = isspawner;
-    }
     //sets parent in heirarchy
     public void setFolder(Transform folder)
     {

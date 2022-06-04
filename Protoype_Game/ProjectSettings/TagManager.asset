@@ -28,6 +28,8 @@ TagManager:
   - WeaponRotator
   - Boss
   - BossWeapon
+  - StaminaBar
+  - HealthBar
   layers:
   - Default
   - TransparentFX
