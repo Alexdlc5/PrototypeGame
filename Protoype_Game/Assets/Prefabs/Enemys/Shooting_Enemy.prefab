@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.4799999, y: -0.08, z: -0.050000004}
   m_LocalScale: {x: 0.28185308, y: 0.54228586, z: 0.54228604}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2266145504366931791}
   m_RootOrder: 0
@@ -42,8 +43,8 @@ GameObject:
   - component: {fileID: 5647044984461726311}
   - component: {fileID: 5647044984461726310}
   - component: {fileID: 5647044984461726309}
-  - component: {fileID: 5647044984461726308}
   - component: {fileID: 9003620589695279458}
+  - component: {fileID: 5647044984461726308}
   - component: {fileID: 1888246887607043341}
   m_Layer: 0
   m_Name: Shooting_Enemy
@@ -62,6 +63,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.78, y: 3.02, z: -1.2015}
   m_LocalScale: {x: 6.2481475, y: 13.374783, z: 6.2481475}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2266145504366931791}
   m_Father: {fileID: 0}
@@ -86,6 +88,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -129,22 +132,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5647044984461726308
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5647044984461726307}
-  serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &9003620589695279458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +148,22 @@ MonoBehaviour:
   setVisOnStart: 0
   visstate: 0
   isenemy: 1
+--- !u!54 &5647044984461726308
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647044984461726307}
+  serializedVersion: 2
+  m_Mass: 2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1888246887607043341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +187,7 @@ MonoBehaviour:
   coinreward: 15
   speed: 0
   health: 1
-  scoreforkill: 0
+  scoreforkill: 100
   deathbit: {fileID: 9061741761840900542, guid: 0cca6d21475367e4c9b94dd47a478909, type: 3}
 --- !u!1 &9041166435470769629
 GameObject:
@@ -215,6 +218,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: -0.009749717, y: -0.189, z: 0.5966386}
   m_LocalScale: {x: 1.3622701, y: 0.27273077, z: 0.6580066}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1590426048324528969}
   m_Father: {fileID: 5647044984461726312}
@@ -239,6 +243,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

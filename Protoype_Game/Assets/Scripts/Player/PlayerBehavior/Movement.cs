@@ -546,8 +546,10 @@ public class Movement : MonoBehaviour
             //apply changes to player velocity
             rb.velocity = changevelocityvector;
         }
+        //health pickup
         if (other.tag.Equals("HealthPickup"))
         {
+            //fills up health bar half way
             if (health <= maxhealth / 2)
             {
                 health = health + (maxhealth / 2);
