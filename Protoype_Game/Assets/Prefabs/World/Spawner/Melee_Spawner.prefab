@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8375797639782992743
+--- !u!1 &7646372383387900657
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8375797639782992744}
-  - component: {fileID: 8375797639782992745}
-  - component: {fileID: 5433167214448208174}
-  - component: {fileID: 2066281129127162911}
+  - component: {fileID: 7646372383387900670}
+  - component: {fileID: 7646372383387900671}
+  - component: {fileID: 6145140198181746872}
+  - component: {fileID: 183934025068766601}
   m_Layer: 0
-  m_Name: Long_Horned_Enemy_Spawner
+  m_Name: Melee_Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8375797639782992744
+--- !u!4 &7646372383387900670
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375797639782992743}
+  m_GameObject: {fileID: 7646372383387900657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 31.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,31 +34,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8375797639782992745
+--- !u!114 &7646372383387900671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375797639782992743}
+  m_GameObject: {fileID: 7646372383387900657}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9085f77dd80f1cb4c930daa523214536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
-  settime: 3
+  settime: 9
   enemyspawncount: 20
   inloadingdistance: 0
   spawneractive: 0
-  Enemy: {fileID: 612113676613134829, guid: 74cea4fa669dbe9448bc9e21b4c3f4a6, type: 3}
---- !u!114 &5433167214448208174
+  Enemy: {fileID: 3270495425197707464, guid: 954b1fb90461e434880f9c22b0646491, type: 3}
+--- !u!114 &6145140198181746872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375797639782992743}
+  m_GameObject: {fileID: 7646372383387900657}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 004aa3868e8fb5b4c8113f38944fa947, type: 3}
@@ -68,13 +68,13 @@ MonoBehaviour:
   setVisOnStart: 0
   visstate: 0
   isenemy: 0
---- !u!65 &2066281129127162911
+--- !u!65 &183934025068766601
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375797639782992743}
+  m_GameObject: {fileID: 7646372383387900657}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
