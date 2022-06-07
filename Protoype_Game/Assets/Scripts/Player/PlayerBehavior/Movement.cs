@@ -21,7 +21,6 @@ public class Movement : MonoBehaviour
     public float maxspeed;
     public GameObject healthbar;
     public GameObject staminabar;
-    public GameObject score;
     public GameObject deathoverlay;
     public GameObject cam;
     public GameObject aimcontroller;
@@ -132,8 +131,6 @@ public class Movement : MonoBehaviour
             deathoverlay.SetActive(true);
             //time scale set
             Time.fixedDeltaTime = Time.timeScale * .02f;
-            //saves score
-            score.GetComponent<Score>().saveScore();
         }
         if (isAlive) {
 

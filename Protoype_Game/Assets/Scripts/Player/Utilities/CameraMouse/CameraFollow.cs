@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
+    public bool isActiveCam;
     private bool isAlive = true;
     private bool enemylock = false;
     private GameObject LockedEnemy;
@@ -12,7 +13,14 @@ public class CameraFollow : MonoBehaviour
         //is player alive set camera rotation
         if (isAlive)
         {
-            transform.localRotation = Quaternion.Euler(9, 0, 1);
+            if (isActiveCam)
+            {
+               transform.localRotation = Quaternion.Euler(9, 0, 1);
+            }
+            else
+            {
+               gameObject.SetActive(false);
+            }
         } 
         //on death
         else

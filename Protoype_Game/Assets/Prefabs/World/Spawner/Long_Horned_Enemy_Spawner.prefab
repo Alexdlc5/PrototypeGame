@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
-  settime: 9
+  settime: 12
   enemyspawncount: 20
   inloadingdistance: 0
   spawneractive: 0
