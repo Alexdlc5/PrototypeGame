@@ -1078,6 +1078,7 @@ MonoBehaviour:
   difficulty: 0
   currentbiome: 
   startingbiome: Oak
+  isHell: 0
   isArenaMode: 0
   bossspawncounter: 0
   difficultyuptimer: 75
@@ -6750,8 +6751,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 100.46988, y: -29.494213}
-  m_SizeDelta: {x: 198.2865, y: 121.7189}
+  m_AnchoredPosition: {x: 2.1669006, y: 3.5870972}
+  m_SizeDelta: {x: 38.7161, y: 55.5561}
   m_Pivot: {x: 0.6160477, y: 0.5}
 --- !u!114 &1713175227
 MonoBehaviour:

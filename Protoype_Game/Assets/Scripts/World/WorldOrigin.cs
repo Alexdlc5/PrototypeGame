@@ -14,6 +14,7 @@ public class WorldOrigin : MonoBehaviour
     public int difficulty = 0;
     public string currentbiome = "";
     public string startingbiome = "Oak";
+    public bool isHell = false;
     //etc.
     public bool isArenaMode = false;
     //difficulty and bosses (Progression)
@@ -48,7 +49,20 @@ public class WorldOrigin : MonoBehaviour
             offsetz = Random.Range(0, 999);
 
             //random amplitude
-            amp = Random.Range(2, 3);
+            amp = Random.Range(5, 15);
+
+            //random special worlds
+            //extreme hills world has a 1 in 50 chance of spawning 
+            int extremehills = Random.Range(1, 20);
+            if (extremehills == 1)
+            {
+                amp = 20;
+            }
+            int hellmode = Random.Range(1, 30);
+            if (hellmode == 1)
+            {
+                isHell = true;
+            }
 
             itemplacerqueue.Enqueue(0);
         }

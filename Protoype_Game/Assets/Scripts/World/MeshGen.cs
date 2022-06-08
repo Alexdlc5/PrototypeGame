@@ -181,6 +181,12 @@ public class MeshGen : MonoBehaviour
             V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
+
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+            }
+
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
@@ -230,6 +236,12 @@ public class MeshGen : MonoBehaviour
             V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
+
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+            }
+
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
@@ -285,6 +297,12 @@ public class MeshGen : MonoBehaviour
             V -= .01f;
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
+
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+            }
+
             GetComponent<MeshRenderer>().material.color = currentcolor;
 
             origin.GetComponent<WorldOrigin>().currentbiomecount++;
