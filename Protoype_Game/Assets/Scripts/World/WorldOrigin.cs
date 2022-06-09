@@ -58,7 +58,7 @@ public class WorldOrigin : MonoBehaviour
             {
                 amp = 20;
             }
-            int hellmode = Random.Range(1, 30);
+            int hellmode = Random.Range(1, 5);
             if (hellmode == 1)
             {
                 isHell = true;

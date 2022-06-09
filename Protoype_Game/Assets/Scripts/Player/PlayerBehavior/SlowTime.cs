@@ -22,7 +22,7 @@ public class SlowTime : MonoBehaviour
             Time.timeScale = 1f;
             windowopen = false;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && pausewindowopen == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && pausewindowopen == false && windowopen == false)
         {
             //slowtime
             Time.timeScale = 0;

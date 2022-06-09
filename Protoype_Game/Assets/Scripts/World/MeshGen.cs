@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MeshGen : MonoBehaviour
 {
-    //random extra loot (weapons armor new weapon types)
     //mesh building
     Mesh mesh;
     Vector3[] vertices;
@@ -69,7 +68,7 @@ public class MeshGen : MonoBehaviour
         //updates it
         UpdateMesh();
 
-        //add biomes, snowy, plamtree, open field with flowers
+        //requests to generate stuff once given permission, generates objects
         goahead = origin.GetComponent<WorldOrigin>().requestQueue();
         queuerequested = true;
         //visual perlin
@@ -87,7 +86,7 @@ public class MeshGen : MonoBehaviour
     void CreateShape()
     {
 
-        //creates grid of vertices
+        //creates grid of vertices using the given size of the mesh
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
         
         int index = 0;
@@ -126,6 +125,7 @@ public class MeshGen : MonoBehaviour
         //          /    \  /
         //         /------\/    
         //        O        O
+        //triangle array set to given x and y size (multiplied by six beacause that is the amount of points needed to create a square)
         triangles = new int[xSize * zSize * 6];
         int vert = 0;
         int tri = 0;
@@ -133,6 +133,7 @@ public class MeshGen : MonoBehaviour
         {
             for (int x = 0; x < xSize; x++)
             {
+                //creates triangles that create a square
                 //first triangle
                 triangles[tri] = vert + 0;
                 triangles[tri + 1] = vert + xSize + 1;
@@ -147,7 +148,7 @@ public class MeshGen : MonoBehaviour
             }
             vert++;
         }
-
+        //UV mesh for lighting
         UVs = new Vector2[vertices.Length];
         for (int i = 0, z = 0; z <= zSize; z++)
         {
@@ -179,12 +180,18 @@ public class MeshGen : MonoBehaviour
             //decreases saturation and brightness
             S -= .01f;
             V -= .01f;
+
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                V -= .5f;
+            }
+
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
 
             if (origin.GetComponent<WorldOrigin>().isHell)
             {
-                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+                currentcolor = new Color(currentcolor.r + 50, currentcolor.g, currentcolor.b, currentcolor.a);
             }
 
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -234,12 +241,18 @@ public class MeshGen : MonoBehaviour
             //decreases saturation and brightness
             S -= .01f;
             V -= .01f;
+
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                V -= .5f;
+            }
+
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
 
             if (origin.GetComponent<WorldOrigin>().isHell)
             {
-                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+                currentcolor = new Color(currentcolor.r + 50, currentcolor.g, currentcolor.b, currentcolor.a);
             }
 
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -295,12 +308,17 @@ public class MeshGen : MonoBehaviour
             //decreases saturation and brightness
             S -= .01f;
             V -= .01f;
+            
+            if (origin.GetComponent<WorldOrigin>().isHell)
+            {
+                V -= .5f;
+            }
             //set current color with new lower saturation
             currentcolor = Color.HSVToRGB(H, S, V);
 
             if (origin.GetComponent<WorldOrigin>().isHell)
             {
-                currentcolor = new Color(currentcolor.r + 100, currentcolor.g, currentcolor.b, currentcolor.a);
+                currentcolor = new Color(currentcolor.r + 50, currentcolor.g, currentcolor.b, currentcolor.a);
             }
 
             GetComponent<MeshRenderer>().material.color = currentcolor;
@@ -334,56 +352,55 @@ public class MeshGen : MonoBehaviour
         }
         Destroy(ip);
     }
-
+    //resets and recreates the mesh using the given sets of vertices and triangles, as well as the uvs for lighting the mesh
     void UpdateMesh()
     {
+        //resets the mesh
         mesh.Clear();
-
+        //creating mesh using vertices and triangles
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        //setting up mesh for lighting 
         mesh.uv = UVs;
-
+        
         mesh.RecalculateNormals();
         //if size increase wanted add multipier here
         transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
     }
+    //generates perlin noise texture
+    //Texture2D GenTexture()
+    //{
+    //    Texture2D texture = new Texture2D(width, height);
 
-    Texture2D GenTexture()
-    {
-        Texture2D texture = new Texture2D(width, height);
+    //    for (int x = 0; x < width; x++)
+    //    {
+    //        for (int y = 0; y < height; y++)
+    //        {
+    //            Color color = CalcColor(x, y);
+    //            texture.SetPixel(x, y, color);
+    //        }
+    //    }
 
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                Color color = CalcColor(x, y);
-                texture.SetPixel(x, y, color);
-            }
-        }
-
-        texture.Apply();
-        return (texture);
-    }
-
-    Color CalcColor(float x, float y)
-    {
-        float xCoord = (float)x / width * scale + offsetx;
-        float yCoord = (float)y / height * scale + offsetz;
-        float sample = Mathf.PerlinNoise(xCoord, yCoord);
-        return new Color(sample, sample, sample);
-    }
-
-    public void setOrigin(GameObject origin)
-    {
-        this.origin = origin;
-    }
-
+    //    texture.Apply();
+    //    return (texture);
+    //}
+    ////makes brighness level of pixel of texture gen
+    //Color CalcColor(float x, float y)
+    //{
+    //    float xCoord = (float)x / width * scale + offsetx;
+    //    float yCoord = (float)y / height * scale + offsetz;
+    //    float sample = Mathf.PerlinNoise(xCoord, yCoord);
+    //    return new Color(sample, sample, sample);
+    //}
+    //creates the array of vertices used to create the ground mesh of the tile
     void setVerts(int index, float x, float z, float offset)
     {
         //pixel to world coord
         float xCoord = (float)x / width * scale + offsetx;
         float zCoord = (float)z / height * scale + offsetz;
+        //uses perlin noise to get y value of vertex in the mesh
         float y = Mathf.PerlinNoise(xCoord, zCoord) / offset;
+        //adds the new vertex to the array vertices later used to form the mesh
         vertices[index] = new Vector3(x, y * amp, z);
     }
 }
